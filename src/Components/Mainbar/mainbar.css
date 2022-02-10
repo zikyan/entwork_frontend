@@ -1,0 +1,196 @@
+.mainbar-parent{
+    width: 100%;
+}
+.mainbar-upper1{
+
+}
+.mainbar-ul{
+    list-style-type: none;
+}
+.mainbar-ul li{
+    display: inline-block;
+    border: 1px solid rgb(202, 198, 198);
+    border-radius: 30px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+}
+.mainbar-upper2{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.mainbar-ul2{
+    list-style-type: none;
+}
+.mainbar-ul2 li{
+    display: inline-block;
+    background-color: #F0F0F0;
+    margin-right: 10px;
+    border-radius: 3px;
+    padding: 3px 5px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+}
+.mainbar-upper3{
+    margin-top: 15px;
+    border-bottom: 1px solid rgb(202, 198, 198);
+}
+.mainbar-post-dp{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    margin-right: 5px;
+}
+.mainbar-post-username{
+    display: flex;
+    flex-direction: column;
+}
+.mainbar-post-left{
+    display: flex;
+    align-items: center;
+}
+.mainbar-post-belowname{
+    display: flex;
+}
+.mainbar-post-tag{
+    font-size: 12px;
+}
+.mainbar-post-time{
+    font-size: 12px;
+}
+.mainbar-post-caption{
+    font-size: 20px;
+    line-height: 1.5rem;
+    font-weight: 500;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.mainbar-post-caption{
+    transition: all .2s ease-in-out;
+}
+.mainbar-post-caption:hover{
+    color: #0299FD;
+}
+.mainbar-post1{
+    display: flex;
+    justify-content: space-between;
+}
+.mainbar-post-right{
+    display: flex;
+    align-items: center;
+}
+.mainbar-button-save{
+    background-color: #f0f0f000;
+    border: 1px solid #000;
+    padding: 5px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 2px;
+}
+.mainbar-button-download{
+    margin-left: 20px;
+}
+.mainbar-button-save{
+    transition: all .2s ease-in-out;
+}
+.mainbar-button-save:hover{
+    background-color: #F0F0F0;
+}
+.mainbar-mainpost{
+    background-color: #F0F0F0;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.mainbar-mainpost-image{
+    cursor: pointer;
+    margin-top: 20px;
+    width: 600px;
+    height: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}
+.mainbar-mainpost-below{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.mainbar-mainpost-below-left button{
+    transition: all .2s ease-in-out;
+}
+.mainbar-mainpost-below-left button{
+    cursor: pointer;
+    background-color: #f0f0f000;
+    border: 1px solid #000;
+    padding: 5px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    margin-right: 10px;
+    border-radius: 2px;
+}
+.mainbar-mainpost-below-left button:hover{
+    background-color: #F0F0F0;
+}
+.mainbar-mainpost-facebook-button{
+    border: none;
+    padding: 5px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 10px;
+    border-radius: 2px;
+    background: #3B5998;
+    color: white;
+}
+.mainbar-mainpost-facebook-button:hover{
+    background-color: #517ad1;
+}
+.mainbar-mainpost-twitter-button{
+    border: none;
+    padding: 5px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 10px; 
+    border-radius: 2px;
+    background: #1E9BF0;
+    color: white;
+}
+.mainbar-mainpost-twitter-button:hover{
+    background-color: #3a6bd3;
+}
+.mainbar-mainpost-share-button{
+    background-color: #f0f0f000;
+    border: 1px solid #000;
+    padding: 5px 10px;
+    border-radius: 2px;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+.mainbar-mainpost-share-button-image{
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mainbar-mainpost-below-right{
+    display: flex;
+}
+.mainbar-mainpost-arrow{
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+.mainbar-mainpost-share-button:hover{
+    background-color: #F0F0F0;
+}
+.mainbar-mainpost-below-right button{
+    cursor: pointer;
+}

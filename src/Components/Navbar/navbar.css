@@ -1,4 +1,50 @@
 .navbar-parent{
+    display: flex;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    height: 50px;
     width: 100%;
-    background-color: aqua;
+    align-items: center;
+    border-bottom: 1px solid rgb(202, 198, 198);
+}
+.navbar-logo{
+    font-size: 20px;
+    font-weight: 700;
+}
+.navbar-hamburger{
+    margin: 0 20px 0 20px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.navbar-left{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+}
+.navbar-middle{
+    flex: 8;
+    display: flex;
+    justify-content: center;
+}
+.navbar-ul{
+    list-style-type: none;
+    display: flex;
+}
+.navbar-middle ul li{
+    cursor: pointer;
+    margin-right: 20px;
+    font-weight: 600;
+}
+.navbar-middle ul li{
+    transition: all .2s ease-in-out;
+}
+.navbar-middle ul li:hover{
+    transform: scale(1.1);
+}
+.navbar-right{
+    flex: 4;
 }

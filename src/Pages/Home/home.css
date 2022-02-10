@@ -1,0 +1,16 @@
+.home-container{
+    display: flex;
+    padding: 15px;
+}
+.side-flex{
+    flex: 3;
+    width: 100%;
+}
+.main-flex{
+    flex: 8;
+    width: 100%;
+}
+.right-flex{
+    flex: 3;
+    width: 100%;
+}
