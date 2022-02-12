@@ -1,16 +1,30 @@
 import './App.css';
-import Home from './Pages/Home/Home';
-import Navbar from './Components/Navbar/Navbar';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from './Components/Navbar/Navbar';
+import Post from './Pages/Post/Post';
+import LeftSideBar from './Components/LeftSideBar/LeftSideBar';
+import RightSideBar from './Components/RightSideBar/RightSideBar';
+import Mainbar from './Components/Mainbar/Mainbar';
 
 function App() {
   return (
     <div className='app-parent'>
-      <BrowserRouter>
+    <BrowserRouter>
       <Navbar />
-        <Routes>
-          <Route exact path='/' element={<Home/>} />
-        </Routes>
+        <div className="home-container">
+            <div className="side-flex">
+                <LeftSideBar />
+            </div>
+            <div className="main-flex">
+              <Routes>
+                <Route exact path='/' element={<Mainbar/>} />
+                <Route exact path='/post' element={<Post/>} />
+              </Routes>
+            </div>
+            <div className='right-flex'>
+                <RightSideBar />
+            </div>
+          </div>
       </BrowserRouter>
     </div>
   );

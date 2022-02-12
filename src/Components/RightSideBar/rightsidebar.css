@@ -31,7 +31,6 @@
     border-radius: 2px;
 }
 .rightsidebar-work-button-icon{
-    font-size: 20px;
     margin-right: 5px;
 }
 .rightsidebar-work-button{
@@ -40,6 +39,81 @@
 .rightsidebar-work-button:hover{
     background-color: #F0F0F0;
 }
-.zik{
-    background-color: #000;
+.rightsidebar-trending-tags{
+    margin-top: 10px;
+}
+.rightsidebar-ul2{
+    list-style-type: none;
+}
+.rightsidebar-ul2 li{
+    display: inline-block;
+    background-color: #F0F0F0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    padding: 3px 5px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+}
+.rightsidebar-work-text{
+    color: #000;
+    font-weight: 700;
+    margin-top: 10px;
+}
+.rightsidebar-recent-jobs-text{
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.rightsidebar-post-left{
+    display: flex;
+    align-items: center;
+}
+.rightsidebar-post-dp{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    margin-right: 5px;
+}
+.rightsidebar-post-username{
+    display: flex;
+    flex-direction: column;
+}
+.rightsidebar-post-belowname{
+    display: flex;
+}
+.rightsidebar-post-tag{
+    font-size: 12px;
+}
+.rightsidebar-post-time{
+    font-size: 12px;
+}
+.rightsidebar-recent-jobs-card{
+    border: 1px solid rgb(202, 198, 198);
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.rightsidebar-recent-jobs-description{
+    font-size: 14px;
+}
+.rightsidebar-start-chat-button{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f000;
+    border: 1px solid #000;
+    padding: 3px 5px;
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 2px;
+}
+.rightsidebar-start-chat-button{
+    transition: all .2s ease-in-out;
+}
+.rightsidebar-start-chat-button:hover{
+    background-color: #F0F0F0;
 }
