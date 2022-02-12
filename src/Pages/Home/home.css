@@ -4,13 +4,11 @@
 }
 .side-flex{
     flex: 3;
-    width: 100%;
 }
 .main-flex{
-    flex: 8;
-    width: 100%;
+    flex: 7;
+    margin-right: 15px;
 }
 .right-flex{
     flex: 3;
-    width: 100%;
 }

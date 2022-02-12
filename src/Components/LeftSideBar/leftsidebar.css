@@ -1,0 +1,81 @@
+.leftsidebar-parent{
+   width: 90%;
+}
+.leftsidebar-upper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(202, 198, 198);
+    padding: 10px 0px;
+    border-radius: 5px;
+    
+}
+.leftsidebar-upper button{
+    width: 65%;
+    padding: 5px 0px;
+}
+.leftsidebar-addpost-button{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f000;
+    border: 1px solid #000;
+    padding: 5px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 2px;
+}
+.leftsidebar-top-button{
+    cursor: pointer;
+    background-color: #276FFD;
+    font-weight: 600;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.leftsidebar-addpost-button{
+    transition: all .2s ease-in-out;
+}
+.leftsidebar-addpost-button:hover{
+    background-color: #F0F0F0;
+}
+
+.leftsidebar-top-button{
+    transition: all .2s ease-in-out;
+}
+.leftsidebar-top-button:hover{
+    background-color: #225ed6;
+}
+.leftsidebar-filter{
+    list-style: none;
+}
+.leftsidebar-filter li{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 2px;
+}
+.leftsidebar-filter li{
+    transition: all .2s ease-in-out;
+}
+.leftsidebar-filter li:hover{
+    background-color: #F0F0F0;
+}
+.leftsidebar-filter-selected{
+    background-color: #F0F0F0;
+}
+.leftsidebar-text{
+    margin: 10px 0px;
+    color: #000;
+    font-weight: 700;
+}
+.leftsidebar-material-icon{
+    font-size: 20px;
+    margin-right: 5px;
+}

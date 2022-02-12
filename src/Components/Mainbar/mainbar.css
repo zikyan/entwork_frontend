@@ -14,6 +14,10 @@
     font-size: 14px;
     cursor: pointer;
 }
+.mainbar-li-selected{
+    background-color: #000;
+    color: #fff;
+}
 .mainbar-upper2{
     margin-top: 20px;
     display: flex;
@@ -26,6 +30,7 @@
     display: inline-block;
     background-color: #F0F0F0;
     margin-right: 10px;
+    margin-bottom: 10px;
     border-radius: 3px;
     padding: 3px 5px;
     font-weight: 500;
@@ -137,8 +142,11 @@
     background-color: #F0F0F0;
 }
 .mainbar-mainpost-facebook-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
-    padding: 5px 20px;
+    padding: 5px 15px;
     font-size: 15px;
     font-weight: 500;
     margin-right: 10px;
@@ -150,6 +158,9 @@
     background-color: #517ad1;
 }
 .mainbar-mainpost-twitter-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     padding: 5px 20px;
     font-size: 15px;
@@ -190,4 +201,11 @@
 }
 .mainbar-mainpost-below-right button{
     cursor: pointer;
+}
+.mainbar-mainpost-button-flex-parent{
+    display: flex;
+}
+.mainbar-mainpost-button-flex-parent button{
+    display: flex;
+    align-items: center;
 }
