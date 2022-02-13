@@ -252,3 +252,23 @@
 .comment-people-text{
     font-size: 15px;
 }
+.comment-votes-style{
+    font-size: 13px;
+    color: #999999;
+    font-weight: 700;
+}
+.comment-post-votes{
+    display: flex;
+    margin-top: 5px;
+}
+.comment-votes-flex1{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.comment-votes-flex2{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 10px;
+}

@@ -6,6 +6,7 @@ import nav3 from '../../images/nav3.png';
 import nav4 from '../../images/nav4.png';
 import nav5 from '../../images/nav5.png';
 import nav6 from '../../images/nav6.png';
+import MenuIcon from '@mui/icons-material/Menu';
 import hamburger from '../../images/hamburger.png';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +14,7 @@ export default function Navbar() {
     return (
         <div className='navbar-parent'>
             <div className="navbar-left">
-                <img className='navbar-hamburger' src={hamburger} alt="" />
+                <MenuIcon className='navbar-hamburger' style={{fontSize:'28px'}} />
                 <Link to='/' className='navbar-logo'><p>onlyMemes</p></Link>
             </div>
             <div className="navbar-middle">

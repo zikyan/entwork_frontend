@@ -1,6 +1,7 @@
 import React from 'react';
 import './rightsidebar.css';
 import WorkIcon from '@mui/icons-material/Work';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import faizan from '../../images/faizan.jpg';
 import abdullah from '../../images/abdullah.jpg';
 import raees from '../../images/raees.jpg';
@@ -11,7 +12,10 @@ export default function RightSideBar() {
       <div className="rightsidebar-upper">
         <p className='rightsidebar-text'>onlyMemes Workplace</p>
         <p className='rightsidebar-upper-text'>Click the below button to find work</p>
-        <button className='rightsidebar-work-button'><WorkIcon style={{fontSize:'20px'}} className='rightsidebar-work-button-icon' />Find Work</button>
+        <div className="rightsidebar-find-post-button">
+          <button className='rightsidebar-work-button'><WorkIcon style={{fontSize:'18px'}} className='rightsidebar-work-button-icon' />Find Job</button>
+          <button style={{marginLeft:'10px'}} className='rightsidebar-work-button'><WorkOutlineIcon style={{fontSize:'18px'}} className='rightsidebar-work-button-icon' />Post Job</button>
+        </div>
       </div>
       <div className="rightsidebar-upper2">
       <p className='rightsidebar-work-text'>Trending Work Tags</p>

@@ -2,13 +2,28 @@
     display: flex;
     padding: 15px;
 }
-.side-flex{
+.left-flex{
     flex: 3;
+    overflow-y: scroll;
+    height: 100vh;
 }
 .main-flex{
     flex: 7;
     margin: 0px 15px;
+    overflow-y: scroll;
+    height: 100vh;
 }
 .right-flex{
     flex: 3;
+    overflow-y: scroll;
+    height: 100vh;
+}
+.left-flex::-webkit-scrollbar {
+    display: none;
+}
+.right-flex::-webkit-scrollbar {
+    display: none;
+}
+.main-flex::-webkit-scrollbar {
+    display: none;
 }

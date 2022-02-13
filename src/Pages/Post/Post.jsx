@@ -19,9 +19,9 @@ export default function Post() {
         <div className="post-upper3">
             <div className="post-post1">
                 <div className="post-post-left">
-                        <img className='post-post-dp' src={zikyan} alt="" />
+                        <Link to='/profile'><img className='post-post-dp' src={zikyan} alt="" /></Link>
                         <div className="post-post-username">
-                                <p>Zikyan Rasheed</p>
+                        <Link style={{textDecoration:'none', color:'#000'}} to='/profile'>Zikyan Rasheed</Link>
                             <div className="post-post-belowname">
                                 <p className='post-post-tag'>#funny,&nbsp;</p>
                                 <p className='post-post-time'>2h</p>
@@ -72,6 +72,17 @@ export default function Post() {
                                 <p className='comment-post-time'>&nbsp;2h</p>
                             </div>
                                 <p className='comment-people-text'>OP you made my day with that description! Best thing I've red in a while, have a wonderful day!</p>
+
+                                <div className="comment-post-votes">
+                                    <div className="comment-votes-flex1">
+                                        <ArrowUpwardIcon style={{color:'#999999',fontSize:'20px'}} />
+                                        <p className='comment-votes-style'>34</p>
+                                    </div>
+                                    <div className="comment-votes-flex2">
+                                        <ArrowDownwardIcon style={{color:'#999999',fontSize:'20px'}} />
+                                        <p className='comment-votes-style' >12</p>
+                                    </div>
+                                </div>
                         </div>      
             </div>
 
@@ -83,7 +94,21 @@ export default function Post() {
                                 <p className='comment-post-time'>&nbsp;3h</p>
                             </div>
                                 <p className='comment-people-text'>Is that delos? Because if it is, the one thing I do remember was that chill cat. The ruins were kinda meh.</p>
-                        </div>      
+
+                                <div className="comment-post-votes">
+                                    <div className="comment-votes-flex1">
+                                        <ArrowUpwardIcon style={{color:'#999999',fontSize:'20px'}} />
+                                        <p className='comment-votes-style'>106</p>
+                                    </div>
+                                    <div className="comment-votes-flex2">
+                                        <ArrowDownwardIcon style={{color:'#999999',fontSize:'20px'}} />
+                                        <p className='comment-votes-style' >23</p>
+                                    </div>
+                                </div>
+
+                        </div>
+
+                        
             </div>
 
             <div className="post-comment-people">
@@ -94,10 +119,22 @@ export default function Post() {
                                 <p className='comment-post-time'>&nbsp;5h</p>
                             </div>
                                 <p className='comment-people-text'>Listen here my son. <br />
-There are lots of pictures of the ruines.<br/>
-There are lots of pictures of cats. <br />
-There are few pictures of cats in <ruins className="br"></ruins>
-I rest my case.</p>
+                                    There are lots of pictures of the ruines.<br/>
+                                    There are lots of pictures of cats. <br />
+                                    There are few pictures of cats in <ruins className="br"></ruins>
+                                    I rest my case.</p>
+
+                                <div className="comment-post-votes">
+                                    <div className="comment-votes-flex1">
+                                        <ArrowUpwardIcon style={{color:'#999999',fontSize:'20px'}} />
+                                        <p className='comment-votes-style'>12</p>
+                                    </div>
+                                    <div className="comment-votes-flex2">
+                                        <ArrowDownwardIcon style={{color:'#999999',fontSize:'20px'}} />
+                                        <p className='comment-votes-style' >5</p>
+                                    </div>
+                                </div>
+
                         </div>      
             </div>
     </div>

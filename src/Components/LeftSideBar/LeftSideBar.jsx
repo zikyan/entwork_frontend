@@ -15,7 +15,7 @@ export default function LeftSideBar() {
       <div className="leftsidebar-upper">
         <button className='leftsidebar-addpost-button'><AddBoxIcon style={{fontSize:'20px',marginRight:'5px'}} /> Add Post</button>
         <button style={{margin:'15px 0px'}} className='leftsidebar-addpost-button'><EmojiEventsIcon style={{fontSize:'20px',marginRight:'5px'}} /> Top Posts</button>
-        <button className='leftsidebar-addpost-button'><EmojiEventsIcon style={{fontSize:'20px',marginRight:'5px'}} /> Top Comments</button>
+        <button className='leftsidebar-addpost-button'><AutoAwesomeIcon style={{fontSize:'20px',marginRight:'5px'}} /> Top Comments</button>
       </div>
       <p className='leftsidebar-text'>onlyMemes</p>
       <div className="leftsidebar-upper2">

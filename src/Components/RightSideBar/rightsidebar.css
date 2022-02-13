@@ -25,8 +25,8 @@
     justify-content: center;
     background-color: #f0f0f000;
     border: 1px solid #000;
-    padding: 5px 20px;
-    font-size: 15px;
+    padding: 5px 10px;
+    font-size: 14px;
     font-weight: 500;
     border-radius: 2px;
 }
@@ -116,4 +116,7 @@
 }
 .rightsidebar-start-chat-button:hover{
     background-color: #F0F0F0;
+}
+.rightsidebar-find-post-button{
+    display: flex;
 }
