@@ -6,6 +6,9 @@ import LeftSideBar from './Components/LeftSideBar/LeftSideBar';
 import RightSideBar from './Components/RightSideBar/RightSideBar';
 import Mainbar from './Components/Mainbar/Mainbar';
 import Profile from './Pages/Profile/Profile';
+import TopPost from './Pages/TopPost/TopPost';
+import TopComment from './Pages/TopComment/TopComment';
+import AddPost from './Pages/AddPost/AddPost';
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
                 <Route exact path='/' element={<Mainbar/>} />
                 <Route exact path='/post' element={<Post/>} />
                 <Route exact path='/profile' element={<Profile/>} />
+                <Route exact path='/toppost' element={<TopPost/>} />
+                <Route exact path='/topcomment' element={<TopComment/>} />
+                <Route exact path='/addpost' element={<AddPost/>} />
               </Routes>
             </div>
             <div className='right-flex'>

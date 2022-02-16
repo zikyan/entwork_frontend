@@ -8,14 +8,16 @@ import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
+import { Link } from 'react-router-dom';
 
 export default function LeftSideBar() {
   return (
     <div className="leftsidebar-parent">
       <div className="leftsidebar-upper">
-        <button className='leftsidebar-addpost-button'><AddBoxIcon style={{fontSize:'20px',marginRight:'5px'}} /> Add Post</button>
-        <button style={{margin:'15px 0px'}} className='leftsidebar-addpost-button'><EmojiEventsIcon style={{fontSize:'20px',marginRight:'5px'}} /> Top Posts</button>
-        <button className='leftsidebar-addpost-button'><AutoAwesomeIcon style={{fontSize:'20px',marginRight:'5px'}} /> Top Comments</button>
+        <Link style={{textDecoration:'none'}} to='/addpost'><button className='leftsidebar-toppost-button'><AddBoxIcon style={{fontSize:'20px',marginRight:'5px'}} /> Add Post</button></Link>
+        <Link style={{textDecoration:'none'}} to='/toppost'><button className='leftsidebar-toppost-button'><EmojiEventsIcon style={{fontSize:'20px',marginRight:'5px'}} /> Top Posts</button></Link>
+        <Link style={{textDecoration:'none'}} to='/topcomment'><button className='leftsidebar-toppost-button'><AutoAwesomeIcon style={{fontSize:'20px',marginRight:'5px'}} /> Top Comment</button></Link>
+        {/* <Link style={{textDecoration:'none'}} to='/topcomment'><button className='leftsidebar-topcomment-button'><AutoAwesomeIcon style={{fontSize:'20px',marginRight:'5px'}} /> Top Comments</button></Link> */}
       </div>
       <p className='leftsidebar-text'>onlyMemes</p>
       <div className="leftsidebar-upper2">

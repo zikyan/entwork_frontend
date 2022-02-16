@@ -1,5 +1,5 @@
 import React from 'react';
-import './post.css';
+import './topcomment.css';
 import zikyan from '../../images/zikyan_dp.jpg';
 import cat from '../../images/cat-post.jpg';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
@@ -9,13 +9,11 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import ShareIcon from '@mui/icons-material/Share';
 import faizan from '../../images/faizan.jpg';
-import abdullah from '../../images/abdullah.jpg';
-import raees from '../../images/raees.jpg';
 import { Link } from 'react-router-dom';
 
-export default function Post() {
+export default function TopComment() {
   return (
-      <div className="post-parent">
+    <div className="post-parent">
         <div className="post-upper3">
             <div className="post-post1">
                 <div className="post-post-left">
@@ -56,15 +54,8 @@ export default function Post() {
                     <p>34 Comments</p>
                 </div>
         </div>
-            <div className="post-comment-parent">
-                <div className="post-comment-1">
-                    <img className='post-comment-dp' src={zikyan} alt="" />
-                    <textarea className='post-comment-textarea' placeholder='Type your comment here' cols="30" rows="3"></textarea>
-                </div>
-                <button className='post-comment-button'>Post</button>
-            </div>
 
-            <div className="post-comment-people">
+            <div className="post-comment-people topcomment-parent">
             <img className='comment-post-dp' src={faizan} alt="" />
                         <div className="comment-post-username">
                             <div className="comment-name-time-flex">
@@ -83,58 +74,6 @@ export default function Post() {
                                         <p className='comment-votes-style' >12</p>
                                     </div>
                                 </div>
-                        </div>      
-            </div>
-
-            <div className="post-comment-people">
-            <img className='comment-post-dp' src={abdullah} alt="" />
-                        <div className="comment-post-username">
-                            <div className="comment-name-time-flex">
-                                <p>Abdullah Bin Zafar</p>
-                                <p className='comment-post-time'>&nbsp;3h</p>
-                            </div>
-                                <p className='comment-people-text'>Is that delos? Because if it is, the one thing I do remember was that chill cat. The ruins were kinda meh.</p>
-
-                                <div className="comment-post-votes">
-                                    <div className="comment-votes-flex1">
-                                        <ArrowUpwardIcon style={{color:'#999999',fontSize:'20px'}} />
-                                        <p className='comment-votes-style'>106</p>
-                                    </div>
-                                    <div className="comment-votes-flex2">
-                                        <ArrowDownwardIcon style={{color:'#999999',fontSize:'20px'}} />
-                                        <p className='comment-votes-style' >23</p>
-                                    </div>
-                                </div>
-
-                        </div>
-
-                        
-            </div>
-
-            <div className="post-comment-people">
-            <img className='comment-post-dp' src={raees} alt="" />
-                        <div className="comment-post-username">
-                            <div className="comment-name-time-flex">
-                                <p>Raees Ibrahim</p>
-                                <p className='comment-post-time'>&nbsp;5h</p>
-                            </div>
-                                <p className='comment-people-text'>Listen here my son. <br />
-                                    There are lots of pictures of the ruines.<br/>
-                                    There are lots of pictures of cats. <br />
-                                    There are few pictures of cats in <ruins className="br"></ruins>
-                                    I rest my case.</p>
-
-                                <div className="comment-post-votes">
-                                    <div className="comment-votes-flex1">
-                                        <ArrowUpwardIcon style={{color:'#999999',fontSize:'20px'}} />
-                                        <p className='comment-votes-style'>12</p>
-                                    </div>
-                                    <div className="comment-votes-flex2">
-                                        <ArrowDownwardIcon style={{color:'#999999',fontSize:'20px'}} />
-                                        <p className='comment-votes-style' >5</p>
-                                    </div>
-                                </div>
-
                         </div>      
             </div>
     </div>
