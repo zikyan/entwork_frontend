@@ -17,10 +17,9 @@ export default function LeftSideBar() {
         <Link style={{textDecoration:'none'}} to='/addpost'><button className='leftsidebar-toppost-button'><AddBoxIcon style={{fontSize:'20px',marginRight:'5px'}} /> Add Post</button></Link>
         <Link style={{textDecoration:'none'}} to='/toppost'><button className='leftsidebar-toppost-button'><EmojiEventsIcon style={{fontSize:'20px',marginRight:'5px'}} /> Top Posts</button></Link>
         <Link style={{textDecoration:'none'}} to='/topcomment'><button className='leftsidebar-toppost-button'><AutoAwesomeIcon style={{fontSize:'20px',marginRight:'5px'}} /> Top Comment</button></Link>
-        {/* <Link style={{textDecoration:'none'}} to='/topcomment'><button className='leftsidebar-topcomment-button'><AutoAwesomeIcon style={{fontSize:'20px',marginRight:'5px'}} /> Top Comments</button></Link> */}
       </div>
-      <p className='leftsidebar-text'>onlyMemes</p>
       <div className="leftsidebar-upper2">
+      <p className='leftsidebar-text'>EntWork</p>
           <ul className='leftsidebar-filter'>
             <li className='leftsidebar-filter-selected'><AllInclusiveIcon className='leftsidebar-material-icon'/>All</li>
             <li><LocalFireDepartmentIcon className='leftsidebar-material-icon'/>Hot</li>
@@ -29,9 +28,10 @@ export default function LeftSideBar() {
             <li><ClearAllIcon className='leftsidebar-material-icon'/>Top</li>
             <li><ShuffleIcon className='leftsidebar-material-icon'/>Random</li>
           </ul>
-      </div>
-      <p style={{marginTop:'5px'}} className='leftsidebar-text'>Top Tags</p>
-      <div className="leftsidebar-upper2">
+      
+      
+      
+      <p className='leftsidebar-lower-text'>Top Tags</p>
         <div className="leftsidebar-filter">
           <ul>
             <li>#sarcasm</li>
@@ -50,7 +50,7 @@ export default function LeftSideBar() {
             <li>#tokyo ghoul</li>
           </ul>
         </div>
-      </div>
+        </div>
     </div>
   )
 }

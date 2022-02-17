@@ -10,7 +10,7 @@ export default function RightSideBar() {
   return (
     <div className="rightsidebar-parent">
       <div className="rightsidebar-upper">
-        <p className='rightsidebar-text'>onlyMemes Workplace</p>
+        <p className='rightsidebar-text'>EntWork Workplace</p>
         <p className='rightsidebar-upper-text'>Click the below button to find work</p>
         <div className="rightsidebar-find-post-button">
           <button className='rightsidebar-work-button'><WorkIcon style={{fontSize:'18px'}} className='rightsidebar-work-button-icon' />Find Job</button>
@@ -19,7 +19,6 @@ export default function RightSideBar() {
       </div>
       <div className="rightsidebar-upper2">
       <p className='rightsidebar-work-text'>Trending Work Tags</p>
-        <div className="rightsidebar-trending-tags">
           <ul className='rightsidebar-ul2'>
                   <li>#Cat</li>
                   <li>#Facebook</li>
@@ -35,7 +34,6 @@ export default function RightSideBar() {
                   <li>#django</li>
                   <li>#python</li>
               </ul>
-          </div>
       </div>
       <div className="rightsidebar-upper3">
         <p className='rightsidebar-recent-jobs-text'>Recent Jobs</p>
@@ -85,17 +83,6 @@ export default function RightSideBar() {
           <p className='rightsidebar-recent-jobs-description'>make me a flutter or reactnative based cross platform app for job...</p>
           <button className='rightsidebar-start-chat-button'>Start Chat</button>
         </div>
-
-
-
-
-
-
-
-
-
-
-
       </div>
     </div>
   )

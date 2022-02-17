@@ -13,15 +13,15 @@ import { Link } from 'react-router-dom';
 
 export default function TopPost() {
   return (
-    <div className="mainbar-upper3">
+    <div className="post-parent">
             <div className="mainbar-post1">
                 <div className="mainbar-post-left">
                         <Link to='/profile'><img className='mainbar-post-dp' src={zikyan} alt="" /></Link>
                         <div className="mainbar-post-username">
-                            <Link style={{textDecoration:'none', color:'#000'}} to='/profile'>Zikyan Rasheed</Link>
+                            <Link style={{textDecoration:'none', color:'#000',fontWeight:'600'}} to='/profile'>Zikyan Rasheed</Link>
                             <div className="mainbar-post-belowname">
-                                <p className='mainbar-post-tag'>#funny,&nbsp;</p>
-                                <p className='mainbar-post-time'>2h</p>
+                                <p className='mainbar-post-time-tag'>#funny,&nbsp;</p>
+                                <p className='mainbar-post-time-tag'>2h</p>
                             </div>
                         </div>
                 </div>

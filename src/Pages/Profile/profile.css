@@ -44,7 +44,7 @@
     transition: all .2s ease-in-out;
 }
 .profile-edit-button:hover{
-    background-color: #F0F0F0;
+    background-color: #f1f4fa;
 }
 .profile-ul-container{
     width: 100%;
@@ -59,6 +59,8 @@
     display: flex;
     justify-content: space-between;
     cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
 }
 .profile-li-active{
     border-bottom: 2px solid #000;

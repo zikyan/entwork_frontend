@@ -9,6 +9,10 @@ import Profile from './Pages/Profile/Profile';
 import TopPost from './Pages/TopPost/TopPost';
 import TopComment from './Pages/TopComment/TopComment';
 import AddPost from './Pages/AddPost/AddPost';
+import Work from './Pages/Work/Work';
+import TwitterVirals from './Pages/TwitterVirals/TwitterVirals';
+import WeeklyWinner from './Pages/WeeklyWinner/WeeklyWinner';
+import Recommended from './Pages/Recommended/Recommended';
 
 function App() {
   return (
@@ -27,6 +31,10 @@ function App() {
                 <Route exact path='/toppost' element={<TopPost/>} />
                 <Route exact path='/topcomment' element={<TopComment/>} />
                 <Route exact path='/addpost' element={<AddPost/>} />
+                <Route exact path='/work' element={<Work/>} />
+                <Route exact path='/twittervirals' element={<TwitterVirals/>} />
+                <Route exact path='/weeklywinner' element={<WeeklyWinner/>} />
+                <Route exact path='/recommended' element={<Recommended/>} />
               </Routes>
             </div>
             <div className='right-flex'>

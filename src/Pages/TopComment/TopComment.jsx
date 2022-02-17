@@ -19,10 +19,10 @@ export default function TopComment() {
                 <div className="post-post-left">
                         <Link to='/profile'><img className='post-post-dp' src={zikyan} alt="" /></Link>
                         <div className="post-post-username">
-                        <Link style={{textDecoration:'none', color:'#000'}} to='/profile'>Zikyan Rasheed</Link>
+                        <Link style={{textDecoration:'none', color:'#000',fontWeight:'600'}} to='/profile'>Zikyan Rasheed</Link>
                             <div className="post-post-belowname">
-                                <p className='post-post-tag'>#funny,&nbsp;</p>
-                                <p className='post-post-time'>2h</p>
+                                <p className='post-post-time-tag'>#funny,&nbsp;</p>
+                                <p className='post-post-time-tag'>2h</p>
                             </div>
                         </div>
                 </div>

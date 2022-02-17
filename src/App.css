@@ -1,5 +1,8 @@
 .home-container{
     display: flex;
+    padding: 15px 0px;
+}
+.app-parent{
     padding: 15px;
 }
 .left-flex{

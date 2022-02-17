@@ -16,7 +16,8 @@ import { Link } from 'react-router-dom';
 export default function Mainbar() {
   return (
     <div className="mainbar-parent">
-        <div className="mainbar-upper1">
+        <div className="mainbar-box-design">
+        {/* <div className="mainbar-upper1">
             <ul className='mainbar-ul'>
                 <li className='mainbar-li-selected'>Fun</li>
                 <li>Work</li>
@@ -24,7 +25,7 @@ export default function Mainbar() {
                 <li>weekly winner</li>
                 <li>Recommended</li>
             </ul>
-        </div>
+        </div> */}
         <div className="mainbar-upper2">
             <ul className='mainbar-ul2'>
                 <li>#Cat</li>
@@ -37,17 +38,30 @@ export default function Mainbar() {
                 <li>#css</li>
                 <li>#android</li>
                 <li>#Weekly Highlights</li>
+                <li>#Boba Fett</li>
+                <li>#Biden</li>
+                <li>#Omicron</li>
+                <li>#work</li>
+                <li>#css</li>
+                <li>#android</li>
+                <li>#Biden</li>
+                <li>#Omicron</li>
+                <li>#work</li>
+                <li>#css</li>
+                <li>#Cat</li>
             </ul>
         </div>
+        </div>
+        <div className="mainbar-box-design-lower">
         <div className="mainbar-upper3">
             <div className="mainbar-post1">
                 <div className="mainbar-post-left">
                         <Link to='/profile'><img className='mainbar-post-dp' src={zikyan} alt="" /></Link>
                         <div className="mainbar-post-username">
-                            <Link style={{textDecoration:'none', color:'#000'}} to='/profile'>Zikyan Rasheed</Link>
+                            <Link style={{textDecoration:'none', color:'#000',fontWeight:'600'}} to='/profile'>Zikyan Rasheed</Link>
                             <div className="mainbar-post-belowname">
-                                <p className='mainbar-post-tag'>#funny,&nbsp;</p>
-                                <p className='mainbar-post-time'>2h</p>
+                                <p className='mainbar-post-time-tag'>#funny,&nbsp;</p>
+                                <p className='mainbar-post-time-tag'>2h</p>
                             </div>
                         </div>
                 </div>
@@ -77,16 +91,15 @@ export default function Mainbar() {
                 </div>
         </div>
 
-
         <div className="mainbar-upper3">
             <div className="mainbar-post1">
                 <div className="mainbar-post-left">
                 <Link to='/profile'><img className='mainbar-post-dp' src={faizan} alt="" /></Link>
                         <div className="mainbar-post-username">
-                        <Link style={{textDecoration:'none', color:'#000'}} to='/profile'>Faizan Muhammad</Link>
+                        <Link style={{textDecoration:'none', color:'#000',fontWeight:'600'}} to='/profile'>Faizan Muhammad</Link>
                             <div className="mainbar-post-belowname">
-                                <p className='mainbar-post-tag'>#funny,&nbsp;</p>
-                                <p className='mainbar-post-time'>2h</p>
+                                <p className='mainbar-post-time-tag'>#funny,&nbsp;</p>
+                                <p className='mainbar-post-time-tag'>2h</p>
                             </div>
                         </div>
                 </div>
@@ -114,6 +127,7 @@ export default function Mainbar() {
                             <button className='mainbar-mainpost-share-button'><ShareIcon style={{fontSize:'20px'}} /></button>
                         </div>
                 </div>
+        </div>
         </div>
 
 

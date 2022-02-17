@@ -21,10 +21,10 @@ export default function Post() {
                 <div className="post-post-left">
                         <Link to='/profile'><img className='post-post-dp' src={zikyan} alt="" /></Link>
                         <div className="post-post-username">
-                        <Link style={{textDecoration:'none', color:'#000'}} to='/profile'>Zikyan Rasheed</Link>
+                        <Link style={{textDecoration:'none', color:'#000',fontWeight:'600'}} to='/profile'>Zikyan Rasheed</Link>
                             <div className="post-post-belowname">
-                                <p className='post-post-tag'>#funny,&nbsp;</p>
-                                <p className='post-post-time'>2h</p>
+                                <p className='post-post-time-tag'>#funny,&nbsp;</p>
+                                <p className='post-post-time-tag'>2h</p>
                             </div>
                         </div>
                 </div>
@@ -59,7 +59,7 @@ export default function Post() {
             <div className="post-comment-parent">
                 <div className="post-comment-1">
                     <img className='post-comment-dp' src={zikyan} alt="" />
-                    <textarea className='post-comment-textarea' placeholder='Type your comment here' cols="30" rows="3"></textarea>
+                    <textarea className='post-comment-textarea' placeholder='Type your comment here' cols="1" rows="1"></textarea>
                 </div>
                 <button className='post-comment-button'>Post</button>
             </div>
@@ -68,7 +68,7 @@ export default function Post() {
             <img className='comment-post-dp' src={faizan} alt="" />
                         <div className="comment-post-username">
                             <div className="comment-name-time-flex">
-                                <p>Faizan Muahammad</p>
+                                <p style={{fontWeight:'600'}}>Faizan Muahammad</p>
                                 <p className='comment-post-time'>&nbsp;2h</p>
                             </div>
                                 <p className='comment-people-text'>OP you made my day with that description! Best thing I've red in a while, have a wonderful day!</p>
@@ -90,7 +90,7 @@ export default function Post() {
             <img className='comment-post-dp' src={abdullah} alt="" />
                         <div className="comment-post-username">
                             <div className="comment-name-time-flex">
-                                <p>Abdullah Bin Zafar</p>
+                                <p style={{fontWeight:'600'}}>Abdullah Bin Zafar</p>
                                 <p className='comment-post-time'>&nbsp;3h</p>
                             </div>
                                 <p className='comment-people-text'>Is that delos? Because if it is, the one thing I do remember was that chill cat. The ruins were kinda meh.</p>
@@ -115,7 +115,7 @@ export default function Post() {
             <img className='comment-post-dp' src={raees} alt="" />
                         <div className="comment-post-username">
                             <div className="comment-name-time-flex">
-                                <p>Raees Ibrahim</p>
+                                <p style={{fontWeight:'600'}}>Raees Ibrahim</p>
                                 <p className='comment-post-time'>&nbsp;5h</p>
                             </div>
                                 <p className='comment-people-text'>Listen here my son. <br />
