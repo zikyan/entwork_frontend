@@ -5,6 +5,7 @@ import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import faizan from '../../images/faizan.jpg';
 import abdullah from '../../images/abdullah.jpg';
 import raees from '../../images/raees.jpg';
+import { Link } from 'react-router-dom';
 
 export default function RightSideBar() {
   return (
@@ -13,7 +14,7 @@ export default function RightSideBar() {
         <p className='rightsidebar-text'>EntWork Workplace</p>
         <p className='rightsidebar-upper-text'>Click the below button to find work</p>
         <div className="rightsidebar-find-post-button">
-          <button className='rightsidebar-work-button'><WorkIcon style={{fontSize:'18px'}} className='rightsidebar-work-button-icon' />Find Job</button>
+          <Link style={{textDecoration:'none'}} to='/work'><button className='rightsidebar-work-button'><WorkIcon style={{fontSize:'18px'}} className='rightsidebar-work-button-icon' />Find Job</button></Link>
           <button style={{marginLeft:'10px'}} className='rightsidebar-work-button'><WorkOutlineIcon style={{fontSize:'18px'}} className='rightsidebar-work-button-icon' />Post Job</button>
         </div>
       </div>

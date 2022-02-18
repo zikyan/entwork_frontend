@@ -1,7 +1,6 @@
 import React from 'react';
 import './addpost.css';
 import ImageIcon from '@mui/icons-material/Image';
-import CancelIcon from '@mui/icons-material/Cancel';
 
 export default function AddPost() {
   return (

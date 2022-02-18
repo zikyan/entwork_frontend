@@ -30,16 +30,19 @@
     font-size: 14px;
     border-radius: 2px;
 }
+.rightsidebar-work-button:active{
+    transform: scale(0.97);
+}
 .rightsidebar-work-button-icon{
     margin-right: 5px;
 }
-.rightsidebar-work-button{
+/* .rightsidebar-work-button{
     transition: all .2s ease-in-out;
-}
-.rightsidebar-work-button:hover{
+} */
+/* .rightsidebar-work-button:hover{
     background-color: #192252;
     color: #fff;
-}
+} */
 .rightsidebar-ul2{
     list-style-type: none;
     margin-top: 10px;
@@ -54,6 +57,9 @@
     font-weight: 500;
     font-size: 14px;
     cursor: pointer;
+}
+.rightsidebar-ul2 li:active{
+    transform: scale(0.97);
 }
 .rightsidebar-work-text{
     color: #000;
@@ -120,13 +126,16 @@
     font-size: 12px;
     border-radius: 2px;
 }
-.rightsidebar-start-chat-button{
-    transition: all .2s ease-in-out;
+.rightsidebar-start-chat-button:active{
+    transform: scale(0.97);
 }
-.rightsidebar-start-chat-button:hover{
+/* .rightsidebar-start-chat-button{
+    transition: all .2s ease-in-out;
+} */
+/* .rightsidebar-start-chat-button:hover{
     background-color: #192252;
     color: #fff;
-}
+} */
 .rightsidebar-find-post-button{
     display: flex;
 }

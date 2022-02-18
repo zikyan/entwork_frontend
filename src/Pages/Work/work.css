@@ -112,17 +112,23 @@
 .work-button-download{
     margin-left: 20px;
 }
-.work-button-save{
+/* .work-button-save{
     transition: all .2s ease-in-out;
-}
-.work-button-save:hover{
+} */
+/* .work-button-save:hover{
     background-color: #192252;
     color: #fff;
-}
+} */
+.work-button-save:active{
+    transform: scale(0.97);
+ }
 .work-workpost{
     background-color: #f1f4fa;
     border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
+    padding: 15px;
+    text-align: justify;
+    margin-top: 15px;
 }
 .work-workpost-image{
     object-fit: cover;
@@ -139,7 +145,7 @@
 }
 .work-workpost-below{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin: 20px 0px;
 }
 .work-workpost-below-left button{
@@ -256,8 +262,51 @@
     font-weight: 500;
     font-size: 14px;
 }
-.navbar-signup-button{
+.work-postjob-button{
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 5px;
+    background-color: #192252;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    border-radius: 3px;
 }
+.work-postjob-button:active{
+    transform: scale(0.97);
+}
+/* .work-filter{
+    border-right: 2px solid #192252;
+    padding-right: 20px;
+} */
+.work-start-chat-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 5px 10px;
+    background-color: #192252;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    border-radius: 3px;
+}
+/* .work-start-chat-button{
+    transition: all .2s ease-in-out;
+} */
+/* .work-start-chat-button:hover{
+    background-color: #F1F4FA;
+    color: #192252;
+} */
+.work-filter select{
+    border: 2px solid #C5D0E6;
+    border-radius: 2px;
+    outline:0px;
+ }
+ .work-start-chat-button:active{
+    transform: scale(0.97);
+ }

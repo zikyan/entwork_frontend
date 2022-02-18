@@ -16,7 +16,7 @@ export default function LeftSideBar() {
       <div className="leftsidebar-upper">
         <Link style={{textDecoration:'none'}} to='/addpost'><button className='leftsidebar-toppost-button'><AddBoxIcon style={{fontSize:'20px',marginRight:'5px'}} /> Add Post</button></Link>
         <Link style={{textDecoration:'none'}} to='/toppost'><button className='leftsidebar-toppost-button'><EmojiEventsIcon style={{fontSize:'20px',marginRight:'5px'}} /> Top Posts</button></Link>
-        <Link style={{textDecoration:'none'}} to='/topcomment'><button className='leftsidebar-toppost-button'><AutoAwesomeIcon style={{fontSize:'20px',marginRight:'5px'}} /> Top Comment</button></Link>
+        <Link style={{textDecoration:'none'}} to='/topcomment'><button className='leftsidebar-toppost-button'><AutoAwesomeIcon style={{fontSize:'20px',marginRight:'5px'}} /> Top Comments</button></Link>
       </div>
       <div className="leftsidebar-upper2">
       <p className='leftsidebar-text'>EntWork</p>
