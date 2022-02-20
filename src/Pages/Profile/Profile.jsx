@@ -2,7 +2,6 @@ import React from 'react';
 import './profile.css';
 import cover from '../../images/cover.jpg';
 import zikyan from '../../images/zikyan_dp.jpg';
-import post from '../../images/post4.jpg';
 import EditIcon from '@mui/icons-material/Edit';
 
 export default function Profile() {
