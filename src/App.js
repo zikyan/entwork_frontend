@@ -13,32 +13,38 @@ import Work from './Pages/Work/Work';
 import TwitterVirals from './Pages/TwitterVirals/TwitterVirals';
 import WeeklyWinner from './Pages/WeeklyWinner/WeeklyWinner';
 import Recommended from './Pages/Recommended/Recommended';
+import { useState } from 'react';
 
 function App() {
+  const [darkMode,setdarkMode]=useState(false)
+  function darkFunc(e){
+    setdarkMode(preMode=>!preMode)
+  }
+  console.log(darkMode)
   return (
-    <div className='app-parent'>
+    <div className={`app-parent ${darkMode?"changeMode":""}`}>
     <BrowserRouter>
-      <Navbar />
+      <Navbar changeMode={darkFunc} darkmode={darkMode}/>
         <div className="home-container">
             <div className="left-flex">
-                <LeftSideBar />
+                <LeftSideBar darkmode={darkMode}/>
             </div>
             <div className="main-flex">
               <Routes>
-                <Route exact path='/' element={<Mainbar/>} />
-                <Route exact path='/post' element={<Post/>} />
-                <Route exact path='/profile' element={<Profile/>} />
-                <Route exact path='/toppost' element={<TopPost/>} />
-                <Route exact path='/topcomment' element={<TopComment/>} />
-                <Route exact path='/addpost' element={<AddPost/>} />
-                <Route exact path='/work' element={<Work/>} />
-                <Route exact path='/twittervirals' element={<TwitterVirals/>} />
-                <Route exact path='/weeklywinner' element={<WeeklyWinner/>} />
-                <Route exact path='/recommended' element={<Recommended/>} />
+                <Route exact path='/' element={<Mainbar darkmode={darkMode}/>} />
+                <Route exact path='/post' element={<Post darkmode={darkMode}/>} />
+                <Route exact path='/profile' element={<Profile darkmode={darkMode}/>} />
+                <Route exact path='/toppost' element={<TopPost darkmode={darkMode}/>} />
+                <Route exact path='/topcomment' element={<TopComment darkmode={darkMode}/>} />
+                <Route exact path='/addpost' element={<AddPost darkmode={darkMode}/>} />
+                <Route exact path='/work' element={<Work darkmode={darkMode}/>} />
+                <Route exact path='/twittervirals' element={<TwitterVirals darkmode={darkMode}/>} />
+                <Route exact path='/weeklywinner' element={<WeeklyWinner darkmode={darkMode}/>} />
+                <Route exact path='/recommended' element={<Recommended darkmode={darkMode}/>} />
               </Routes>
             </div>
             <div className='right-flex'>
-                <RightSideBar />
+                <RightSideBar darkmode={darkMode} />
             </div>
         </div>
       </BrowserRouter>

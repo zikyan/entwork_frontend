@@ -5,6 +5,12 @@
 .app-parent{
     padding: 15px;
 }
+
+.changeMode{
+    color: white;
+    background-color: rgb(26, 24, 24);
+  }
+  
 .left-flex{
     flex: 3;
     /* overflow-y: scroll;

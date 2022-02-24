@@ -10,9 +10,10 @@ import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import { Link } from 'react-router-dom';
 
-export default function Navbar() {
+export default function Navbar(props) {
     return (
-        <div className='navbar-parent'>
+        <div>
+        <div className={`navbar-parent ${props.darkmode?"changeModenav":""}`}>
             <div className="navbar-left">
                 <Link to='/' className='navbar-logo'><p>EntWork</p></Link>
                 <p className='navbar-logo-dot'>.</p>
@@ -29,12 +30,13 @@ export default function Navbar() {
             </div>
             <div className="navbar-right">
                 <ul className='navbar-right-ul'>
-                    <li><DarkModeRoundedIcon className='navbar-navicons-right navbar-navicons-right-selected'/></li>
+                    <li><DarkModeRoundedIcon className='navbar-navicons-right navbar-navicons-right-selected' onClick={props.changeMode}/></li>
                     <li><SendRoundedIcon className='navbar-navicons-right'/></li>
                     <li className='navbar-navicons-right'>Login</li>
                     <li><button className='navbar-signup-button'>Signup</button></li>
                 </ul>
             </div>
+        </div>
         </div>
     )
 }

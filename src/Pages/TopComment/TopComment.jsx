@@ -11,15 +11,15 @@ import ShareIcon from '@mui/icons-material/Share';
 import faizan from '../../images/faizan.jpg';
 import { Link } from 'react-router-dom';
 
-export default function TopComment() {
+export default function TopComment(props) {
   return (
-    <div className="topcomment-parent">
+    <div className={`topcomment-parent ${props.darkmode?"darkpost-parent":""}`}>
         <div className="topcomment-upper3">
             <div className="topcomment-topcomment1">
                 <div className="topcomment-topcomment-left">
                         <Link to='/profile'><img className='topcomment-topcomment-dp' src={zikyan} alt="" /></Link>
                         <div className="topcomment-topcomment-username">
-                        <Link style={{textDecoration:'none', color:'#000',fontWeight:'600'}} to='/profile'>Zikyan Rasheed</Link>
+                        <Link style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`,fontWeight:'600'}} to='/profile'>Zikyan Rasheed</Link>
                             <div className="topcomment-topcomment-belowname">
                                 <p className='topcomment-topcomment-time-tag'>#funny,&nbsp;</p>
                                 <p className='topcomment-topcomment-time-tag'>2h</p>
@@ -31,9 +31,9 @@ export default function TopComment() {
                         <button className='topcomment-button-save topcomment-button-download'>Download</button>
                     </div>
             </div>
-            <Link to='/topcomment' className='topcomment-topcomment-caption'><p style={{marginTop:'10px'}}>The current labor environment</p></Link>
+            <Link to='/topcomment' className={`topcomment-topcomment-caption ${props.darkmode?"changeModeP":""}`}><p style={{marginTop:'10px'}}>The current labor environment</p></Link>
 
-                <div className="topcomment-maintopcomment">
+                <div className={`topcomment-maintopcomment ${props.darkmode?"changeModelite":""}`}>
                     <img className='topcomment-maintopcomment-image' src={cat} alt="" />
                 </div>
                 <div className="topcomment-maintopcomment-below">

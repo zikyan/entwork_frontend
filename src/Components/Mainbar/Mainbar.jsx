@@ -13,10 +13,10 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { Link } from 'react-router-dom';
 
-export default function Mainbar() {
+export default function Mainbar(props) {
   return (
     <div className="mainbar-parent">
-        <div className="mainbar-box-design">
+        <div className={`mainbar-box-design ${props.darkmode?"changeModeMain":""}`}>
         {/* <div className="mainbar-upper1">
             <ul className='mainbar-ul'>
                 <li className='mainbar-li-selected'>Fun</li>
@@ -27,7 +27,7 @@ export default function Mainbar() {
             </ul>
         </div> */}
         <div className="mainbar-upper2">
-            <ul className='mainbar-ul2'>
+            <ul className={`${props.darkmode?"darkmainbar-ul2":"mainbar-ul2"}`}>
                 <li>#Cat</li>
                 <li>#Facebook</li>
                 <li>#Stars War</li>
@@ -52,13 +52,13 @@ export default function Mainbar() {
             </ul>
         </div>
         </div>
-        <div className="mainbar-box-design-lower">
+        <div className={`mainbar-box-design-lower ${props.darkmode?"changeModeMain":""}`}>
         <div className="mainbar-upper3">
             <div className="mainbar-post1">
                 <div className="mainbar-post-left">
                         <Link to='/profile'><img className='mainbar-post-dp' src={zikyan} alt="" /></Link>
                         <div className="mainbar-post-username">
-                            <Link style={{textDecoration:'none', color:'#000',fontWeight:'600'}} to='/profile'>Zikyan Rasheed</Link>
+                            <Link style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`,fontWeight:'600'}} to='/profile'>Zikyan Rasheed</Link>
                             <div className="mainbar-post-belowname">
                                 <p className='mainbar-post-time-tag'>#funny,&nbsp;</p>
                                 <p className='mainbar-post-time-tag'>2h</p>
@@ -70,9 +70,9 @@ export default function Mainbar() {
                         <button className='mainbar-button-save mainbar-button-download'>Download</button>
                     </div>
             </div>
-            <Link to='/post' className='mainbar-post-caption'><p style={{marginTop:'10px'}}>This history will still be there. The cat might leave.</p></Link>
+            <Link to='/post' className={`mainbar-post-caption ${props.darkmode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>This history will still be there. The cat might leave.</p></Link>
 
-                <div className="mainbar-mainpost">
+                <div className={`mainbar-mainpost ${props.darkmode?"changeModelite":""}`}>
                     <img className='mainbar-mainpost-image' src={cat} alt="" />
                 </div>
                 <div className="mainbar-mainpost-below">
@@ -96,7 +96,7 @@ export default function Mainbar() {
                 <div className="mainbar-post-left">
                 <Link to='/profile'><img className='mainbar-post-dp' src={faizan} alt="" /></Link>
                         <div className="mainbar-post-username">
-                        <Link style={{textDecoration:'none', color:'#000',fontWeight:'600'}} to='/profile'>Faizan Muhammad</Link>
+                        <Link style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`,fontWeight:'600'}} to='/profile'>Faizan Muhammad</Link>
                             <div className="mainbar-post-belowname">
                                 <p className='mainbar-post-time-tag'>#funny,&nbsp;</p>
                                 <p className='mainbar-post-time-tag'>2h</p>
@@ -108,9 +108,9 @@ export default function Mainbar() {
                         <button className='mainbar-button-save mainbar-button-download'>Download</button>
                     </div>
             </div>
-            <Link to='/post' className='mainbar-post-caption'><p style={{marginTop:'10px'}}>The current labor environment</p></Link>
+            <Link to='/post' className={`mainbar-post-caption ${props.darkmode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>The current labor environment</p></Link>
 
-                <div className="mainbar-mainpost">
+                <div className={`mainbar-mainpost ${props.darkmode?"changeModelite":""}`}>
                     <img className='mainbar-mainpost-image' src={casio} alt="" />
                 </div>
                 <div className="mainbar-mainpost-below">

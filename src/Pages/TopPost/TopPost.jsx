@@ -11,14 +11,14 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { Link } from 'react-router-dom';
 
-export default function TopPost() {
+export default function TopPost(props) {
   return (
-    <div className="post-parent">
+    <div className={`post-parent ${props.darkmode?"darkpost-parent":""}`}>
             <div className="toppost-post1">
                 <div className="toppost-post-left">
                         <Link to='/profile'><img className='toppost-post-dp' src={zikyan} alt="" /></Link>
                         <div className="toppost-post-username">
-                            <Link style={{textDecoration:'none', color:'#000',fontWeight:'600'}} to='/profile'>Zikyan Rasheed</Link>
+                            <Link style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`}} to='/profile'>Zikyan Rasheed</Link>
                             <div className="toppost-post-belowname">
                                 <p className='toppost-post-time-tag'>#funny,&nbsp;</p>
                                 <p className='toppost-post-time-tag'>2h</p>
@@ -30,9 +30,9 @@ export default function TopPost() {
                         <button className='toppost-button-save toppost-button-download'>Download</button>
                     </div>
             </div>
-            <Link to='/post' className='toppost-post-caption'><p style={{marginTop:'10px'}}>This history will still be there. The cat might leave.</p></Link>
+            <Link to='/post' className={`toppost-post-caption ${props.darkmode?"changeModeP":""}`}><p style={{marginTop:'10px'}}>This history will still be there. The cat might leave.</p></Link>
 
-                <div className="toppost-mainpost">
+                <div className={`post-mainpost ${props.darkmode?"changeModelite":""}`}>
                     <img className='toppost-mainpost-image' src={cat} alt="" />
                 </div>
                 <div className="toppost-mainpost-below">

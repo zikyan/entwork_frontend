@@ -250,3 +250,9 @@
 .toppost-mainpost-button-flex-parent button:active{
     transform: scale(0.97);
 }
+
+
+.changeModelite{
+    color: white;
+    background-color: rgb(26, 24, 24);
+}
