@@ -30,3 +30,9 @@
 .main-flex::-webkit-scrollbar {
     display: none;
 } */
+.app-parent2{
+  padding: 15px;
+ opacity: 0.08;
+ position: relative; 
+ z-index: 1;
+}
