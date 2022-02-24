@@ -20,7 +20,7 @@ export default function Profile() {
                     <li>Saved Posts</li>
                     <li>Posted Jobs</li>
                     <li>Saved Jobs</li>
-                    <li>Friends</li>
+                    <li>Friendss</li>
                     <li>About</li>
                 </ul>
             </div>
