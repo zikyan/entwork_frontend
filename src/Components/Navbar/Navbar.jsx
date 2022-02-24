@@ -9,10 +9,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import { Link } from 'react-router-dom';
-import Login from '../../Login/Login';
 
-export default function Navbar(props) {
-    
+export default function Navbar() {
     return (
         <div className='navbar-parent'>
             <div className="navbar-left">
@@ -33,9 +31,8 @@ export default function Navbar(props) {
                 <ul className='navbar-right-ul'>
                     <li><DarkModeRoundedIcon className='navbar-navicons-right navbar-navicons-right-selected'/></li>
                     <li><SendRoundedIcon className='navbar-navicons-right'/></li>
-                    <li onClick={props.handleLoginClick} className='navbar-navicons-right'>Login</li>
-                    <li onClick={props.handleSignupClick} ><button  className='navbar-signup-button'>Signup</button></li>
-                    
+                    <li className='navbar-navicons-right'>Login</li>
+                    <li><button className='navbar-signup-button'>Signup</button></li>
                 </ul>
             </div>
         </div>

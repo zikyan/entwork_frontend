@@ -13,41 +13,17 @@ import Work from './Pages/Work/Work';
 import TwitterVirals from './Pages/TwitterVirals/TwitterVirals';
 import WeeklyWinner from './Pages/WeeklyWinner/WeeklyWinner';
 import Recommended from './Pages/Recommended/Recommended';
-import Login from './Login/Login';
-import React from 'react';
-import SignUp from './signUp/signUp'
 
 function App() {
-  var [ShowLogin, setShowLogin] = React.useState(true);
-  var [ShowsignUp, setShowsignUp] = React.useState(true);
-  const handleLoginClick= function click()
-   {
-    
-  return(setShowLogin((ShowLogin) => !ShowLogin))
-     }
-
-
-   const handleSignupClick= function click2()
-     {    
-    return(setShowsignUp((ShowsignUp) => !ShowsignUp))
-       }
-console.log();
   return (
-    <div className='first'>
-      {console.log(ShowsignUp)}
-      <Login ShowLogin={ShowLogin} />
-      <SignUp ShowsignUp={ShowsignUp}/>
-    <div  className={`${ShowLogin&&ShowsignUp ? "app-parent" : "app-parent2"} `}>
-      <BrowserRouter>
-      <Navbar
-       handleLoginClick={handleLoginClick}
-       handleSignupClick={handleSignupClick} />
+    <div className='app-parent'>
+    <BrowserRouter>
+      <Navbar />
         <div className="home-container">
             <div className="left-flex">
                 <LeftSideBar />
             </div>
             <div className="main-flex">
-              
               <Routes>
                 <Route exact path='/' element={<Mainbar/>} />
                 <Route exact path='/post' element={<Post/>} />
@@ -65,10 +41,7 @@ console.log();
                 <RightSideBar />
             </div>
         </div>
-        
       </BrowserRouter>
-      
-    </div>
     </div>
   );
 }
