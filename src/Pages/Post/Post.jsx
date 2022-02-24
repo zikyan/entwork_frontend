@@ -1,7 +1,7 @@
 import React from 'react';
 import './post.css';
 import zikyan from '../../images/zikyan_dp.jpg';
-import cat from '../../images/cat-post.jpg';
+import casio from '../../images/casio.jpg';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
@@ -13,15 +13,15 @@ import abdullah from '../../images/abdullah.jpg';
 import raees from '../../images/raees.jpg';
 import { Link } from 'react-router-dom';
 
-export default function Post() {
+export default function Post(props) {
   return (
-      <div className="post-parent">
+      <div className={`post-parent ${props.darkmode?"darkpost-parent":""}`}>
         <div className="post-upper3">
             <div className="post-post1">
                 <div className="post-post-left">
                         <Link to='/profile'><img className='post-post-dp' src={zikyan} alt="" /></Link>
                         <div className="post-post-username">
-                        <Link style={{textDecoration:'none', color:'#000',fontWeight:'600'}} to='/profile'>Zikyan Rasheed</Link>
+                        <Link style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`,fontWeight:'600'}} to='/profile'>Zikyan Rasheed</Link>
                             <div className="post-post-belowname">
                                 <p className='post-post-time-tag'>#funny,&nbsp;</p>
                                 <p className='post-post-time-tag'>2h</p>
@@ -33,10 +33,10 @@ export default function Post() {
                         <button className='post-button-save post-button-download'>Download</button>
                     </div>
             </div>
-            <Link to='/post' className='post-post-caption'><p style={{marginTop:'10px'}}>The current labor environment</p></Link>
+            <Link to='/post' className={`post-post-caption ${props.darkmode?"changeModeP":""}`}><p style={{marginTop:'10px'}}>The current labor environment</p></Link>
 
-                <div className="post-mainpost">
-                    <img className='post-mainpost-image' src={cat} alt="" />
+                <div className={`post-mainpost ${props.darkmode?"changeModelite":""}`}>
+                    <img className='post-mainpost-image' src={casio} alt="" />
                 </div>
                 <div className="post-mainpost-below">
                         <div className="post-mainpost-below-left">

@@ -3,8 +3,14 @@
     padding: 15px 0px;
 }
 .app-parent{
-    padding: 15px;
+    padding: 10px;
 }
+
+.changeMode{
+    color: white;
+    background-color: rgb(26, 24, 24);
+  }
+  
 .left-flex{
     flex: 3;
     /* overflow-y: scroll;
@@ -30,3 +36,10 @@
 .main-flex::-webkit-scrollbar {
     display: none;
 } */
+
+.app-parent2{
+    padding: 15px;
+   opacity: 0.08;
+   position: relative; 
+   z-index: 1;
+  }

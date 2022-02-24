@@ -7,20 +7,20 @@ import abdullah from '../../images/abdullah.jpg';
 import raees from '../../images/raees.jpg';
 import { Link } from 'react-router-dom';
 
-export default function RightSideBar() {
+export default function RightSideBar(props) {
   return (
-    <div className="rightsidebar-parent">
-      <div className="rightsidebar-upper">
-        <p className='rightsidebar-text'>EntWork Workplace</p>
+    <div className='rightsidebar-parent'>
+      <div className={` rightsidebar-upper ${props.darkmode?"changeModeside2":""}`}>
+        <p className={`rightsidebar-text ${props.darkmode?"changeModeside2":""}`}>EntWork Workplace</p>
         <p className='rightsidebar-upper-text'>Click the below button to find work</p>
         <div className="rightsidebar-find-post-button">
           <Link style={{textDecoration:'none'}} to='/work'><button className='rightsidebar-work-button'><WorkIcon style={{fontSize:'18px'}} className='rightsidebar-work-button-icon' />Find Job</button></Link>
           <button style={{marginLeft:'10px'}} className='rightsidebar-work-button'><WorkOutlineIcon style={{fontSize:'18px'}} className='rightsidebar-work-button-icon' />Post Job</button>
         </div>
       </div>
-      <div className="rightsidebar-upper2">
-      <p className='rightsidebar-work-text'>Trending Work Tags</p>
-          <ul className='rightsidebar-ul2'>
+      <div className={`rightsidebar-upper2 ${props.darkmode?"changeModeside2":""}`}>
+      <p className={`rightsidebar-work-text ${props.darkmode?"changeModeside2":""}`}>Trending Work Tags</p>
+          <ul className='rightsidebar-ul2 '>
                   <li>#Cat</li>
                   <li>#Facebook</li>
                   <li>#Stars War</li>
@@ -36,7 +36,7 @@ export default function RightSideBar() {
                   <li>#python</li>
               </ul>
       </div>
-      <div className="rightsidebar-upper3">
+      <div className={`rightsidebar-upper3 ${props.darkmode?"changeModeside2":""}`}>
         <p className='rightsidebar-recent-jobs-text'>Recent Jobs</p>
         <div className="rightsidebar-recent-jobs-card">
         <div className="rightsidebar-post-left">

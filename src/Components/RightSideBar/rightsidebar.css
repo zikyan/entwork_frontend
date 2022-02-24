@@ -49,7 +49,7 @@
 }
 .rightsidebar-ul2 li{
     display: inline-block;
-    background-color: #f1f4fa;
+    background-color: #f1f4fa91;
     margin-right: 10px;
     margin-bottom: 10px;
     border-radius: 3px;
@@ -138,4 +138,18 @@
 } */
 .rightsidebar-find-post-button{
     display: flex;
+}
+
+.darkrightsidebar-upper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0px;
+    border-radius: 10px;
+    background-color:black;
+}
+.changeModeside2{
+    color: white;
+    background-color: rgb(0, 0, 0);
 }

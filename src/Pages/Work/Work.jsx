@@ -4,10 +4,10 @@ import zikyan from '../../images/zikyan_dp.jpg';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import { Link } from 'react-router-dom';
 
-export default function Work() {
+export default function Work(props) {
   return (
     <div className="work-parent">
-        <div className="work-box-design">
+        <div className={`work-box-design ${props.darkmode?"changeModeRec":""}`}>
         {/* <div className="work-upper1">
             <ul className='work-ul'>
                 <li className='work-li-selected'>Fun</li>
@@ -17,8 +17,8 @@ export default function Work() {
                 <li>Recommended</li>
             </ul>
         </div> */}
-        <div className="work-upper2">
-            <ul className='work-ul2'>
+        <div className="work-upper2 ">
+            <ul className={`work-ul2 ${props.darkmode?"darkwork-ul2":""}`} >
                 <li>#mern</li>
                 <li>#ror</li>
                 <li>#django</li>
@@ -45,7 +45,7 @@ export default function Work() {
         </div>
 
         <div className="work-belowtags-parent">
-            <div className="work-filter-center">
+            <div className={`work-filter-center ${props.darkmode?"changeModeRec":""}`}>
                 <div className="work-filter">
                     <select>
                     <option value="All">All</option>
@@ -63,13 +63,13 @@ export default function Work() {
             </div>
         </div>
 
-        <div className="work-box-design-lower">
+        <div className={`work-box-design-lower ${props.darkmode?"changeModeRec":""}`}>
         <div className="work-upper3">
             <div className="work-post1">
                 <div className="work-post-left">
                         <Link to='/profile'><img className='work-post-dp' src={zikyan} alt="" /></Link>
                         <div className="work-post-username">
-                            <Link style={{textDecoration:'none', color:'#000',fontWeight:'600'}} to='/profile'>Zikyan Rasheed</Link>
+                            <Link style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`,fontWeight:'600'}} to='/profile'>Zikyan Rasheed</Link>
                             <div className="work-post-belowname">
                                 <p className='work-post-time-tag'>#mern,&nbsp;</p>
                                 <p className='work-post-time-tag'>2h</p>
@@ -80,9 +80,9 @@ export default function Work() {
                         <button className='work-button-save'>Save</button>
                     </div>
             </div>
-            <Link to='/post' className='work-post-caption'><p style={{marginTop:'10px'}}>This history will still be there. The cat might leave.</p></Link>
+            <Link to='/post' className={`work-post-caption ${props.darkmode?"changeModeRec":""}`}><p style={{marginTop:'10px'}}>This history will still be there. The cat might leave.</p></Link>
 
-                <div className="work-workpost">
+                <div className={`${props.darkmode?"darkwork-workpost":"work-workpost"}`}>
                     {/* <img className='work-workpost-image' src={cat} alt="" /> */}
                     <p>Hi! I need help growing a YouTube channel so I am looking for someone who can handle ALL facets. I will need help with content strategy, SEO, channel promotion. The goal is to grow to 1k + subscribers, have high interest video topics for 2x per month, and optimize all videos and the full channel with SEO. I am looking for someone who can provide for me their case studies and proof that their strategies have worked with previous clients. Thanks!</p>
                 </div>
