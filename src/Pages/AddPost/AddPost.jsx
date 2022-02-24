@@ -1,11 +1,13 @@
 import React from 'react';
 import './addpost.css';
 import ImageIcon from '@mui/icons-material/Image';
+import { requirePropFactory } from '@mui/material';
 
 export default function AddPost() {
   return (
+   
     <div className='addpost-parent'>
-
+    <p className='postTitle'><b>What's on your mind?</b></p>
           <div className="addpost-container">
             {/* <div className="addpost-left">
               <div className="addpost-drop-images">
@@ -17,32 +19,38 @@ export default function AddPost() {
              
             </div> */}
             <div className="addpost-right">
-              <form>
+              <form className='form1'>
                 <div class="form-group-1">
                     {/* <input type="text" name='description' onChange={handleChange} />
                     <input type="text" name='userId' onChange={handleChange} />
                     <input type="text" name='tags' onChange={handleChange} /> */}
 
-                    <input className='addpost-input' type="text" name='description' placeholder='Give your post a title' />
+                    
                     <div className="addpost-2-buttons">
+                    <img className="icon1" src={require("../../images/back1.png")}></img>
+                    <input className='addpost-input' type="text" name='description' placeholder='Give your post a title' />
                       {/* <input className='addpost-input-2' type="text" name='userId' placeholder='User Id' ref={userId} /> */}
-                      <input className='addpost-input-2' type="text" name='tags' placeholder='Tags' />
+
+                     <input className='addpost-input-2' type="text" name='tags' placeholder='Tags' ></input>
                     </div>
 
                     <br/>
-                    <div className="addpost-select-tags">
-                      <p>Select tags</p>
-                      <button className='btn btn-primary addpost-tags-button'>#sarcastic</button>
+                    {/*<div className="addpost-select-tags">
+                      className="select">Select tags</p>
+                      }
+                     {/* <button className='btn btn-primary addpost-tags-button'>#sarcastic</button>
                       <button className='btn btn-primary addpost-tags-button'>#depressed</button>
                       <button className='btn btn-primary addpost-tags-button'>#cringe</button>
-                      <button className='btn btn-primary addpost-tags-button'>#whatsapp</button>
+                      {//<button className='btn btn-primary addpost-tags-button'>#whatsapp</button>}
+                       }
                       <br /><br />
-                    </div>
-                    <div className="addpost-container">
-                 
-                      <ImageIcon style={{color:'#fff', cursor:'pointer'}}/>
-                      <label className='addpost-choose'>
-                        Choose image/video
+                      </div>*/}
+                   {/* <div className="addpost-container2">
+                   } <img className="icon2" src={require("../../images/img1.png")}></img>
+                      //<<ImageIcon style={{color:'#fff', cursor:'pointer'}}/>>
+                      }
+                      <label className='addpost-choose'><b>
+                        Choose image/video</b>
                         <input
                                   className='addpost-file'
                                   type="file"
@@ -52,7 +60,7 @@ export default function AddPost() {
                                 />
                       </label>
                     
-                    </div>
+                    </div>*/}
                     
                          
                 </div>
@@ -62,11 +70,12 @@ export default function AddPost() {
                           <CancelIcon className='addpost-preview-cancel' /> */}
                         </div>
                   
-                <button style={{backgroundColor:'#32BE7C', margin:'5px 0 20px 28px',width:'100px'}} className='btn btn-success' type='submit'>Post</button>
+                <button  className='btn btn-success post-button' type='submit'>Post</button>
                 
   </form>
             </div>
           </div>
         </div>
+        
   )
 }
