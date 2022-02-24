@@ -1,0 +1,12 @@
+.twitterPosts
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.posts
+{
+    padding: 20px 20px 20px 20px;
+    min-width: 80%;
+}

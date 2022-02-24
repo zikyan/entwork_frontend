@@ -13,6 +13,7 @@ import Work from './Pages/Work/Work';
 import TwitterVirals from './Pages/TwitterVirals/TwitterVirals';
 import WeeklyWinner from './Pages/WeeklyWinner/WeeklyWinner';
 import Recommended from './Pages/Recommended/Recommended';
+<<<<<<< HEAD
 import { useState } from 'react';
 
 function App() {
@@ -25,11 +26,43 @@ function App() {
     <div className={`app-parent ${darkMode?"changeMode":""}`}>
     <BrowserRouter>
       <Navbar changeMode={darkFunc} darkmode={darkMode}/>
+=======
+import Login from './Login/Login';
+import React from 'react';
+import SignUp from './signUp/signUp'
+
+function App() {
+  var [ShowLogin, setShowLogin] = React.useState(true);
+  var [ShowsignUp, setShowsignUp] = React.useState(true);
+  const handleLoginClick= function click()
+   {
+    
+  return(setShowLogin((ShowLogin) => !ShowLogin))
+     }
+
+
+   const handleSignupClick= function click2()
+     {    
+    return(setShowsignUp((ShowsignUp) => !ShowsignUp))
+       }
+console.log();
+  return (
+    <div className='first'>
+      {console.log(ShowsignUp)}
+      <Login ShowLogin={ShowLogin} />
+      <SignUp ShowsignUp={ShowsignUp}/>
+    <div  className={`${ShowLogin&&ShowsignUp ? "app-parent" : "app-parent2"} `}>
+      <BrowserRouter>
+      <Navbar
+       handleLoginClick={handleLoginClick}
+       handleSignupClick={handleSignupClick} />
+>>>>>>> 893da6665d5a9e95fd09f486f0602c66c1f8ddd7
         <div className="home-container">
             <div className="left-flex">
                 <LeftSideBar darkmode={darkMode}/>
             </div>
             <div className="main-flex">
+              
               <Routes>
                 <Route exact path='/' element={<Mainbar darkmode={darkMode}/>} />
                 <Route exact path='/post' element={<Post darkmode={darkMode}/>} />
@@ -47,7 +80,10 @@ function App() {
                 <RightSideBar darkmode={darkMode} />
             </div>
         </div>
+        
       </BrowserRouter>
+      
+    </div>
     </div>
   );
 }
