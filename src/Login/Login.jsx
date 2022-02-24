@@ -1,6 +1,6 @@
 import React from "react";
 import './login.css'
-import CloseButton from 'react-bootstrap/CloseButton'
+//import CloseButton from 'react-bootstrap/CloseButton'
 export default function Login(ShowLogin)
 {
 

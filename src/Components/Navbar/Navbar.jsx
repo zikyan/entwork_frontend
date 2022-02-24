@@ -33,8 +33,8 @@ export default function Navbar(props) {
             <div className="navbar-right">
                 <ul className='navbar-right-ul'>
                     <li><DarkModeRoundedIcon className='navbar-navicons-right navbar-navicons-right-selected' onClick={props.changeMode}/></li>
-                    <li><SendRoundedIcon className='navbar-navicons-right'/></li>
-                    <li onClick={props.handleLoginClick} className='navbar-navicons-right'>Login</li>
+                    <li><SendRoundedIcon className={`navbar-navicons-right ${props.darkmode?"login-button-darkmode":""}`} /></li>
+                    <li onClick={props.handleLoginClick} className={`navbar-navicons-right ${props.darkmode?"login-button-darkmode":""}`} >Login</li>
                     <li onClick={props.handleSignupClick} ><button  className='navbar-signup-button'>Signup</button></li>
                     
                 </ul>
