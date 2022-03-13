@@ -12,7 +12,7 @@ export default function Profile(props) {
             <img className='profile-display-img' src={zikyan} alt="" />
             <p className='profile-name-text'>Zikyan Rasheed</p>
             <p className='profile-bio-text' >Dirty bit of sarcasm</p>
-            <button className='profile-edit-button'><EditIcon style={{fontSize:'20px',color:`${props.darkmode?"#fff":''}`,marginRight:'5px'}} style={{color:`${props.darkmode?"#fff":''}`}}/>Edit Profile</button>
+            <button className='profile-edit-button'><EditIcon style={{fontSize:'20px',marginRight:'5px', color:`${props.darkmode?"#fff":''}`}}/>Edit Profile</button>
             <div className="profile-ul-container">
                 <ul className='profile-ul'>
                     <li className='profile-li-active'>All Posts</li>

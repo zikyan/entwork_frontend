@@ -22,7 +22,7 @@
     background-color: #192252;
     padding-right: 80px;
     padding-left: 80px;
-    border-radius: 10px;
+    border-radius: 8px;
     box-shadow: 10px 10px 10px 1px rgba(0, 0, 0, 0.2);
     align-items: center;
     justify-content: center;
@@ -55,7 +55,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
+    border-radius: 2px;
     padding: 2px;
     padding-left: 10px;
     letter-spacing: 1px;
@@ -68,13 +68,13 @@
   
   .login-btn{
       align-self: center;
-    width: 100%;
+    width: 60%;
     justify-content: center;
     align-items: center;
     background-color: orangered;
     color: white;
     margin-top: 5px;
-    border-radius: 20px;
+    border-radius: 2px;
     border: none;
     font-size: 15pt;
     font-weight: 700;
@@ -121,4 +121,9 @@
 
 .login-button-darkmode{
   color: #989fc5;
+}
+.login-button-zik{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

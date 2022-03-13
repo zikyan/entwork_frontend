@@ -1,7 +1,5 @@
 import React from 'react';
 import './addpost.css';
-import ImageIcon from '@mui/icons-material/Image';
-import { requirePropFactory } from '@mui/material';
 
 export default function AddPost() {
   return (
@@ -20,14 +18,14 @@ export default function AddPost() {
             </div> */}
             <div className="addpost-right">
               <form className='form1'>
-                <div class="form-group-1">
+                <div className="form-group-1">
                     {/* <input type="text" name='description' onChange={handleChange} />
                     <input type="text" name='userId' onChange={handleChange} />
                     <input type="text" name='tags' onChange={handleChange} /> */}
 
                     
                     <div className="addpost-2-buttons">
-                    <img className="icon1" src={require("../../images/back1.png")}></img>
+                    <img className="icon1" alt='test' src={require("../../images/back1.png")}></img>
                     <input className='addpost-input' type="text" name='description' placeholder='Give your post a title' />
                       {/* <input className='addpost-input-2' type="text" name='userId' placeholder='User Id' ref={userId} /> */}
 

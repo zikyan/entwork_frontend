@@ -14,15 +14,17 @@ import TwitterVirals from './Pages/TwitterVirals/TwitterVirals';
 import WeeklyWinner from './Pages/WeeklyWinner/WeeklyWinner';
 import Recommended from './Pages/Recommended/Recommended';
 import { useState } from 'react';
-import Login from '../src/Login/Login';
+import Login from './Pages/Login/Login';
 import React from 'react';
-import SignUp from './signUp/signUp'
+import SignUp from './Pages/signUp/signUp';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const [darkMode,setdarkMode]=useState(false)
   function darkFunc(){
     setdarkMode(preMode=>!preMode)
   }
-  console.log(darkMode)
+  // console.log(darkMode)
   var [ShowLogin, setShowLogin] = React.useState(true);
   var [ShowsignUp, setShowsignUp] = React.useState(true);
   const handleLoginClick= function click()
@@ -39,11 +41,11 @@ function App() {
   
   return (
     <div className={`app-parent ${darkMode?"changeMode":""}`}> 
-    {console.log(ShowsignUp)}
+    {/* {console.log(ShowsignUp)} */}
       <Login ShowLogin={ShowLogin} />
       <SignUp ShowsignUp={ShowsignUp}/>
     <div  className={`${ShowLogin&&ShowsignUp ? "app-parent" : "app-parent2"}`}> 
-      <BrowserRouter>
+      
       <Navbar
        handleLoginClick={handleLoginClick}
        handleSignupClick={handleSignupClick}
@@ -70,7 +72,7 @@ function App() {
                 <RightSideBar darkmode={darkMode} />
             </div>
         </div>
-      </BrowserRouter>
+      <ToastContainer />
     </div>
     </div>
   );
