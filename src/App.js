@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Navbar from './Components/Navbar/Navbar';
 import Post from './Pages/Post/Post';
 import LeftSideBar from './Components/LeftSideBar/LeftSideBar';
@@ -9,6 +9,8 @@ import Profile from './Pages/Profile/Profile';
 import TopPost from './Pages/TopPost/TopPost';
 import TopComment from './Pages/TopComment/TopComment';
 import AddPost from './Pages/AddPost/AddPost';
+import LoginFirst from './Pages/LoginFirst/LoginFirst';
+import RegisterFirst from './Pages/RegisterFirst/RegisterFirst';
 import Work from './Pages/Work/Work';
 import TwitterVirals from './Pages/TwitterVirals/TwitterVirals';
 import WeeklyWinner from './Pages/WeeklyWinner/WeeklyWinner';
@@ -25,30 +27,32 @@ function App() {
     setdarkMode(preMode=>!preMode)
   }
   // console.log(darkMode)
-  var [ShowLogin, setShowLogin] = React.useState(true);
-  var [ShowsignUp, setShowsignUp] = React.useState(true);
-  const handleLoginClick= function click()
-   {
+  // var [ShowLogin, setShowLogin] = React.useState(true);
+  // var [ShowsignUp, setShowsignUp] = React.useState(true);
+//   const handleLoginClick= function click()
+//    {
     
-  return(setShowLogin((ShowLogin) => !ShowLogin))
-     }
+//   return(setShowLogin((ShowLogin) => !ShowLogin))
+//      }
 
 
-   const handleSignupClick= function click2()
-     {    
-    return(setShowsignUp((ShowsignUp) => !ShowsignUp))
-       }
+//    const handleSignupClick= function click2()
+//      {    
+//     return(setShowsignUp((ShowsignUp) => !ShowsignUp))
+//        }
+// }
   
   return (
     <div className={`app-parent ${darkMode?"changeMode":""}`}> 
     {/* {console.log(ShowsignUp)} */}
-      <Login ShowLogin={ShowLogin} />
-      <SignUp ShowsignUp={ShowsignUp}/>
-    <div  className={`${ShowLogin&&ShowsignUp ? "app-parent" : "app-parent2"}`}> 
+      {/* <Login ShowLogin={ShowLogin} />
+      <SignUp ShowsignUp={ShowsignUp}/> */}
+    {/* <div  className={`${ShowLogin&&ShowsignUp ? "app-parent" : "app-parent2"}`}>  */}
+    <div> 
       
       <Navbar
-       handleLoginClick={handleLoginClick}
-       handleSignupClick={handleSignupClick}
+      //  handleLoginClick={handleLoginClick}
+      //  handleSignupClick={handleSignupClick}
        changeMode={darkFunc} darkmode={darkMode} />
         <div className="home-container">
             <div className="left-flex">
@@ -66,6 +70,8 @@ function App() {
                 <Route exact path='/twittervirals' element={<TwitterVirals darkmode={darkMode}/>} />
                 <Route exact path='/weeklywinner' element={<WeeklyWinner darkmode={darkMode}/>} />
                 <Route exact path='/recommended' element={<Recommended darkmode={darkMode}/>} />
+                <Route exact path='/loginfirst' element={<LoginFirst darkmode={darkMode}/>} />
+                <Route exact path='/registerfirst' element={<RegisterFirst darkmode={darkMode}/>} />
               </Routes>
             </div>
             <div className='right-flex'>

@@ -18,7 +18,7 @@ export default function TopPost(props) {
                 <div className="toppost-post-left">
                         <Link to='/profile'><img className='toppost-post-dp' src={zikyan} alt="" /></Link>
                         <div className="toppost-post-username">
-                            <Link style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`}} to='/profile'>Zikyan Rasheed</Link>
+                            <Link style={{textDecoration:'none', fontWeight:'600', color:`${props.darkmode?"#fff":'#000'}`}} to='/profile'>Zikyan Rasheed</Link>
                             <div className="toppost-post-belowname">
                                 <p className='toppost-post-time-tag'>#funny,&nbsp;</p>
                                 <p className='toppost-post-time-tag'>2h</p>

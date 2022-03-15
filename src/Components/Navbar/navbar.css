@@ -18,6 +18,9 @@
     font-weight: 700;
     color: #FF451C;
 }
+.navbar-logo:hover{
+    color: #FF451C;
+}
 .navbar-logo-dot{
     font-size: 20px;
     font-weight: 700;
@@ -118,7 +121,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     font-weight: 600;
 }
 .navbar-navicons-right{
@@ -158,4 +161,13 @@
 } */
 .login-button-darkmode{
     color: #989fc5;
-  }
+}
+.navbarDynamicUserName{
+    margin: 0 10px;
+}
+.navbar-post-dp{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    margin-top: 5px;
+}
