@@ -10,7 +10,10 @@ export default function Profile(props) {
         <div className="profile-cover-container">
             <img className='profile-cover-img' src={cover} alt="" />
             <img className='profile-display-img' src={zikyan} alt="" />
-            <p className='profile-name-text'>Zikyan Rasheed</p>
+            <div className='profile-follow-text'>
+              <p className='profile-name-text'>Zikyan Rasheed</p>
+              <p> &nbsp; Follow</p>
+            </div>
             <p className='profile-bio-text' >Dirty bit of sarcasm</p>
             <button className='profile-edit-button'><EditIcon style={{fontSize:'20px',marginRight:'5px', color:`${props.darkmode?"#fff":''}`}}/>Edit Profile</button>
             <div className="profile-ul-container">

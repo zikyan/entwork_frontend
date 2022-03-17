@@ -11,12 +11,7 @@ export const addPost = async (postData, token)=>{
     return response.data
 }
 
-export const getAllPost = async ()=>{
-    const response=await axios.get('/api/post/getallpost/')
-    return response.data
-}
-
-export const getUserById = async (id)=>{
-    const response=await axios.get(`/api/post/getallpostbyid/${id}`)
-    return response.data
-}
+// export const getAllPost = async ()=>{
+//     const response=await axios.get('/api/post/getallpost/')
+//     return response.data
+// }

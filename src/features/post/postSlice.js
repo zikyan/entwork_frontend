@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { addPost, getAllPost, getUserById } from "./postService";
+import { addPost, getAllPost, getUserById, timelinePosts } from "./postService";
 
 const initialState={
     posts:[],
@@ -20,23 +20,32 @@ export const addPostVar=createAsyncThunk('post/create',async (postData,thunkAPI)
     }
 })
 
-export const getAllPostVar=createAsyncThunk('post/getall',async (thunkAPI)=>{
-    try {
-        return await getAllPost()
-    } catch (error) {
-        const message=(error.response && error.response.data && error.response.data.message) || error.message || error.toString()
-        return thunkAPI.rejectWithValue(message)
-    }
-})
+// export const getAllPostVar=createAsyncThunk('post/getall',async (thunkAPI)=>{
+//     try {
+//         return await getAllPost()
+//     } catch (error) {
+//         const message=(error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+//         return thunkAPI.rejectWithValue(message)
+//     }
+// })
 
-export const getUserByIdVar=createAsyncThunk('post/getallpostbyid',async (thunkAPI)=>{
-    try {
-        return await getUserById()
-    } catch (error) {
-        const message=(error.response && error.response.data && error.response.data.message) || error.message || error.toString()
-        return thunkAPI.rejectWithValue(message)
-    }
-})
+// export const getUserByIdVar=createAsyncThunk('post/getallpostbyid',async (thunkAPI)=>{
+//     try {
+//         return await getUserById()
+//     } catch (error) {
+//         const message=(error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+//         return thunkAPI.rejectWithValue(message)
+//     }
+// })
+
+// export const timelinePostsVar=createAsyncThunk('post/timeline',async (user,thunkAPI)=>{
+//     try {
+//         return await timelinePosts(user)
+//     } catch (error) {
+//         const message=(error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+//         return thunkAPI.rejectWithValue(message)
+//     }
+// })
 
 const postSlice=createSlice({
     name:'post',
@@ -60,19 +69,19 @@ const postSlice=createSlice({
         })
 
 
-        builder.addCase(getAllPostVar.pending, (state)=>{
-            state.isLoading=true
-        })
-        builder.addCase(getAllPostVar.fulfilled,(state, action)=>{
-            state.isLoading=false
-            state.isSuccess=true
-            state.posts=action.payload
-        })
-        builder.addCase(getAllPostVar.rejected,(state, action)=>{
-            state.isLoading=false
-            state.isError=true
-            state.message(action.payload)
-        })
+        // builder.addCase(getAllPostVar.pending, (state)=>{
+        //     state.isLoading=true
+        // })
+        // builder.addCase(getAllPostVar.fulfilled,(state, action)=>{
+        //     state.isLoading=false
+        //     state.isSuccess=true
+        //     state.posts=action.payload
+        // })
+        // builder.addCase(getAllPostVar.rejected,(state, action)=>{
+        //     state.isLoading=false
+        //     state.isError=true
+        //     state.message(action.payload)
+        // })
     }
 })
 

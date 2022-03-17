@@ -1,47 +1,34 @@
 import { useEffect, useState } from 'react';
 import './mainbar.css';
-import zikyan from '../../images/zikyan_dp.jpg';
-import faizan from '../../images/faizan.jpg';
-import cat from '../../images/cat-post.jpg';
-import casio from '../../images/casio.jpg';
-// import test from '../../images/test.jpg';
-import ShareIcon from '@mui/icons-material/Share';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { getAllPostVar, getUserByIdVar, reset } from '../../features/post/postSlice';
-import Spinner from "../../Components/Spinner";
+
+import { useSelector } from 'react-redux';
+import { timelinePosts, getAllPost, getUserById } from '../../service/api';
+import EachPost from '../EachPost/EachPost';
 
 
-export default function Mainbar(props) {
+export default function Mainbar({darkMode}) {
 
-const dispatch=useDispatch()
+    const [posts, setPosts] = useState([])
 
-    const {posts, isLoading, isError, message}=useSelector((state)=>state.post)
+
+    const { user }=useSelector((state)=>state.auth)
 
   useEffect(()=>{
-    if(isError){
-      console.log(message)
-    }
-    
-    dispatch(getAllPostVar())
-
-    return ()=>{
-        dispatch(reset())
-    }
-  },[isError, message, dispatch])
-
-  if(isLoading){
-      return <Spinner />
-  }
+        const fetchData = async ()=>{
+            if(user){
+                const res = await timelinePosts(user._id)
+                setPosts(res)
+            }else{
+                const res = await getAllPost();
+                setPosts(res);
+            }
+        }
+    fetchData()
+  },[])
 
   return (
     <div className="mainbar-parent">
-        <div className={`mainbar-box-design ${props.darkmode?"changeModeMain":""}`}>
+        <div className={`mainbar-box-design ${darkMode?"changeModeMain":""}`}>
         {/* <div className="mainbar-upper1">
             <ul className='mainbar-ul'>
                 <li className='mainbar-li-selected'>Fun</li>
@@ -52,7 +39,7 @@ const dispatch=useDispatch()
             </ul>
         </div> */}
         <div className="mainbar-upper2">
-            <ul className={`${props.darkmode?"darkmainbar-ul2":"mainbar-ul2"}`}>
+            <ul className={`${darkMode?"darkmainbar-ul2":"mainbar-ul2"}`}>
                 <li>#Cat</li>
                 <li>#Facebook</li>
                 <li>#Stars War</li>
@@ -77,51 +64,13 @@ const dispatch=useDispatch()
             </ul>
         </div>
         </div>
-        <div className={`mainbar-box-design-lower ${props.darkmode?"changeModeMain":""}`}>
+        <div className={`mainbar-box-design-lower ${darkMode?"changeModeMain":""}`}>
             
-        {
-            posts.map((post)=>(
-                <div className="mainbar-upper3" key={post._id}>
-                <div className="mainbar-post1">
-                    <div className="mainbar-post-left">
-                            <Link to='/profile'><img className='mainbar-post-dp' src={zikyan} alt="" /></Link>
-                            <div className="mainbar-post-username">
-                                <Link style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`,fontWeight:'600'}} to='/profile'>Zikyan Rasheed</Link>
-                                <div className="mainbar-post-belowname">
-                                    <p className='mainbar-post-time-tag'>#funny,&nbsp;</p>
-                                    <p className='mainbar-post-time-tag'>2h</p>
-                                </div>
-                            </div>
-                    </div>
-                        <div className="mainbar-post-right">
-                            <button className='mainbar-button-save'>Save</button>
-                            <button className='mainbar-button-save mainbar-button-download'>Download</button>
-                        </div>
-                </div>
-                <Link to='/post' className={`mainbar-post-caption ${props.darkmode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post.text}</p></Link>
-                <p>{post.user}</p>
-
-                    <div className={`mainbar-mainpost ${props.darkmode?"changeModelite":""}`}>
-                        <img className='mainbar-mainpost-image' src={cat} alt="" />
-                    </div>
-                    <div className="mainbar-mainpost-below">
-                            <div className="mainbar-mainpost-below-left">
-                                <div className="mainbar-mainpost-button-flex-parent">
-                                    <button> <ArrowUpwardIcon /> 1.5k</button>
-                                    <button><ArrowDownwardIcon />40</button>
-                                    <button><ChatBubbleOutlineIcon style={{fontSize:'20px',marginRight:'5px'}}/>100</button>
-                                </div>
-                            </div>
-                            <div className="mainbar-mainpost-below-right">
-                                <button className='mainbar-mainpost-facebook-button'><FacebookIcon style={{fontSize:'20px',marginRight:'5px'}}/>Facebook</button>
-                                <button className='mainbar-mainpost-twitter-button'><TwitterIcon style={{fontSize:'20px',marginRight:'5px'}} />Twitter</button>
-                                <button className='mainbar-mainpost-share-button'><ShareIcon style={{fontSize:'20px'}} /></button>
-                            </div>
-                    </div>
-                </div>
-            ))
-        }
-            
+            {
+                posts.map((post)=>(
+                    <EachPost key={post._id} darkMode={darkMode} post={post} />
+                ))
+            }
           
 
         {/* <div className="mainbar-upper3">
@@ -129,7 +78,7 @@ const dispatch=useDispatch()
                 <div className="mainbar-post-left">
                 <Link to='/profile'><img className='mainbar-post-dp' src={faizan} alt="" /></Link>
                         <div className="mainbar-post-username">
-                        <Link style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`,fontWeight:'600'}} to='/profile'>Faizan Muhammad</Link>
+                        <Link style={{textDecoration:'none', color:`${darkMode.darkmode?"#fff":'#000'}`,fontWeight:'600'}} to='/profile'>Faizan Muhammad</Link>
                             <div className="mainbar-post-belowname">
                                 <p className='mainbar-post-time-tag'>#funny,&nbsp;</p>
                                 <p className='mainbar-post-time-tag'>2h</p>
@@ -141,9 +90,9 @@ const dispatch=useDispatch()
                         <button className='mainbar-button-save mainbar-button-download'>Download</button>
                     </div>
             </div>
-            <Link to='/post' className={`mainbar-post-caption ${props.darkmode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>The current labor environment</p></Link>
+            <Link to='/post' className={`mainbar-post-caption ${darkMode.darkmode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>The current labor environment</p></Link>
 
-                <div className={`mainbar-mainpost ${props.darkmode?"changeModelite":""}`}>
+                <div className={`mainbar-mainpost ${darkMode.darkmode?"changeModelite":""}`}>
                     <img className='mainbar-mainpost-image' src={casio} alt="" />
                 </div>
                 <div className="mainbar-mainpost-below">

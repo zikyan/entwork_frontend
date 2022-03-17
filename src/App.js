@@ -60,7 +60,7 @@ function App() {
             </div>
             <div className="main-flex">
               <Routes>
-                <Route exact path='/' element={<Mainbar darkmode={darkMode}/>} />
+                <Route exact path='/' element={<Mainbar darkMode={darkMode}/>} />
                 <Route exact path='/post' element={<Post darkmode={darkMode}/>} />
                 <Route exact path='/profile' element={<Profile darkmode={darkMode}/>} />
                 <Route exact path='/toppost' element={<TopPost darkmode={darkMode}/>} />
