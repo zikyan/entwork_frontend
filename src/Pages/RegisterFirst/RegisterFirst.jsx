@@ -10,13 +10,15 @@ import Spinner from "../../Components/Spinner";
 export default function RegisterFirst() {
 
     const [formData, setFormData]=useState({
+        first:'',  
+        last:'',
         username:'',
         email:'',
         password:'',
         confirmPassword:'',
       })
     
-      const {username, email, password, confirmPassword}=formData;
+      const {first, last, username, email, password, confirmPassword}=formData;
     
       const navigate=useNavigate()
       const dispatch=useDispatch()
@@ -45,6 +47,8 @@ export default function RegisterFirst() {
           toast.error('Password do not match')
         }else{
           const userData={
+            first,
+            last,
             username,
             email,
             password,
@@ -64,6 +68,14 @@ export default function RegisterFirst() {
             <div className="bar">
             <h1 className="login-text">Register</h1>
             </div>
+            <label>First Name</label>
+            <br></br>
+            <input type="text"  name="first" value={first} onChange={handleOnChange} />
+            <br></br>
+            <label>Last Name</label>
+            <br></br>
+            <input type="text"  name="last" value={last} onChange={handleOnChange} />
+            <br></br>
             <label>Username</label>
             <br></br>
             <input type="text"  name="username" value={username} onChange={handleOnChange} />

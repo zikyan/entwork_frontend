@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import './post.css';
 import zikyan from '../../images/zikyan_dp.jpg';
 import casio from '../../images/casio.jpg';
@@ -11,9 +11,24 @@ import ShareIcon from '@mui/icons-material/Share';
 import faizan from '../../images/faizan.jpg';
 import abdullah from '../../images/abdullah.jpg';
 import raees from '../../images/raees.jpg';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { getPostByIdOne, getUserById } from '../../service/api';
+import { format } from 'timeago.js';
 
 export default function Post(props) {
+    const [post, setPost] = useState()
+    const [user, setUser] = useState()
+    const { id } = useParams()
+    
+    useEffect(()=>{
+        const fetchData = async ()=>{
+            const findPost = await getPostByIdOne(id)
+            const findUser = await getUserById(findPost?.user)
+            setPost(findPost)
+            setUser(findUser)
+        }
+        fetchData()
+    },[id])
   return (
       <div className={`post-parent ${props.darkmode?"darkpost-parent":""}`}>
         <div className="post-upper3">
@@ -21,10 +36,10 @@ export default function Post(props) {
                 <div className="post-post-left">
                         <Link to='/profile'><img className='post-post-dp' src={zikyan} alt="" /></Link>
                         <div className="post-post-username">
-                        <Link style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`,fontWeight:'600'}} to='/profile'>Zikyan Rasheed</Link>
+                        <Link style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`,fontWeight:'600'}} to={`/profile/${user?.username}`}>{user?.first?.charAt(0).toUpperCase() + user?.first?.slice(1)} {user?.last?.charAt(0).toUpperCase() + user?.last?.slice(1)}</Link>
                             <div className="post-post-belowname">
-                                <p className='post-post-time-tag'>#funny,&nbsp;</p>
-                                <p className='post-post-time-tag'>2h</p>
+                                <p className='post-post-time-tag'>{post?.tag},&nbsp;</p>
+                                <p className='post-post-time-tag'>{format(post?.createdAt)}</p>
                             </div>
                         </div>
                 </div>
@@ -33,7 +48,7 @@ export default function Post(props) {
                         <button className='post-button-save post-button-download'>Download</button>
                     </div>
             </div>
-            <Link to='/post' className={`post-post-caption ${props.darkmode?"changeModeP":""}`}><p style={{marginTop:'10px'}}>The current labor environment</p></Link>
+            <p className={`post-post-caption ${props.darkmode?"changeModeP":""}`} style={{marginTop:'10px', cursor:'auto'}}>{post?.text}</p>
 
                 <div className={`post-mainpost ${props.darkmode?"changeModelite":""}`}>
                     <img className='post-mainpost-image' src={casio} alt="" />
@@ -121,7 +136,7 @@ export default function Post(props) {
                                 <p className='comment-people-text'>Listen here my son. <br />
                                     There are lots of pictures of the ruines.<br/>
                                     There are lots of pictures of cats. <br />
-                                    There are few pictures of cats in <ruins className="br"></ruins>
+                                    There are few pictures of cats in <br />
                                     I rest my case.</p>
 
                                 <div className="comment-post-votes">

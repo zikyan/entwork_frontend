@@ -12,6 +12,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { Link } from 'react-router-dom';
 import { getUserById } from '../../service/api';
+import { format } from 'timeago.js'
 
 export default function EachPost({darkMode, post}) {
     const [user, setUser] = useState([])
@@ -27,12 +28,14 @@ export default function EachPost({darkMode, post}) {
     <div className="mainbar-upper3">
                 <div className="mainbar-post1">
                     <div className="mainbar-post-left">
-                            <Link to='/profile'><img className='mainbar-post-dp' src={zikyan} alt="" /></Link>
+                            <Link to={`/profile/${user.username}`}><img className='mainbar-post-dp' src={zikyan} alt="" /></Link>
                             <div className="mainbar-post-username">
-                                <Link style={{textDecoration:'none', color:`${darkMode?"#fff":'#000'}`,fontWeight:'600'}} to='/profile'>{user.username}</Link>
+                                <Link style={{textDecoration:'none', color:`${darkMode?"#fff":'#000'}`,fontWeight:'600'}} to={`/profile/${user?.username}`}>
+                                    {user?.first?.charAt(0).toUpperCase() + user?.first?.slice(1)} {user?.last?.charAt(0).toUpperCase() + user?.last?.slice(1)}
+                                    </Link>
                                 <div className="mainbar-post-belowname">
-                                    <p className='mainbar-post-time-tag'>#funny,&nbsp;</p>
-                                    <p className='mainbar-post-time-tag'>2h</p>
+                                    <p className='mainbar-post-time-tag'>{post?.tag},&nbsp;</p>
+                                    <p className='mainbar-post-time-tag'>{format(post.createdAt)}</p>
                                 </div>
                             </div>
                     </div>
@@ -41,7 +44,7 @@ export default function EachPost({darkMode, post}) {
                             <button className='mainbar-button-save mainbar-button-download'>Download</button>
                         </div>
                 </div>
-                <Link to='/post' className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post.text}</p></Link>
+                <Link to={`/post/${post._id}`} className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post.text}</p></Link>
 
                     <div className={`mainbar-mainpost ${darkMode?"changeModelite":""}`}>
                         <img className='mainbar-mainpost-image' src={cat} alt="" />

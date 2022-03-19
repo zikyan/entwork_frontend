@@ -61,8 +61,8 @@ function App() {
             <div className="main-flex">
               <Routes>
                 <Route exact path='/' element={<Mainbar darkMode={darkMode}/>} />
-                <Route exact path='/post' element={<Post darkmode={darkMode}/>} />
-                <Route exact path='/profile' element={<Profile darkmode={darkMode}/>} />
+                <Route exact path='/post/:id' element={<Post darkmode={darkMode}/>} />
+                <Route exact path='/profile/:name' element={<Profile darkmode={darkMode}/>} />
                 <Route exact path='/toppost' element={<TopPost darkmode={darkMode}/>} />
                 <Route exact path='/topcomment' element={<TopComment darkmode={darkMode}/>} />
                 <Route exact path='/addpost' element={<AddPost darkmode={darkMode}/>} />

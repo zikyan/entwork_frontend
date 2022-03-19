@@ -1,13 +1,13 @@
 import './addpost.css';
+import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { addPostVar } from '../../features/post/postSlice';
+import { createPost } from '../../service/api';
 
 export default function AddPost() {
-
-  const [text, setText]=useState('')
-  const dispatch=useDispatch()
+  const text=useRef()
+  const tag=useRef()
 
   const { user }=useSelector((state)=>state.auth)
   const navigate=useNavigate()
@@ -17,14 +17,17 @@ export default function AddPost() {
     }
   },[user,navigate])
 
+
   const handleOnSubmit=(e)=>{
       e.preventDefault()
-      dispatch(addPostVar({text}))
-      setText('')
+      const postData={
+        user:user,
+        text:text.current.value,
+        tag:tag.current.value
+      }
+      createPost(postData)
       navigate('/')
   }
-
-
 
   return (
 <div className='addpost-parent'>
@@ -32,7 +35,8 @@ export default function AddPost() {
     <form onSubmit={handleOnSubmit}>
       <div>
         <div>
-            <input  style={{marginTop:'10px'}} name='text' value={text} onChange={(e)=>setText(e.target.value)} type="text" className='post-comment-textarea' placeholder='Enter Text Here'/>
+            <input  style={{marginTop:'10px'}} name='text' ref={text}  type="text" className='post-comment-textarea' placeholder='Enter Text Here'/>
+            <input  style={{marginTop:'10px'}} name='tag' ref={tag}  type="text" className='post-comment-textarea' placeholder='Tag'/>
         </div>
         <br/>
       </div>

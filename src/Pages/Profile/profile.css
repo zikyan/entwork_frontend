@@ -73,3 +73,9 @@
     align-items: center;
     justify-content: center;
 }
+.profile-box-design{
+    margin-top: 25px;
+    padding: 0px 20px 10px 20px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
