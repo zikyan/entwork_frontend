@@ -38,7 +38,7 @@ export default function Post(props) {
                         <div className="post-post-username">
                         <Link style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`,fontWeight:'600'}} to={`/profile/${user?.username}`}>{user?.first?.charAt(0).toUpperCase() + user?.first?.slice(1)} {user?.last?.charAt(0).toUpperCase() + user?.last?.slice(1)}</Link>
                             <div className="post-post-belowname">
-                                <p className='post-post-time-tag'>{post?.tag},&nbsp;</p>
+                                <p className='post-post-time-tag'>#{post?.tag},&nbsp;</p>
                                 <p className='post-post-time-tag'>{format(post?.createdAt)}</p>
                             </div>
                         </div>

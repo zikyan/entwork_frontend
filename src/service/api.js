@@ -10,8 +10,8 @@ export const timelinePosts = async (user)=>{
     return response.data
 }
 
-export const getAllPost = async ()=>{
-    const response=await axios.get('/api/post/getallpost/')
+export const getAllPost = async (params)=>{
+    const response=await axios.get(`/api/post/getallpost/${params}`)
     return response.data
 }
 

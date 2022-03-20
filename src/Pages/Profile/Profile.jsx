@@ -65,7 +65,7 @@ export default function Profile(props) {
                                     {username.first?.charAt(0).toUpperCase() + username.first?.slice(1)} {username.last?.charAt(0).toUpperCase() + username.last?.slice(1)}
                                     </p>
                                 <div className="mainbar-post-belowname">
-                                    <p className='mainbar-post-time-tag'>{post?.tag},&nbsp;</p>
+                                    <p className='mainbar-post-time-tag'>#{post?.tag},&nbsp;</p>
                                     <p className='mainbar-post-time-tag'>{format(post.createdAt)}</p>
                                 </div>
                             </div>

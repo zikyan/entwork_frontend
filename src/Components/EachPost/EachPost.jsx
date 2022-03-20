@@ -34,7 +34,7 @@ export default function EachPost({darkMode, post}) {
                                     {user?.first?.charAt(0).toUpperCase() + user?.first?.slice(1)} {user?.last?.charAt(0).toUpperCase() + user?.last?.slice(1)}
                                     </Link>
                                 <div className="mainbar-post-belowname">
-                                    <p className='mainbar-post-time-tag'>{post?.tag},&nbsp;</p>
+                                    <p className='mainbar-post-time-tag'>#{post?.tag},&nbsp;</p>
                                     <p className='mainbar-post-time-tag'>{format(post.createdAt)}</p>
                                 </div>
                             </div>

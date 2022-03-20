@@ -1,30 +1,40 @@
 import { useEffect, useState } from 'react';
 import './mainbar.css';
-
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { timelinePosts, getAllPost, getUserById } from '../../service/api';
+import { timelinePosts, getAllPost } from '../../service/api';
 import EachPost from '../EachPost/EachPost';
+import { useLocation } from 'react-router-dom';
 
 
 export default function Mainbar({darkMode}) {
 
     const [posts, setPosts] = useState([])
+    const { search } = useLocation()
 
 
     const { user }=useSelector((state)=>state.auth)
 
   useEffect(()=>{
         const fetchData = async ()=>{
-            if(user){
+            if(user && !search){
                 const res = await timelinePosts(user._id)
                 setPosts(res)
             }else{
-                const res = await getAllPost();
+                const res = await getAllPost(search);
                 setPosts(res);
             }
+            // else if (!user){
+            //     const res = await getAllPost();
+            //     setPosts(res);
+            // }
+            // else if(search){
+            //     const res = await getAllPost(search);
+            //     setPosts(res);
+            // }
         }
     fetchData()
-  },[])
+  },[search])
 
   return (
     <div className="mainbar-parent">
@@ -40,12 +50,12 @@ export default function Mainbar({darkMode}) {
         </div> */}
         <div className="mainbar-upper2">
             <ul className={`${darkMode?"darkmainbar-ul2":"mainbar-ul2"}`}>
-                <li>#Cat</li>
-                <li>#Facebook</li>
-                <li>#Stars War</li>
-                <li>#Boba Fett</li>
-                <li>#Biden</li>
-                <li>#Omicron</li>
+                <Link to='/?category=cat'><li>#cat</li></Link>
+                <Link to='/?category=depressed'><li>#depressed</li></Link>
+                <Link to='/?category=dank'><li>#dank</li></Link>
+                <Link to='/?category=mern'><li>#mern</li></Link>
+                <Link to='/?category=ror'><li>#ror</li></Link>
+                <Link to='/?category=django'><li>#django</li></Link>
                 <li>#work</li>
                 <li>#css</li>
                 <li>#android</li>
