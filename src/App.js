@@ -16,11 +16,13 @@ import TwitterVirals from './Pages/TwitterVirals/TwitterVirals';
 import WeeklyWinner from './Pages/WeeklyWinner/WeeklyWinner';
 import Recommended from './Pages/Recommended/Recommended';
 import { useState } from 'react';
-import Login from './Pages/Login/Login';
+// import Login from './Pages/Login/Login';
 import React from 'react';
-import SignUp from './Pages/signUp/signUp';
+// import SignUp from './Pages/signUp/signUp';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AddJob from './Pages/AddJob/AddJob';
+
 function App() {
   const [darkMode,setdarkMode]=useState(false)
   function darkFunc(){
@@ -66,12 +68,13 @@ function App() {
                 <Route exact path='/toppost' element={<TopPost darkmode={darkMode}/>} />
                 <Route exact path='/topcomment' element={<TopComment darkmode={darkMode}/>} />
                 <Route exact path='/addpost' element={<AddPost darkmode={darkMode}/>} />
-                <Route exact path='/work' element={<Work darkmode={darkMode}/>} />
+                <Route exact path='/work' element={<Work darkMode={darkMode}/>} />
                 <Route exact path='/twittervirals' element={<TwitterVirals darkmode={darkMode}/>} />
                 <Route exact path='/weeklywinner' element={<WeeklyWinner darkmode={darkMode}/>} />
                 <Route exact path='/recommended' element={<Recommended darkmode={darkMode}/>} />
                 <Route exact path='/loginfirst' element={<LoginFirst darkmode={darkMode}/>} />
                 <Route exact path='/registerfirst' element={<RegisterFirst darkmode={darkMode}/>} />
+                <Route exact path='/addjob' element={<AddJob darkmode={darkMode}/>} />
               </Routes>
             </div>
             <div className='right-flex'>

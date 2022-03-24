@@ -15,7 +15,7 @@ export default function RightSideBar(props) {
         <p className='rightsidebar-upper-text'>Click the below button to find work</p>
         <div className="rightsidebar-find-post-button">
           <Link style={{textDecoration:'none'}} to='/work'><button className='rightsidebar-work-button'><WorkIcon style={{fontSize:'18px'}} className='rightsidebar-work-button-icon' />Find Job</button></Link>
-          <button style={{marginLeft:'10px'}} className='rightsidebar-work-button'><WorkOutlineIcon style={{fontSize:'18px'}} className='rightsidebar-work-button-icon' />Post Job</button>
+          <Link style={{textDecoration:'none'}} to='/addjob'><button style={{marginLeft:'10px'}} className='rightsidebar-work-button'><WorkOutlineIcon style={{fontSize:'18px'}} className='rightsidebar-work-button-icon' />Post Job</button></Link>
         </div>
       </div>
       <div className={`rightsidebar-upper2 ${props.darkmode?"changeModeside2":""}`}>

@@ -51,7 +51,7 @@ export default function Post(props) {
             <p className={`post-post-caption ${props.darkmode?"changeModeP":""}`} style={{marginTop:'10px', cursor:'auto'}}>{post?.text}</p>
 
                 <div className={`post-mainpost ${props.darkmode?"changeModelite":""}`}>
-                    <img className='post-mainpost-image' src={casio} alt="" />
+                    <img className='post-mainpost-image' src={post?.img} alt="" />
                 </div>
                 <div className="post-mainpost-below">
                         <div className="post-mainpost-below-left">

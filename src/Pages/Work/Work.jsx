@@ -1,13 +1,25 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import './work.css';
-import zikyan from '../../images/zikyan_dp.jpg';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+import EachJob from '../../Components/EachJob/EachJob';
+import { getAllJob } from '../../service/api';
 import { Link } from 'react-router-dom';
 
-export default function Work(props) {
+export default function Work({darkMode}) {
+    const [jobs, setJobs] = useState([])
+
+    useEffect(()=>{
+        const fetchData = async ()=>{
+            const res = await getAllJob()
+            setJobs(res)
+        }
+        fetchData()
+    },[])
+
+
   return (
     <div className="work-parent">
-        <div className={`work-box-design ${props.darkmode?"changeModeRec":""}`}>
+        <div className={`work-box-design ${darkMode?"changeModeRec":""}`}>
         {/* <div className="work-upper1">
             <ul className='work-ul'>
                 <li className='work-li-selected'>Fun</li>
@@ -18,7 +30,7 @@ export default function Work(props) {
             </ul>
         </div> */}
         <div className="work-upper2 ">
-            <ul className={`work-ul2 ${props.darkmode?"darkwork-ul2":""}`} >
+            <ul className={`work-ul2 ${darkMode?"darkwork-ul2":""}`} >
                 <li>#mern</li>
                 <li>#ror</li>
                 <li>#django</li>
@@ -45,7 +57,7 @@ export default function Work(props) {
         </div>
 
         <div className="work-belowtags-parent">
-            <div className={`work-filter-center ${props.darkmode?"changeModeRec":""}`}>
+            <div className={`work-filter-center ${darkMode?"changeModeRec":""}`}>
                 <div className="work-filter">
                     <select>
                     <option value="All">All</option>
@@ -58,40 +70,16 @@ export default function Work(props) {
                 </div>
                 <p style={{fontWeight:"600",color:'#192252'}}>OR</p>
                 <div className="work-postjob-button">
-                    <button className='work-postjob-button'><WorkOutlineIcon style={{fontSize:'18px', marginRight:'5px'}} />Post a Job</button>
+                    <Link to='/addjob'><button className='work-postjob-button'><WorkOutlineIcon style={{fontSize:'18px', marginRight:'5px'}} />Post a Job</button></Link>
                 </div>
             </div>
         </div>
 
-        <div className={`work-box-design-lower ${props.darkmode?"changeModeRec":""}`}>
-        <div className="work-upper3">
-            <div className="work-post1">
-                <div className="work-post-left">
-                        <Link to='/profile'><img className='work-post-dp' src={zikyan} alt="" /></Link>
-                        <div className="work-post-username">
-                            <Link style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`,fontWeight:'600'}} to='/profile'>Zikyan Rasheed</Link>
-                            <div className="work-post-belowname">
-                                <p className='work-post-time-tag'>#mern,&nbsp;</p>
-                                <p className='work-post-time-tag'>2h</p>
-                            </div>
-                        </div>
-                </div>
-                    <div className="work-post-right">
-                        <button className='work-button-save'>Save</button>
-                    </div>
-            </div>
-            <Link to='/post' className={`work-post-caption ${props.darkmode?"changeModeRec":""}`}><p style={{marginTop:'10px'}}>This history will still be there. The cat might leave.</p></Link>
-
-                <div className={`${props.darkmode?"darkwork-workpost":"work-workpost"}`}>
-                    {/* <img className='work-workpost-image' src={cat} alt="" /> */}
-                    <p>Hi! I need help growing a YouTube channel so I am looking for someone who can handle ALL facets. I will need help with content strategy, SEO, channel promotion. The goal is to grow to 1k + subscribers, have high interest video topics for 2x per month, and optimize all videos and the full channel with SEO. I am looking for someone who can provide for me their case studies and proof that their strategies have worked with previous clients. Thanks!</p>
-                </div>
-                <div className="work-workpost-below">
-                    <button className='work-start-chat-button'>Start Chat</button>
-                </div>
-        </div>
-        </div>
-
+        {
+            jobs.map((job)=>(
+                <EachJob key={job._id} job={job} darkMode={darkMode} />
+            ))
+        }
 
 
     </div>

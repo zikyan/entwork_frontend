@@ -4,10 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { createPost } from '../../service/api';
+import axios from 'axios';
 
 export default function AddPost() {
   const text=useRef()
   const tag=useRef()
+  const [image, setImage] = useState("")
+  const [selectImage, setSelectImage] = useState('')
 
   const { user }=useSelector((state)=>state.auth)
   const navigate=useNavigate()
@@ -18,25 +21,36 @@ export default function AddPost() {
   },[user,navigate])
 
 
-  const handleOnSubmit=(e)=>{
-      e.preventDefault()
-      const postData={
-        user:user,
-        text:text.current.value,
-        tag:tag.current.value
-      }
-      createPost(postData)
-      navigate('/')
-  }
 
+  const handleOnSubmit = async (e)=>{
+      e.preventDefault()
+
+        const formData =await  new FormData();
+          formData.append('file', selectImage);
+          formData.append('upload_preset', 'entwork');
+          const options = {
+            method: 'POST',
+            body: formData,
+          };
+          const res = await fetch('https://api.Cloudinary.com/v1_1/zikyancloudinary/image/upload', options).then(res=>res.json());
+    const postData = {
+      user: user,
+      text: text.current.value,
+      tag: tag.current.value,
+      img: res.url
+    };
+    await createPost(postData);
+    return navigate('/');
+  }
   return (
 <div className='addpost-parent'>
   <p>What's on your mind?</p>
     <form onSubmit={handleOnSubmit}>
       <div>
-        <div>
+        <div style={{width:'300px'}}>
             <input  style={{marginTop:'10px'}} name='text' ref={text}  type="text" className='post-comment-textarea' placeholder='Enter Text Here'/>
             <input  style={{marginTop:'10px'}} name='tag' ref={tag}  type="text" className='post-comment-textarea' placeholder='Tag'/>
+            <input  style={{marginTop:'10px'}} name='file' onChange={(e)=>{setSelectImage(e.target.files[0])}} className='post-comment-textarea' type="file"/>
         </div>
         <br/>
       </div>

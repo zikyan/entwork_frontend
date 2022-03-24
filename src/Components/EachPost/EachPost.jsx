@@ -47,7 +47,7 @@ export default function EachPost({darkMode, post}) {
                 <Link to={`/post/${post._id}`} className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post.text}</p></Link>
 
                     <div className={`mainbar-mainpost ${darkMode?"changeModelite":""}`}>
-                        <img className='mainbar-mainpost-image' src={cat} alt="" />
+                        <img className='mainbar-mainpost-image' src={post?.img} alt="" />
                     </div>
                     <div className="mainbar-mainpost-below">
                             <div className="mainbar-mainpost-below-left">

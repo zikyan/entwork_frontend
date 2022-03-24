@@ -5,6 +5,11 @@ export const createPost = async (postData)=>{
     return response.data
 }
 
+export const createJob = async (jobData)=>{
+    const response = await axios.post('/api/job/create/',jobData)
+    return response.data
+}
+
 export const timelinePosts = async (user)=>{
     const response=await axios.get(`/api/post/timeline/${user}`)
     return response.data
@@ -32,5 +37,10 @@ export const getPostById = async (id)=>{
 
 export const getPostByIdOne = async (id)=>{
     const response=await axios.get(`/api/post/getpostbyidone/${id}`)
+    return response.data
+}
+
+export const getAllJob = async ()=>{
+    const response=await axios.get(`/api/job/getalljob/`)
     return response.data
 }
