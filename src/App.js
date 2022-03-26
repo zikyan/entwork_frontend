@@ -15,6 +15,7 @@ import Work from './Pages/Work/Work';
 import TwitterVirals from './Pages/TwitterVirals/TwitterVirals';
 import WeeklyWinner from './Pages/WeeklyWinner/WeeklyWinner';
 import Recommended from './Pages/Recommended/Recommended';
+import EditProfile from './Pages/EditProfile/EditProfile';
 import { useState } from 'react';
 // import Login from './Pages/Login/Login';
 import React from 'react';
@@ -75,6 +76,7 @@ function App() {
                 <Route exact path='/loginfirst' element={<LoginFirst darkmode={darkMode}/>} />
                 <Route exact path='/registerfirst' element={<RegisterFirst darkmode={darkMode}/>} />
                 <Route exact path='/addjob' element={<AddJob darkmode={darkMode}/>} />
+                <Route exact path='/editprofile/:name' element={<EditProfile darkmode={darkMode}/>} />
               </Routes>
             </div>
             <div className='right-flex'>

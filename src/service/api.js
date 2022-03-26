@@ -54,3 +54,8 @@ export const unfollowUser = async (personId, currentUserId)=>{
     const response=await axios.put(`/api/users/unfollow/${personId}`, currentUserId)
     return response.data
 }
+
+export const editProfile = async (username, data)=>{
+    const response=await axios.put(`/api/users/editprofile/${username}`, data)
+    return response.data
+}

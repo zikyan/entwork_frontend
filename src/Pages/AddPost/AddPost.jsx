@@ -1,10 +1,9 @@
 import './addpost.css';
 import { useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { createPost } from '../../service/api';
-import axios from 'axios';
 
 export default function AddPost() {
   const text=useRef()
@@ -54,7 +53,7 @@ export default function AddPost() {
         </div>
         <br/>
       </div>
-    <button type='submit' className='navbar-signup-button'>Post</button>
+    <button type='submit' className='navbar-signup-button addpost-button'>Post</button>
     </form>
 </div>
 

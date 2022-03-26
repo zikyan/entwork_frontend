@@ -56,7 +56,7 @@ export default function Mainbar({darkMode}) {
                 <Link to='/?category=mern'><li>#mern</li></Link>
                 <Link to='/?category=ror'><li>#ror</li></Link>
                 <Link to='/?category=django'><li>#django</li></Link>
-                <li>#work</li>
+                <Link to='/?category=laravel'><li>#laravel</li></Link>
                 <li>#css</li>
                 <li>#android</li>
                 <li>#Weekly Highlights</li>

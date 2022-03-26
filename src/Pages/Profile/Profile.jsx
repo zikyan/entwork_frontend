@@ -14,7 +14,6 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import { Link } from 'react-router-dom';
 import { format } from 'timeago.js';
 import { useSelector } from 'react-redux';
-import SelectInput from '@mui/material/Select/SelectInput';
 
 export default function Profile(props) {
   const {name}=useParams()
@@ -22,6 +21,7 @@ export default function Profile(props) {
   const [posts, setPosts] = useState([])
   const { user }= useSelector((state)=>state.auth)
   const [followed, setFollowed] = useState()
+  const defaultImage="https://res.cloudinary.com/zikyancloudinary/image/upload/v1648317487/nimffj7bonumvaapmbp6.jpg"
   useEffect(()=>{
     const fetchData = async ()=>{
       const userByName = await getUserByUsername(name)
@@ -56,10 +56,11 @@ console.log(followed)
     <div className="profile-parent">
         <div className="profile-cover-container">
             <img className='profile-cover-img' src={cover} alt="" />
-            <img className='profile-display-img' src={zikyan} alt="" />
+            <img className='profile-display-img' src={username?.profilePicture || defaultImage} alt="" />
             <div className='profile-follow-text'>
               <p className='profile-name-text'>{username?.first?.charAt(0).toUpperCase() + username?.first?.slice(1)} {username?.last?.charAt(0).toUpperCase() + username?.last?.slice(1)} </p>
             </div>
+            <p className='profile-bio-text' >{username?.bio}</p>
             {
                 user? // so that no guest can see follow/unfollow button
                 user?.username !== username?.username ? // same cannot follow/unfollow himself
@@ -68,8 +69,11 @@ console.log(followed)
                 :<button onClick={handleFollowButton} className='profile-follow-button'><p>&nbsp;Follow</p></button>
                 : '':''
             }
-            <p className='profile-bio-text' >Dirty bit of sarcasm</p>
-            <button className='profile-edit-button'><EditIcon style={{fontSize:'20px',marginRight:'5px', color:`${props.darkmode?"#fff":''}`}}/>Edit Profile</button>
+            {
+              user && user?._id===username?._id?
+              <Link style={{textDecoration:'none'}} to={`/editprofile/${name}`}><button className='profile-edit-button'><EditIcon style={{fontSize:'20px',marginRight:'5px', color:`${props.darkmode?"#fff":''}`}}/>Edit Profile</button></Link>
+              :''
+            }
             <div className="profile-ul-container">
                 <ul className='profile-ul'>
                     <li className='profile-li-active'>All Posts</li>
