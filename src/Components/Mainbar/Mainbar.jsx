@@ -51,8 +51,8 @@ export default function Mainbar({darkMode}) {
         <div className="mainbar-upper2">
             <ul className={`${darkMode?"darkmainbar-ul2":"mainbar-ul2"}`}>
                 <Link to='/?category=cat'><li>#cat</li></Link>
-                <Link to='/?category=depressed'><li>#depressed</li></Link>
                 <Link to='/?category=dank'><li>#dank</li></Link>
+                <Link to='/?category=depressed'><li>#depressed</li></Link>
                 <Link to='/?category=mern'><li>#mern</li></Link>
                 <Link to='/?category=ror'><li>#ror</li></Link>
                 <Link to='/?category=django'><li>#django</li></Link>

@@ -4,8 +4,7 @@ import cover from '../../images/cover.jpg';
 import zikyan from '../../images/zikyan_dp.jpg';
 import EditIcon from '@mui/icons-material/Edit';
 import { useParams } from 'react-router-dom';
-import { getUserByUsername, getPostById } from '../../service/api';
-import cat from '../../images/cat-post.jpg';
+import { getUserByUsername, getPostById, followUser, unfollowUser } from '../../service/api';
 import ShareIcon from '@mui/icons-material/Share';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
@@ -14,21 +13,44 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { Link } from 'react-router-dom';
 import { format } from 'timeago.js';
+import { useSelector } from 'react-redux';
+import SelectInput from '@mui/material/Select/SelectInput';
 
 export default function Profile(props) {
   const {name}=useParams()
   const [username, setUsername] = useState()
   const [posts, setPosts] = useState([])
+  const { user }= useSelector((state)=>state.auth)
+  const [followed, setFollowed] = useState()
   useEffect(()=>{
     const fetchData = async ()=>{
-      const user = await getUserByUsername(name)
-      const post = await getPostById(user._id)
-      setUsername(user)
+      const userByName = await getUserByUsername(name)
+      const post = await getPostById(userByName?._id)
+      setUsername(userByName)
       setPosts(post)
+    //   setFollowed(user?.followings?.includes(username?._id))
+        // console.log(user?.followings?.includes(userByName?._id))
+        if(await (user?.followings.includes(userByName?._id)) === true){
+            setFollowed(true)
+        }else{
+            setFollowed(false)
+        }
     }
     fetchData()
   },[])
-  
+
+  const handleFollowButton = async ()=>{
+      if(followed){
+        await unfollowUser(username?._id, {user:user?._id})
+        
+      }else{
+        await followUser(username?._id, {user:user?._id})
+      }
+      console.log("hello")
+      setFollowed(!followed)
+  }
+//   console.log(followed)
+console.log(followed)
   return (
     <div>
     <div className="profile-parent">
@@ -38,6 +60,14 @@ export default function Profile(props) {
             <div className='profile-follow-text'>
               <p className='profile-name-text'>{username?.first?.charAt(0).toUpperCase() + username?.first?.slice(1)} {username?.last?.charAt(0).toUpperCase() + username?.last?.slice(1)} </p>
             </div>
+            {
+                user? // so that no guest can see follow/unfollow button
+                user?.username !== username?.username ? // same cannot follow/unfollow himself
+                followed===true?
+                <button onClick={handleFollowButton} className='profile-follow-button'><p>&nbsp;Unfollow</p></button>
+                :<button onClick={handleFollowButton} className='profile-follow-button'><p>&nbsp;Follow</p></button>
+                : '':''
+            }
             <p className='profile-bio-text' >Dirty bit of sarcasm</p>
             <button className='profile-edit-button'><EditIcon style={{fontSize:'20px',marginRight:'5px', color:`${props.darkmode?"#fff":''}`}}/>Edit Profile</button>
             <div className="profile-ul-container">
@@ -55,18 +85,18 @@ export default function Profile(props) {
     </div>
     <div className='profile-box-design'>
     {
-      posts.map((post)=>(
+      posts?.map((post)=>(
         <div key={post._id} className="mainbar-upper3">
                 <div className="mainbar-post1">
                     <div className="mainbar-post-left">
                             <Link to='/profile'><img className='mainbar-post-dp' src={zikyan} alt="" /></Link>
                             <div className="mainbar-post-username">
                                 <p style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`,fontWeight:'600'}}>
-                                    {username.first?.charAt(0).toUpperCase() + username.first?.slice(1)} {username.last?.charAt(0).toUpperCase() + username.last?.slice(1)}
+                                    {username?.first?.charAt(0).toUpperCase() + username?.first?.slice(1)} {username?.last?.charAt(0).toUpperCase() + username?.last?.slice(1)}
                                     </p>
                                 <div className="mainbar-post-belowname">
                                     <p className='mainbar-post-time-tag'>#{post?.tag},&nbsp;</p>
-                                    <p className='mainbar-post-time-tag'>{format(post.createdAt)}</p>
+                                    <p className='mainbar-post-time-tag'>{format(post?.createdAt)}</p>
                                 </div>
                             </div>
                     </div>

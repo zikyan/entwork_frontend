@@ -28,7 +28,7 @@ export default function EachPost({darkMode, post}) {
     <div className="mainbar-upper3">
                 <div className="mainbar-post1">
                     <div className="mainbar-post-left">
-                            <Link to={`/profile/${user.username}`}><img className='mainbar-post-dp' src={zikyan} alt="" /></Link>
+                            <Link to={`/profile/${user?.username}`}><img className='mainbar-post-dp' src={zikyan} alt="" /></Link>
                             <div className="mainbar-post-username">
                                 <Link style={{textDecoration:'none', color:`${darkMode?"#fff":'#000'}`,fontWeight:'600'}} to={`/profile/${user?.username}`}>
                                     {user?.first?.charAt(0).toUpperCase() + user?.first?.slice(1)} {user?.last?.charAt(0).toUpperCase() + user?.last?.slice(1)}

@@ -44,3 +44,13 @@ export const getAllJob = async ()=>{
     const response=await axios.get(`/api/job/getalljob/`)
     return response.data
 }
+
+export const followUser = async (personId, currentUserId)=>{
+    const response=await axios.put(`/api/users/follow/${personId}`,currentUserId)
+    return response.data
+}
+
+export const unfollowUser = async (personId, currentUserId)=>{
+    const response=await axios.put(`/api/users/unfollow/${personId}`, currentUserId)
+    return response.data
+}
