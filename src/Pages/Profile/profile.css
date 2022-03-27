@@ -68,6 +68,9 @@
 .profile-li-active{
     border-bottom: 2px solid #000;
 }
+.profile-li-nonactive{
+    border-bottom: none;
+}
 .profile-follow-text{
     display: flex;
     align-items: center;

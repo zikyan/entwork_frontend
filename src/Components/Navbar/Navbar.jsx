@@ -49,8 +49,8 @@ export default function Navbar(props) {
                     {
                     user ? 
                     (   <>
-                            <Link to='/profile'><img className='navbar-post-dp' src={zikyan} alt="" /></Link>
-                            <Link to='/profile' style={{textDecoration:'none', color:'#000'}}><li><p className='navbarDynamicUserName'>{user.first?.charAt(0).toUpperCase() + user.first?.slice(1)}</p></li></Link>
+                            <Link to={`/profile/${user?.username}`}><img className='navbar-post-dp' src={user?.profilePicture} alt="" /></Link>
+                            <Link to={`/profile/${user?.username}`} style={{textDecoration:'none', color:'#000'}}><li><p className='navbarDynamicUserName'>{user.first?.charAt(0).toUpperCase() + user.first?.slice(1)}</p></li></Link>
                             <li><button onClick={handleLogout}  className='navbar-signup-button'>Logout</button></li>
                         </>
                     )

@@ -59,3 +59,13 @@ export const editProfile = async (username, data)=>{
     const response=await axios.put(`/api/users/editprofile/${username}`, data)
     return response.data
 }
+
+export const postComment = async (commentData)=>{
+    const response=await axios.post(`/api/post/postcomment/`, commentData)
+    return response.data
+}
+
+export const getComment = async (id)=>{
+    const response=await axios.get(`/api/post/getcomment/${id}`)
+    return response.data
+}

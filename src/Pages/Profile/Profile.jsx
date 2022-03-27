@@ -21,6 +21,11 @@ export default function Profile(props) {
   const [posts, setPosts] = useState([])
   const { user }= useSelector((state)=>state.auth)
   const [followed, setFollowed] = useState()
+
+  const [toggleState, setToggleState] = useState(1);
+  const toggleTab = (index) => {
+    setToggleState(index);
+  };
   const defaultImage="https://res.cloudinary.com/zikyancloudinary/image/upload/v1648317487/nimffj7bonumvaapmbp6.jpg"
   useEffect(()=>{
     const fetchData = async ()=>{
@@ -46,11 +51,8 @@ export default function Profile(props) {
       }else{
         await followUser(username?._id, {user:user?._id})
       }
-      console.log("hello")
       setFollowed(!followed)
   }
-//   console.log(followed)
-console.log(followed)
   return (
     <div>
     <div className="profile-parent">
@@ -74,26 +76,56 @@ console.log(followed)
               <Link style={{textDecoration:'none'}} to={`/editprofile/${name}`}><button className='profile-edit-button'><EditIcon style={{fontSize:'20px',marginRight:'5px', color:`${props.darkmode?"#fff":''}`}}/>Edit Profile</button></Link>
               :''
             }
+            {/* <li className='profile-li-active'>All Posts</li> */}
             <div className="profile-ul-container">
                 <ul className='profile-ul'>
-                    <li className='profile-li-active'>All Posts</li>
-                    <li>Comments</li>
-                    <li>Saved Posts</li>
-                    <li>Posted Jobs</li>
-                    <li>Saved Jobs</li>
-                    <li>Friends</li>
-                    <li>About</li>
+                  
+                    <li className={toggleState === 1 ? "profile-li-active" : "profile-li-nonactive"}
+                    onClick={() => toggleTab(1)}>
+                    All Posts
+                    </li>
+
+                    <li className={toggleState === 2 ? "profile-li-active" : "profile-li-nonactive"}
+                    onClick={() => toggleTab(2)}>
+                    Comments
+                    </li>
+
+                    <li className={toggleState === 3 ? "profile-li-active" : "profile-li-nonactive"}
+                    onClick={() => toggleTab(3)}>
+                    Saved Posts
+                    </li>
+                    
+                    <li className={toggleState === 4 ? "profile-li-active" : "profile-li-nonactive"}
+                    onClick={() => toggleTab(4)}>
+                    Posted Jobs
+                    </li>
+
+                    <li className={toggleState === 5 ? "profile-li-active" : "profile-li-nonactive"}
+                    onClick={() => toggleTab(5)}>
+                    Saved Jobs
+                    </li>
+
+                    <li className={toggleState === 6 ? "profile-li-active" : "profile-li-nonactive"}
+                    onClick={() => toggleTab(6)}>
+                    Friends
+                    </li>
+
+                    <li className={toggleState === 7 ? "profile-li-active" : "profile-li-nonactive"}
+                    onClick={() => toggleTab(7)}>
+                    About
+                    </li>
+
                 </ul>
             </div>
         </div>
     </div>
     <div className='profile-box-design'>
-    {
+    { toggleState===1?
       posts?.map((post)=>(
         <div key={post._id} className="mainbar-upper3">
                 <div className="mainbar-post1">
                     <div className="mainbar-post-left">
-                            <Link to='/profile'><img className='mainbar-post-dp' src={zikyan} alt="" /></Link>
+                            <img className='mainbar-post-dp' src={username?.profilePicture} alt="" />
                             <div className="mainbar-post-username">
                                 <p style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`,fontWeight:'600'}}>
                                     {username?.first?.charAt(0).toUpperCase() + username?.first?.slice(1)} {username?.last?.charAt(0).toUpperCase() + username?.last?.slice(1)}
@@ -129,7 +161,42 @@ console.log(followed)
                             </div>
                     </div>
                 </div>
-      ))
+      )):''
+    }
+    {
+      toggleState===2?
+      <p>Comments Section</p>
+      :''
+    }
+
+    {
+      toggleState===3?
+      <p>Saved Posts Section</p>
+      :''
+    }
+
+    {
+      toggleState===4?
+      <p>Posted Jobs Section</p>
+      :''
+    }
+
+    {
+      toggleState===5?
+      <p>Saved Jobs Section</p>
+      :''
+    }
+
+    {
+      toggleState===6?
+      <p>Friends Section</p>
+      :''
+    }
+
+    {
+      toggleState===7?
+      <p>About Section</p>
+      :''
     }
     </div>
     </div>
