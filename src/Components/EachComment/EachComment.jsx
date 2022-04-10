@@ -20,7 +20,7 @@ export default function EachComment({comments}) {
       <>
         {
             comments?.map((comment)=>(
-                <div key={comment?.commentText} className="post-comment-people">
+                <div key={comment?.commentText} style={{marginTop:'20px'}} className="post-comment-people">
                     {/* <img className='comment-post-dp' src={faizan} alt="" /> */}
                     <CommentUserImage comment={comment?.user} />
                         <div className="comment-post-username">

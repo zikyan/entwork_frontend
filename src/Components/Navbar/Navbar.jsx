@@ -58,8 +58,8 @@ export default function Navbar(props) {
                     (<>
                     
                     {/* <li data-toggle="modal" data-target="#loginModal">Login</li> */}
-                    <Link to='/loginfirst' style={{textDecoration:'none', marginRight:'5px'}}><li className={`navbar-navicons-right ${props.darkmode?"login-button-darkmode":""}`}>Login</li></Link>
-                    <Link to='/registerfirst' style={{textDecoration:'none'}}><li><button  className='navbar-signup-button'>Signup</button></li></Link>
+                    <Link to='/login' style={{textDecoration:'none', marginRight:'5px'}}><li className={`navbar-navicons-right ${props.darkmode?"login-button-darkmode":""}`}>Login</li></Link>
+                    <Link to='/register' style={{textDecoration:'none'}}><li><button  className='navbar-signup-button'>Signup</button></li></Link>
 
                     </>)}
                 

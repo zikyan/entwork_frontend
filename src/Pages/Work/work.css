@@ -48,8 +48,8 @@
     cursor: pointer;
 }
 .work-upper3{
-    padding-top: 20px;
-    border-bottom: 1px solid rgb(202, 198, 198);
+    padding: 20px 10px 5px 10px;
+    /* border-bottom: 1px solid rgb(202, 198, 198); */
 }
 .work-box-design-lower{
     margin-top: 15px;

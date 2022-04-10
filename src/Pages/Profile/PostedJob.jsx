@@ -1,22 +1,11 @@
-import { useState, useEffect } from 'react';
-import zikyan from '../../images/zikyan_dp.jpg';
-import { Link } from 'react-router-dom';
-import { format } from 'timeago.js';
-import { getUserById } from '../../service/api';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { format } from 'timeago.js'
 
-export default function EachJob({darkMode, job}) {
-    const [user, setUser] = useState()
-    useEffect(()=>{
-        const fetchData = async ()=>{
-            const res = await getUserById(job.user)
-            setUser(res)
-        }
-        fetchData()
-    },[])
-    console.log(user)
+export default function PostedJob({job, user, darkMode}) {
   return (
-    <div className={`work-box-design-lower ${darkMode?"changeModeRec":""}`}>
-        <div className="work-upper3">
+    <div style={{padding:'20px 0 0 0', margin:'0px'}} className={`work-box-design-lower ${darkMode?"changeModeRec":""}`}>
+        <div style={{border:'1px solid #d4d4d4', padding:'20px', borderRadius:'2px'}} className="work-upper3">
             <div className="work-post1">
                 <div className="work-post-left">
                         <Link to={ `/profile/${user?.username}`}><img className='work-post-dp' src={user?.profilePicture} alt="" /></Link>
@@ -28,18 +17,12 @@ export default function EachJob({darkMode, job}) {
                             </div>
                         </div>
                 </div>
-                    <div className="work-post-right">
-                        <button className='work-button-save'>Save</button>
-                    </div>
             </div>
             <Link to='/post' className={`work-post-caption ${darkMode?"changeModeRec":""}`}><p style={{marginTop:'10px'}}>{job?.caption}</p></Link>
 
                 <div className={`${darkMode?"darkwork-workpost":"work-workpost"}`}>
                     {/* <img className='work-workpost-image' src={cat} alt="" /> */}
                     <p>{job?.des}</p>
-                </div>
-                <div className="work-workpost-below">
-                    <button className='work-start-chat-button'>Start Chat</button>
                 </div>
         </div>
         </div>

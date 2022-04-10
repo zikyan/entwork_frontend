@@ -14,7 +14,7 @@ export default function AddJob() {
   const navigate=useNavigate()
   useEffect((e)=>{
     if(!user){
-      navigate('/loginfirst')
+      navigate('/login')
     }
   },[user,navigate])
 

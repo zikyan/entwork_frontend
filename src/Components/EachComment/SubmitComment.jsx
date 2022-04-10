@@ -27,7 +27,9 @@ export default function SubmitComment({user, id, post}) {
     }
   return (
         <div>
-            <form onSubmit={handleCommentSubmit}>
+            {
+                user?
+                <form onSubmit={handleCommentSubmit}>
                 <div className="post-comment-parent">
                     <div className="post-comment-1">
                         <img className='post-comment-dp' src={user?.profilePicture} alt="" />
@@ -35,7 +37,8 @@ export default function SubmitComment({user, id, post}) {
                     </div>
                     <button type='submit' className='post-comment-button'>Post</button>
                 </div>
-            </form>
+            </form>:''
+            }
             <EachComment comments={comments}/>
         </div>
   )

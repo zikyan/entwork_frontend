@@ -73,8 +73,8 @@ function App() {
                 <Route exact path='/twittervirals' element={<TwitterVirals darkmode={darkMode}/>} />
                 <Route exact path='/weeklywinner' element={<WeeklyWinner darkmode={darkMode}/>} />
                 <Route exact path='/recommended' element={<Recommended darkmode={darkMode}/>} />
-                <Route exact path='/loginfirst' element={<LoginFirst darkmode={darkMode}/>} />
-                <Route exact path='/registerfirst' element={<RegisterFirst darkmode={darkMode}/>} />
+                <Route exact path='/login' element={<LoginFirst darkmode={darkMode}/>} />
+                <Route exact path='/register' element={<RegisterFirst darkmode={darkMode}/>} />
                 <Route exact path='/addjob' element={<AddJob darkmode={darkMode}/>} />
                 <Route exact path='/editprofile/:name' element={<EditProfile darkmode={darkMode}/>} />
               </Routes>

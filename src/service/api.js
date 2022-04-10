@@ -69,3 +69,13 @@ export const getComment = async (id)=>{
     const response=await axios.get(`/api/post/getcomment/${id}`)
     return response.data
 }
+
+export const getCommentByUsername = async (username)=>{
+    const response=await axios.get(`/api/post/getcommentbyusername/${username}`)
+    return response.data
+}
+
+export const getJobByUser = async (id)=>{
+    const response=await axios.get(`/api/job/getjobbyuser/${id}`)
+    return response.data
+}
