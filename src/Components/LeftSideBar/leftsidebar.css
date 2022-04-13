@@ -1,5 +1,6 @@
 .leftsidebar-parent{
    width: 100%;
+   height: 100vh;
 }
 .leftsidebar-upper{
     display: flex;
@@ -81,7 +82,6 @@
     font-weight: 700;
 }
 .leftsidebar-lower-text{
-    margin: 10px 0px 10px 0px;
     color: #000;
     font-weight: 700;
 }
@@ -134,13 +134,13 @@
     font-weight: 700;
 }
 .darkleftsidebar-lower-text{
-    margin: 10px 0px 10px 0px;
+    margin: 0px 0px 10px 0px;
     color:white;
     font-weight: 700;
 }
 .darkleftsidebar-filter-selected{
     background-color: #f1f4fa83;
-    margin: 5px 0px;
+    margin: 0px 0px;
 }
 /* .darkleftsidebar-filter-selected>li:ho{
     background-color: #f1f4fa83;

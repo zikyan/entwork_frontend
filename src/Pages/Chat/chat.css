@@ -1,0 +1,110 @@
+.chat-container{
+    width: 100%;
+}
+.chat-upper-parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.chat-upper{
+    padding: 10px 20px 20px 20px;
+    border-radius: 10px;
+    background-color: white;
+    width: 610px;
+}
+.chat-single-friend{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0 10px 20px;
+    cursor: pointer;
+}
+.chat-below-image{
+    background-color: #EFF3FA;
+    height: 40px;
+    margin-top: -15px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.chat-below-image p{
+    font-weight: 500;
+}
+.chat-flex{
+    display: flex;
+    overflow-x: scroll;
+}
+.chat-user-dp{
+    width: 33px;
+    height: 33px;
+    border-radius: 100%;
+}
+.chat-lower{
+    margin-top: 15px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    height: 80vh;
+    overflow-y: scroll;
+}
+.chat-chatting-person{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px solid #d4d4d4;
+}
+.chat-chatting-dp{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+.chat-chatting-name{
+    font-size: 17px;
+    font-weight: 600;
+}
+.chat-messages{
+    display: flex;
+    margin: 10px 0px;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+.chat-messages p{
+    background-color: #EFF3FA;
+    padding: 10px;
+    border-radius: 0 10px 10px 10px;
+    width: 400px;
+}
+.chat-messages img{
+    margin-right: 10px;
+}
+.chat-messages.own{
+    justify-content: flex-end;
+    margin: 0px;
+}
+.chat-messages.own p{
+    background-color: #4E426D;
+    color: white;
+    font-weight: 300;
+}
+.chat-type-message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.chat-type-message textarea{
+    width: 80%;
+    padding: 10px;
+    margin-right: 20px;
+    border-radius: 50px;
+    background-color: #EFF3FA;
+    border: none;
+}
+.chat-send-button{
+    font-size: 30px;
+}
+.chatBoxTop {
+    height: 78%;
+    overflow-y: scroll;
+}

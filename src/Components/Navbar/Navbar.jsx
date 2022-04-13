@@ -45,7 +45,7 @@ export default function Navbar(props) {
             <div className="navbar-right">
                 <ul className='navbar-right-ul'>
                     <li><DarkModeRoundedIcon className='navbar-navicons-right navbar-navicons-right-selected' onClick={props.changeMode}/></li>
-                    <li><SendRoundedIcon className={`navbar-navicons-right ${props.darkmode?"login-button-darkmode":""}`} /></li>
+                    <Link style={{padding:'0px 10px'}} to='/chat'><li><SendRoundedIcon className={`navbar-navicons-right ${props.darkmode?"login-button-darkmode":""}`} /></li></Link>
                     {
                     user ? 
                     (   <>

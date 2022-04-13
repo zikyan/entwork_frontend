@@ -46,8 +46,6 @@ export default function LeftSideBar(props) {
             <li>#bts</li>
             <li>#attack on titans</li>
             <li>#stiens gates</li>
-            <li>#death note</li>
-            <li>#tokyo ghoul</li>
           </ul>
         </div>
         </div>

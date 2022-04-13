@@ -26,14 +26,15 @@ export default function RightSideBar(props) {
                   <li>#Stars War</li>
                   <li>#Boba Fett</li>
                   <li>#Biden</li>
+                  <li>#Swift</li>
                   <li>#Omicron</li>
                   <li>#work</li>
                   <li>#css</li>
                   <li>#android</li>
                   <li>#ror</li>
                   <li>#mern</li>
-                  <li>#django</li>
-                  <li>#python</li>
+                  {/* <li>#django</li>
+                  <li>#python</li> */}
               </ul>
       </div>
       <div className={`rightsidebar-upper3 ${props.darkmode?"changeModeside2":""}`}>

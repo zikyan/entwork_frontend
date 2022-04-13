@@ -23,6 +23,7 @@ import React from 'react';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddJob from './Pages/AddJob/AddJob';
+import Chat from './Pages/Chat/Chat';
 
 function App() {
   const [darkMode,setdarkMode]=useState(false)
@@ -52,11 +53,12 @@ function App() {
       <SignUp ShowsignUp={ShowsignUp}/> */}
     {/* <div  className={`${ShowLogin&&ShowsignUp ? "app-parent" : "app-parent2"}`}>  */}
     <div> 
-      
-      <Navbar
+      <div>
+      <Navbar className='navbar-sticky'
       //  handleLoginClick={handleLoginClick}
       //  handleSignupClick={handleSignupClick}
        changeMode={darkFunc} darkmode={darkMode} />
+      </div>
         <div className="home-container">
             <div className="left-flex">
                 <LeftSideBar darkmode={darkMode}/>
@@ -77,6 +79,7 @@ function App() {
                 <Route exact path='/register' element={<RegisterFirst darkmode={darkMode}/>} />
                 <Route exact path='/addjob' element={<AddJob darkmode={darkMode}/>} />
                 <Route exact path='/editprofile/:name' element={<EditProfile darkmode={darkMode}/>} />
+                <Route exact path='/chat' element={<Chat />} />
               </Routes>
             </div>
             <div className='right-flex'>

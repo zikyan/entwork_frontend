@@ -16,6 +16,7 @@ import { format } from 'timeago.js';
 import { useSelector } from 'react-redux';
 import UserComments from './UserComments';
 import PostedJob from './PostedJob';
+import Friends from './Friends';
 
 export default function Profile({darkMode}) {
   const {name}=useParams()
@@ -41,7 +42,7 @@ export default function Profile({darkMode}) {
 
         // posted jobs logic
 
-        const jobs=await getJobByUser(user?._id)
+        const jobs = await getJobByUser(user?._id)
         setPostedJob(jobs)
 
 
@@ -220,7 +221,10 @@ export default function Profile({darkMode}) {
 
     {
       toggleState===6?
-      <p>Friends Section</p>
+      user?.followings?.map((friend)=>(
+        <Friends key={user?._id}  friend={friend}/>
+      ))
+      // <p>{user?.fol}</p>
       :''
     }
 

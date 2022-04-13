@@ -18,10 +18,13 @@
 }
 .main-flex{
     flex: 7;
-    margin: 0px 15px;
-    /* overflow-y: scroll;
-    height: 100vh; */
+    margin: 0 15px;
+    overflow-y: scroll;
+    height: 123vh;
 }
+/* .main-left{
+    overflow-y: scroll;
+} */
 .right-flex{
     flex: 3;
     /* overflow-y: scroll;
@@ -32,14 +35,26 @@
 }
 .right-flex::-webkit-scrollbar {
     display: none;
-}
+} */
 .main-flex::-webkit-scrollbar {
     display: none;
-} */
+}
 
 .app-parent2{
     padding: 15px;
    opacity: 0.08;
    position: relative; 
    z-index: 1;
-  }
+}
+
+::-webkit-scrollbar{
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track{
+    border-radius: 8px;
+}
+::-webkit-scrollbar-thumb{
+    background: #656768;
+    border-radius: 8px;
+}
