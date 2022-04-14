@@ -79,3 +79,13 @@ export const getJobByUser = async (id)=>{
     const response=await axios.get(`/api/job/getjobbyuser/${id}`)
     return response.data
 }
+
+export const getConversation = async (id)=>{
+    const response=await axios.get(`/api/chat/getconversation/${id}`)
+    return response.data
+}
+
+export const getMessage = async (id)=>{
+    const response=await axios.get(`/api/chat/getmessage/${id}`)
+    return response.data
+}

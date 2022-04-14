@@ -1,113 +1,76 @@
-import React from 'react'
+import { useState, useEffect } from 'react';
 import './chat.css'
-import zikyan from '../../images/zikyan_dp.jpg';
-import faizan from '../../images/faizan.jpg';
-import abdullah from '../../images/abdullah.jpg';
 import EachChatPerson from './EachChatPerson';
 import Messages from './Messages';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
+import { useSelector } from 'react-redux';
+import { getConversation, getMessage } from '../../service/api';
+import EachConversation from './EachConversation';
+import ChatNameDp from './ChatNameDp';
 
 export default function Chat() {
+    const { user }= useSelector((state)=>state.auth)
+    const [conversation, setConversation] = useState([])
+    const [currentChat, setCurrentChat] = useState()
+    const [messages, setMessages] = useState()
+    useEffect(()=>{
+        const fetchData = async ()=>{
+            const res = await getConversation(user?._id)
+            setConversation(res)
+
+            const res1 = await getMessage(currentChat?._id)
+            setMessages(res1)
+        }
+        fetchData()
+    },[currentChat])
   return (
     <div className='chat-container'>
         <div className="chat-upper-parent">
         <div className="chat-upper">
         <p style={{fontWeight:'500'}}>All Friends</p>
             <div className="chat-flex">
-                <EachChatPerson />
-                <div className="chat-single-friend">
-                    <img style={{zIndex:'1'}} className='chat-user-dp' src={faizan} alt="" />
-                    <div className="chat-below-image">
-                        <p>Faizan</p>
-                    </div>
-                </div>
-
-                <div className="chat-single-friend">
-                    <img style={{zIndex:'1'}} className='chat-user-dp' src={abdullah} alt="" />
-                    <div className="chat-below-image">
-                        <p>Abdullah</p>
-                    </div>
-                </div>
-
-                <div className="chat-single-friend">
-                    <img style={{zIndex:'1'}} className='chat-user-dp' src={zikyan} alt="" />
-                    <div className="chat-below-image">
-                        <p>Zikyan</p>
-                    </div>
-                </div>
-
-                <div className="chat-single-friend">
-                    <img style={{zIndex:'1'}} className='chat-user-dp' src={faizan} alt="" />
-                    <div className="chat-below-image">
-                        <p>Faizan</p>
-                    </div>
-                </div>
-
-                <div className="chat-single-friend">
-                    <img style={{zIndex:'1'}} className='chat-user-dp' src={abdullah} alt="" />
-                    <div className="chat-below-image">
-                        <p>Abdullah</p>
-                    </div>
-                </div>
-
-                <div className="chat-single-friend">
-                    <img style={{zIndex:'1'}} className='chat-user-dp' src={abdullah} alt="" />
-                    <div className="chat-below-image">
-                        <p>Abdullah</p>
-                    </div>
-                </div>
-
-                <div className="chat-single-friend">
-                    <img style={{zIndex:'1'}} className='chat-user-dp' src={abdullah} alt="" />
-                    <div className="chat-below-image">
-                        <p>Abdullah</p>
-                    </div>
-                </div>
-
-                <div className="chat-single-friend">
-                    <img style={{zIndex:'1'}} className='chat-user-dp' src={faizan} alt="" />
-                    <div className="chat-below-image">
-                        <p>Faizan</p>
-                    </div>
-                </div>
-
-                <div className="chat-single-friend">
-                    <img style={{zIndex:'1'}} className='chat-user-dp' src={faizan} alt="" />
-                    <div className="chat-below-image">
-                        <p>Faizan</p>
-                    </div>
-                </div>
-                
-                <div className="chat-single-friend">
-                    <img style={{zIndex:'1'}} className='chat-user-dp' src={faizan} alt="" />
-                    <div className="chat-below-image">
-                        <p>Faizan</p>
-                    </div>
-                </div>
-
+            {
+                user?.followings?.map((friend, index)=>(
+                    <EachChatPerson key={index}  friend={friend}/>
+                    ))
+            }
             </div>
+            <p style={{fontWeight:'500', padding:'0', margin:'0'}}>Recent Conversations</p>
+            <div className="chat-flex">
+            {
+                conversation?.map((con, index)=>(
+                    <div onClick={()=>setCurrentChat(con)}>
+                        <EachConversation key={index} con={con} user={user}/>
+                    </div>
+                    ))
+            }
             </div>
         </div>
 
+        </div>
+
         <div className="chat-lower">
-            <div className="chat-chatting-person">
-                <img className='chat-chatting-dp' src={zikyan} alt="" />
-                <p className='chat-chatting-name'>Zikyan Rasheed</p>
-            </div>
-            <div className="chatBoxTop">
-                <Messages />
-                <Messages own={true} />
-                <Messages />
-                <Messages />
-                <Messages own={true} />
-                <Messages own={true} />
-                <Messages />
-                <Messages />
-                <Messages own={true} />
-            </div>
+            
+            {
+                currentChat?
+                <>
+                    <div className="chat-chatting-person">
+                        <ChatNameDp currentChat={currentChat} user={user}/>
+                    </div>
+                <div className="chatBoxTop">
+                    {
+                        messages?.map((message, index)=>(
+                            <Messages key={index} message={message} own={message?.sender === user?._id}/>
+                        ))
+                    }
+                    
+                </div>
+                </>:<p style={{margin:'50px 0 350px 0', color:'#D4D4D4', fontSize:'18px'}}>Send a message to start a conversation</p>
+                
+            }
             <div className="chat-type-message">
                 <textarea name="" id="" cols="30" rows="1" placeholder='Type Your Message...'></textarea>
-                <SendRoundedIcon style={{fontSize:'30px', backgroundColor:'#4E426D', padding:'5px', borderRadius:'100%', color:'#EFF3FA'}} />
+                <SendRoundedIcon style={{fontSize:'30px', backgroundColor:'#4E426D', padding:'5px', borderRadius:'100%', color:'#EFF3FA', cursor:'pointer'}} />
             </div>
         </div>
     </div>
