@@ -94,3 +94,8 @@ export const postMessage = async (messageData)=>{
     const response=await axios.post('/api/chat/postmessage',messageData)
     return response.data
 }
+
+export const postConversation = async (conversationData)=>{
+    const response=await axios.post('/api/chat/postconversation',conversationData)
+    return response.data
+}

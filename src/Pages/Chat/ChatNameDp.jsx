@@ -3,7 +3,7 @@ import zikyan from '../../images/zikyan_dp.jpg';
 import { getUserById } from '../../service/api';
 
 export default function ChatNameDp({currentChat, user}) {
-    const friendId = currentChat.members.find((m)=>m !== user?._id)
+    const friendId = currentChat?.members?.find((m)=>m !== user?._id)
     const [getFriend, setFriend] = useState()
     const defaultImage="https://res.cloudinary.com/zikyancloudinary/image/upload/v1648317487/nimffj7bonumvaapmbp6.jpg"
 

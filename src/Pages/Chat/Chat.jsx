@@ -4,9 +4,10 @@ import EachChatPerson from './EachChatPerson';
 import Messages from './Messages';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import { useSelector } from 'react-redux';
-import { getConversation, getMessage, postMessage } from '../../service/api';
+import { getConversation, getMessage, postMessage, postConversation } from '../../service/api';
 import EachConversation from './EachConversation';
 import ChatNameDp from './ChatNameDp';
+import {io} from 'socket.io-client'
 
 export default function Chat() {
     const { user }= useSelector((state)=>state.auth)
@@ -14,7 +15,32 @@ export default function Chat() {
     const [currentChat, setCurrentChat] = useState()
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState()
+    const [arrivalMessage, setArrivalMessage] = useState(null)
+    const socket=useRef()
     const scrollRef = useRef()
+    const [zik, setZik] = useState()
+
+    useEffect(()=>{
+        socket.current = io('ws://localhost:8900')
+        socket.current.on('getMessage', data =>{
+            setArrivalMessage({
+                sender: data.senderId,
+                text: data.text,
+                createdAt: Date.now()
+            })
+        })
+    },[])
+
+    useEffect(()=>{
+        arrivalMessage && currentChat?.members.includes(arrivalMessage.sender) && setMessages((prev)=>[...prev, arrivalMessage])
+    },[arrivalMessage, currentChat])
+
+    useEffect(()=>{
+        socket.current.emit('addUser', user?._id)
+        socket.current.on('getUsers', users=>{
+        })
+    },[user])
+
     useEffect(()=>{
         const fetchData = async ()=>{
             const res = await getConversation(user?._id)
@@ -35,10 +61,32 @@ export default function Chat() {
         const res = await postMessage(message)
         setMessages([...messages, res])
         setNewMessage('')
+
+        const receiverId = currentChat.members.find(member=> member !== user?._id)
+
+        socket.current.emit('sendMessage',{
+            senderId: user?._id,
+            receiverId,
+            text: newMessage
+        })
     }
+
     useEffect(()=>{
         scrollRef.current?.scrollIntoView({behavior:'smooth'})
     },[messages])
+
+    const handleConversation = async (friend)=>{
+        const data={
+            senderId: user?._id,
+            receiverId: friend
+        }
+        const res = await postConversation(data)
+        setCurrentChat(res)
+    }
+    const test = (zik)=>{
+        console.log(zik)
+    }
+
   return (
     <div className='chat-container'>
         <div className="chat-upper-parent">
@@ -47,7 +95,9 @@ export default function Chat() {
             <div className="chat-flex">
             {
                 user?.followings?.map((friend, index)=>(
-                    <EachChatPerson key={index}  friend={friend}/>
+                    <div onClick={()=>test(friend)}>
+                        <EachChatPerson key={index}  friend={friend}/>
+                    </div>
                     ))
             }
             </div>
