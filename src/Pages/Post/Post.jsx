@@ -8,9 +8,10 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { Link, useParams } from 'react-router-dom';
 import { getPostByIdOne, getUserById } from '../../service/api';
-import { format } from 'timeago.js';
+import  {format}  from 'timeago.js';
 import { useSelector } from 'react-redux';
 import SubmitComment from '../../Components/EachComment/SubmitComment';
+
 
 export default function Post(props) {
     const [post, setPost] = useState()

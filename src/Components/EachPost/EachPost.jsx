@@ -12,7 +12,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { Link } from 'react-router-dom';
 import { getUserById } from '../../service/api';
-import { format } from 'timeago.js'
+import { format } from 'timeago.js';
 
 export default function EachPost({darkMode, post}) {
     const [user, setUser] = useState([])
@@ -36,7 +36,7 @@ export default function EachPost({darkMode, post}) {
                                     </Link>
                                 <div className="mainbar-post-belowname">
                                     <p className='mainbar-post-time-tag'>#{post?.tag},&nbsp;</p>
-                                    <p className='mainbar-post-time-tag'>{format(post.createdAt)}</p>
+                                    <p className='mainbar-post-time-tag'>{format(post?.createdAt)}</p>
                                 </div>
                             </div>
                     </div>

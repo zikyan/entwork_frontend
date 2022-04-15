@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import zikyan from '../../images/zikyan_dp.jpg';
 import { getUserById } from '../../service/api';
+import { format } from 'timeago.js';
 
 
 export default function Messages({message, own}) {
@@ -18,7 +19,10 @@ export default function Messages({message, own}) {
       <div className={own ?'chat-messages own':''}>
         <div className="chat-messages">
             <img className='chat-user-dp' src={img?.profilePicture || defaultImage} alt="" />
-            <p>{message?.text}</p>
+            <div className="chat-message-time">
+              <p className='chat-message-style'>{message?.text}</p>
+              <p className='chat-time-style'>{format(message?.createdAt)}</p>
+            </div>
         </div>
     </div>
   )
