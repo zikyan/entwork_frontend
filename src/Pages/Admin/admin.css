@@ -1,0 +1,52 @@
+.admin-alluser{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.admin-vertical-dots{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.admin-allcomment{
+   margin: 0;
+   padding: 20px;
+}
+.admin-panel-heading{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 18px;
+}
+.admin-comment-vertical-dots-icon{
+    cursor: pointer;
+    margin-right: 20px;
+}
+.admin-box-design{
+    margin-top: 25px;
+    padding: 0px 20px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
+.admin-box-design-lower{
+    margin-top: 15px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.admin-comment-post{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.admin-comment-box-design{
+    margin-top: 25px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
+.admin-comment-people{
+    display: flex;
+}

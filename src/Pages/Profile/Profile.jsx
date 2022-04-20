@@ -182,7 +182,7 @@ export default function Profile({darkMode}) {
                                 <button className='mainbar-mainpost-share-button'><ShareIcon style={{fontSize:'20px'}} /></button>
                             </div>
                     </div>
-                </div>
+        </div>
       )):''
     :<p style={{paddingTop:'10px'}}>Please Login First <Link to='/login'>Login</Link></p>
     }

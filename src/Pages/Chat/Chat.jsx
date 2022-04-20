@@ -83,9 +83,6 @@ export default function Chat() {
         const res = await postConversation(data)
         setCurrentChat(res)
     }
-    const test = (zik)=>{
-        console.log(zik)
-    }
 
   return (
     <div className='chat-container'>
@@ -95,8 +92,8 @@ export default function Chat() {
             <div className="chat-flex">
             {
                 user?.followings?.map((friend, index)=>(
-                    <div onClick={()=>test(friend)}>
-                        <EachChatPerson key={index}  friend={friend}/>
+                    <div key={index} onClick={()=>handleConversation(friend)}>
+                        <EachChatPerson friend={friend}/>
                     </div>
                     ))
             }
@@ -105,8 +102,8 @@ export default function Chat() {
             <div className="chat-flex">
             {
                 conversation?.map((con, index)=>(
-                    <div onClick={()=>setCurrentChat(con)}>
-                        <EachConversation key={index} con={con} user={user}/>
+                    <div key={index} onClick={()=>setCurrentChat(con)}>
+                        <EachConversation con={con} user={user}/>
                     </div>
                     ))
             }

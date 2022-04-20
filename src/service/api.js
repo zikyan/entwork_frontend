@@ -99,3 +99,18 @@ export const postConversation = async (conversationData)=>{
     const response=await axios.post('/api/chat/postconversation',conversationData)
     return response.data
 }
+
+export const getAllUser = async ()=>{
+    const response=await axios.get('/api/users/getalluser')
+    return response.data
+}
+
+export const getAllPostAdmin = async ()=>{
+    const response=await axios.get('/api/post/getallpostadmin')
+    return response.data
+}
+
+export const getAllComment = async ()=>{
+    const response=await axios.get('/api/post/getallcomment')
+    return response.data
+}

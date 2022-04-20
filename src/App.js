@@ -16,6 +16,7 @@ import TwitterVirals from './Pages/TwitterVirals/TwitterVirals';
 import WeeklyWinner from './Pages/WeeklyWinner/WeeklyWinner';
 import Recommended from './Pages/Recommended/Recommended';
 import EditProfile from './Pages/EditProfile/EditProfile';
+import Admin from './Pages/Admin/Admin';
 import { useState } from 'react';
 // import Login from './Pages/Login/Login';
 import React from 'react';
@@ -80,6 +81,7 @@ function App() {
                 <Route exact path='/addjob' element={<AddJob darkmode={darkMode}/>} />
                 <Route exact path='/editprofile/:name' element={<EditProfile darkmode={darkMode}/>} />
                 <Route exact path='/chat' element={<Chat />} />
+                <Route exact path='/admin' element={<Admin darkmode={darkMode}/>} />
               </Routes>
             </div>
             <div className='right-flex'>
