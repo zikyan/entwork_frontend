@@ -32,8 +32,34 @@ export default function AddJob() {
   }
 
   return (
-<div className='addpost-parent'>
-  <p>Post Job?</p>
+
+    <div className="login-form">
+        <div className="l-form">
+            <form className="form" onSubmit={handleOnSubmit}>
+                <h1 className="form__title">Post Job</h1>
+
+                <div className="form__div">
+                  <input type="text" className='form__input' name="text" ref={caption} placeholder=" " />
+                  <label for="" className="form__label">Job Heading</label>
+                </div>
+
+                <div className="form__div">
+                  <input type="text" className='form__input' name='tag' ref={des} placeholder=" " />
+                  <label for="" className="form__label">Job Description</label>
+                </div>
+
+                <div className="form__div">
+                  <input type="text" className='form__input' name='tag' ref={tag} placeholder=" " />
+                  <label for="" className="form__label">Tag</label>
+                </div>
+
+                
+                <input type="submit" className='form__button' value="Post"/>
+            </form>
+        </div>
+        </div>
+/* <div className='addpost-parent'>
+  <p>Post Job</p>
     <form onSubmit={handleOnSubmit}>
       <div>
         <div>
@@ -45,7 +71,7 @@ export default function AddJob() {
       </div>
     <button type='submit' className='navbar-signup-button'>Post</button>
     </form>
-</div>
+</div> */
 
   )
 }

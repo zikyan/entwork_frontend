@@ -1,9 +1,4 @@
 import { useState, useEffect } from 'react';
-import zikyan from '../../images/zikyan_dp.jpg';
-import faizan from '../../images/faizan.jpg';
-import cat from '../../images/cat-post.jpg';
-import casio from '../../images/casio.jpg';
-// import test from '../../images/test.jpg';
 import ShareIcon from '@mui/icons-material/Share';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';

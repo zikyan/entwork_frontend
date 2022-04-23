@@ -27,7 +27,7 @@ export default function Navbar(props) {
     }
 
     return (
-        <div>
+        <div className='ziktest'>
         <div className={`navbar-parent ${props.darkmode?"changeModenav":""}`}>
             <div className="navbar-left">
                 <Link to='/' className='navbar-logo'><p>EntWork</p></Link>

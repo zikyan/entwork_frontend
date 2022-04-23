@@ -54,7 +54,7 @@ function App() {
       <SignUp ShowsignUp={ShowsignUp}/> */}
     {/* <div  className={`${ShowLogin&&ShowsignUp ? "app-parent" : "app-parent2"}`}>  */}
     <div> 
-      <div>
+      <div className='mobile-navbar'>
       <Navbar className='navbar-sticky'
       //  handleLoginClick={handleLoginClick}
       //  handleSignupClick={handleSignupClick}

@@ -58,3 +58,28 @@
     background: #656768;
     border-radius: 8px;
 }
+@media only screen and (max-width:900px){
+    .left-flex{
+        display: none;
+    }
+    .right-flex{
+        display: none;
+    }
+    .app-parent{
+        padding: 0;
+    }
+    .main-flex{
+        margin: 0;
+    }
+    .mobile-navbar{
+        display: none;
+    }
+}
+@media only screen and (max-width:500px){
+    .main-flex{
+        margin: 0;
+        padding: 0;
+        overflow-y: scroll;
+        height: 100vh;
+    }
+}

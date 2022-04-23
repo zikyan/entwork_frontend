@@ -7,7 +7,8 @@ import { useSelector } from 'react-redux';
 import { getConversation, getMessage, postMessage, postConversation } from '../../service/api';
 import EachConversation from './EachConversation';
 import ChatNameDp from './ChatNameDp';
-import {io} from 'socket.io-client'
+import {io} from 'socket.io-client';
+import { useNavigate } from 'react-router-dom';
 
 export default function Chat() {
     const { user }= useSelector((state)=>state.auth)
@@ -18,7 +19,7 @@ export default function Chat() {
     const [arrivalMessage, setArrivalMessage] = useState(null)
     const socket=useRef()
     const scrollRef = useRef()
-    const [zik, setZik] = useState()
+    const navigate=useNavigate()
 
     useEffect(()=>{
         socket.current = io('ws://localhost:8900')
@@ -29,6 +30,9 @@ export default function Chat() {
                 createdAt: Date.now()
             })
         })
+        if(!user){
+            navigate('/login')
+        }
     },[])
 
     useEffect(()=>{

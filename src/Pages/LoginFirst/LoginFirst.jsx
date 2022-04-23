@@ -28,6 +28,9 @@ export default function LoginFirst() {
     if(isSuccess){
       navigate('/')
     }
+    if(user){
+      navigate('/')
+    }
     dispatch(reset())
   },[user, isError, isSuccess, message, dispatch, navigate])
 
@@ -51,26 +54,23 @@ export default function LoginFirst() {
   }
 
   return (
-    <div  className="login-form">
-        <div className="form-box solid">
-          <form onSubmit={handleOnSubmit}>
-            <div className="bar">
-            <h1 className="login-text">Log In</h1>
-            </div>
-            <label>Email</label>
-            <br></br>
-            <input type="text"  name="email" value={email} onChange={handleOnChange} className="login-box" />
-            <br></br>
-            <label>Password</label>
-            <br></br>
-            <input type="password" name="password" value={password} onChange={handleOnChange} className="login-box" />
-            <br></br>
-            <div className="login-button-zik">
-            <input type="submit" value="LOGIN" className="login-btn" />
-            </div>
-            
-          </form>
+    <div className="login-form">
+        <div className="l-form">
+            <form className="form" onSubmit={handleOnSubmit}>
+                <h1 className="form__title">Login In</h1>
+
+                <div className="form__div">
+                  <input type="text" className='form__input' name="email" value={email} onChange={handleOnChange} placeholder=" " />
+                  <label className="form__label">Email</label>
+                </div>
+
+                <div className="form__div">
+                  <input type="password" className='form__input' name="password" value={password} onChange={handleOnChange} placeholder=" " />
+                  <label className="form__label">Password</label>
+                </div>
+                <input type="submit" className='form__button' value="Login"/>
+            </form>
         </div>
-      </div>
+        </div>
   )
 }

@@ -42,97 +42,59 @@ export default function AddPost() {
     return navigate('/');
   }
   return (
-<div className='addpost-parent'>
+
+<div className="login-form">
+        <div className="l-form">
+            <form className="form" onSubmit={handleOnSubmit}>
+                <h1 className="form__title">What's on your mind?</h1>
+
+                <div className="form__div">
+                  <input type="text" className='form__input' name="text" ref={text} placeholder=" " />
+                  <label className="form__label">Your Text Here</label>
+                </div>
+
+                <div className="form__div">
+                  <input type="text" className='form__input' name='tag' ref={tag} placeholder=" " />
+                  <label className="form__label">Tag</label>
+                </div>
+
+                <div className="form__div">
+                  <input type="file" className='form__input' name='file' onChange={(e)=>{setSelectImage(e.target.files[0])}} />
+                </div>
+
+                
+                <input type="submit" className='form__button' value="Post"/>
+            </form>
+        </div>
+        </div>
+
+/* <div className='addpost-parent'>
+  <div className="addpost-container">
   <p>What's on your mind?</p>
     <form onSubmit={handleOnSubmit}>
       <div>
         <div style={{width:'300px'}}>
-            <input  style={{marginTop:'10px'}} name='text' ref={text}  type="text" className='post-comment-textarea' placeholder='Enter Text Here'/>
-            <input  style={{marginTop:'10px'}} name='tag' ref={tag}  type="text" className='post-comment-textarea' placeholder='Tag'/>
-            <input  style={{marginTop:'10px'}} name='file' onChange={(e)=>{setSelectImage(e.target.files[0])}} className='post-comment-textarea' type="file"/>
+            <input  style={{marginTop:'10px'}} name='text' ref={text}  type="text" className='addpost-textarea' placeholder='Enter Text Here'/>
+              <input  style={{marginTop:'10px'}} name='tag' ref={tag}  type="text" className='addpost-tag' placeholder='Tag'/>
+              <select className='addpost-select'>
+                <option value="fresh">Fresh</option>
+                <option value="hot">Hot</option>
+                <option value="trending">Trending</option>
+                <option value="top">Top</option>
+                <option value="random">Random</option>
+              </select>
+            <div className="addpost-img-video">
+              <input name='file' className='addpost-custom-file-input' onChange={(e)=>{setSelectImage(e.target.files[0])}} type="file"/>
+              <input name='file' className='addpost-custom-file-input' onChange={(e)=>{setSelectImage(e.target.files[0])}} type="file"/>
+            </div>
         </div>
         <br/>
       </div>
     <button type='submit' className='navbar-signup-button addpost-button'>Post</button>
     </form>
-</div>
-
-
-
-  //   <div className='addpost-parent'>
-  //   <p className='postTitle1'><b>What's on your mind?</b></p>
-  //         <div className="addpost-container">
-  //           {/* <div className="addpost-left">
-  //             <div className="addpost-drop-images">
-  //               <p style={{padding:'0',margin:'0'}}>Drop your images here</p>
-                
-                    
-  //             </div>
-              
-             
-  //           </div> */}
-  //           <div className="addpost-right">
-  //             <form onSubmit={handleOnSubmit} className='form1'>
-  //               <div className="form-group-1">
-  //                   {/* <input type="text" name='description' onChange={handleChange} />
-  //                   <input type="text" name='userId' onChange={handleChange} />
-  //                   <input type="text" name='tags' onChange={handleChange} /> */}
-
-                    
-  //                   <div className="addpost-2-buttons">
-  //                   {/* <img className="icon1" alt='test' src={require("../../images/back1.png")}></img> */}
-  //                   {/* <input className='addpost-input1' type="text" name='description' placeholder='Give your post a title' /> */}
-  //                   {/* <textarea className='post-comment-textarea' > */}
-  //                     <input type="text" className='post-comment-textarea' placeholder='Enter Text Here'/>
- 
-  //                     {/* <input className='addpost-input-2' type="text" name='userId' placeholder='User Id' ref={userId} /> */}
-
-  //                    {/* <input className='addpost-input-2' type="text" name='tags' placeholder='Tags' ></input> */}
-  //                   </div>
-
-  //                   <br/>
-  //                   {/*<div className="addpost-select-tags">
-  //                     className="select">Select tags</p>
-  //                     }
-  //                    {/* <button className='btn btn-primary addpost-tags-button'>#sarcastic</button>
-  //                     <button className='btn btn-primary addpost-tags-button'>#depressed</button>
-  //                     <button className='btn btn-primary addpost-tags-button'>#cringe</button>
-  //                     {//<button className='btn btn-primary addpost-tags-button'>#whatsapp</button>}
-  //                      }
-  //                     <br /><br />
-  //                     </div>*/}
-  //                  {/* <div className="addpost-container2">
-  //                  } <img className="icon2" src={require("../../images/img1.png")}></img>
-  //                     //<<ImageIcon style={{color:'#fff', cursor:'pointer'}}/>>
-  //                     }
-  //                     <label className='addpost-choose'><b>
-  //                       Choose image/video</b>
-  //                       <input
-  //                                 className='addpost-file'
-  //                                 type="file"
-  //                                 id="file"
-  //                                 accept=".png,.jpeg,.jpg"
-                                  
-  //                               />
-  //                     </label>
-                    
-  //                   </div>*/}
-                    
-                         
-  //               </div>
-              
-  //                       <div className='addpost-image-preview-container'>
-  //                         {/* <img className='addpost-image-preview' alt="preview" />
-  //                         <CancelIcon className='addpost-preview-cancel' /> */}
-  //                       </div>
-                  
-  //               {/* <button  className='btn btn-success post-button' type='submit'>Post</button> */}
-  //               <button type='submit' className='navbar-signup-button'>Post</button>
-                
-  // </form>
-  //           </div>
-  //         </div>
-  //       </div>
+    </div>
+</div> */
+      
         
   )
 }

@@ -32,6 +32,9 @@ export default function RegisterFirst() {
         if(isSuccess){
           navigate('/')
         }
+        if(user){
+          navigate('/')
+        }
         dispatch(reset())
       },[user, isError, isSuccess, message, dispatch, navigate])
     
@@ -62,42 +65,82 @@ export default function RegisterFirst() {
       }
 
   return (
-    <div  className="login-form">
-        <div className="form-box solid">
-          <form onSubmit={handleOnSubmit}>
-            <div className="bar">
-            <h1 className="login-text">Register</h1>
-            </div>
-            <label>First Name</label>
-            <br></br>
-            <input type="text"  name="first" value={first} onChange={handleOnChange} />
-            <br></br>
-            <label>Last Name</label>
-            <br></br>
-            <input type="text"  name="last" value={last} onChange={handleOnChange} />
-            <br></br>
-            <label>Username</label>
-            <br></br>
-            <input type="text"  name="username" value={username} onChange={handleOnChange} />
-            <br></br>
-            <label>Email</label>
-            <br></br>
-            <input type="email"  name="email" value={email} onChange={handleOnChange} />
-            <br></br>
-            <label>Password</label>
-            <br></br>
-            <input type="password" name="password" value={password} onChange={handleOnChange} />
-            <br></br>
-            <label>Confirm Password</label>
-            <br></br>
-            <input type="password" name="confirmPassword" value={confirmPassword} onChange={handleOnChange} />
-            <br></br>
-            <div className="login-button-zik">
-            <input type="submit" value="Register" className="login-btn" />
-            </div>
+    // <div  className="login-form">
+    //     <div className="form-box solid">
+    //       <form onSubmit={handleOnSubmit}>
+    //         <div className="bar">
+    //         <h1 className="login-text">Register</h1>
+    //         </div>
+    //         <label>First Name</label>
+    //         <br></br>
+    //         <input type="text"  name="first" value={first} onChange={handleOnChange} />
+    //         <br></br>
+    //         <label>Last Name</label>
+    //         <br></br>
+    //         <input type="text"  name="last" value={last} onChange={handleOnChange} />
+    //         <br></br>
+    //         <label>Username</label>
+    //         <br></br>
+    //         <input type="text"  name="username" value={username} onChange={handleOnChange} />
+    //         <br></br>
+    //         <label>Email</label>
+    //         <br></br>
+    //         <input type="email"  name="email" value={email} onChange={handleOnChange} />
+    //         <br></br>
+    //         <label>Password</label>
+    //         <br></br>
+    //         <input type="password" name="password" value={password} onChange={handleOnChange} />
+    //         <br></br>
+    //         <label>Confirm Password</label>
+    //         <br></br>
+    //         <input type="password" name="confirmPassword" value={confirmPassword} onChange={handleOnChange} />
+    //         <br></br>
+    //         <div className="login-button-zik">
+    //         <input type="submit" value="Register" className="login-btn" />
+    //         </div>
             
-          </form>
-        </div>
-      </div>
+    //       </form>
+    //     </div>
+    //   </div>
+
+    <div  className="login-form">
+    <div class="l-form">
+        <form class="form" onSubmit={handleOnSubmit}>
+            <h1 class="form__title">Signup In</h1>
+
+            <div class="form__div">
+              <input type="text" className='form__input' name="first" value={first} onChange={handleOnChange} placeholder=" " />
+              <label class="form__label">First Name</label>
+            </div>
+
+            <div class="form__div">
+              <input type="text" className='form__input' name="last" value={last} onChange={handleOnChange} placeholder=" " />
+              <label class="form__label">Last Name</label>
+            </div>
+
+            <div class="form__div">
+              <input type="text" className='form__input' name="username" value={username} onChange={handleOnChange} placeholder=" " />
+              <label class="form__label">Username</label>
+            </div>
+
+            <div class="form__div">
+              <input type="email" className='form__input' name="email" value={email} onChange={handleOnChange} placeholder=" " />
+              <label class="form__label">Email</label>
+            </div>
+
+            <div class="form__div">
+              <input type="password" className='form__input' name="password" value={password} onChange={handleOnChange} placeholder=" " />
+              <label class="form__label">Password</label>
+            </div>
+
+            <div class="form__div">
+              <input type="password" className='form__input' name="confirmPassword" value={confirmPassword} onChange={handleOnChange} placeholder=" " />
+              <label class="form__label">Confirm Password</label>
+            </div>
+
+            <input type="submit" className='form__button' value="Signup"/>
+        </form>
+    </div>
+  </div>
   )
 }
