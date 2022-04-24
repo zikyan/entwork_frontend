@@ -15,6 +15,10 @@ import { Link } from 'react-router-dom';
 
 export default function recomm(props) {
   return (
+      <>
+    <div className="admin-panel-heading">
+        <p>Recommended Posts</p>
+    </div>
     <div className="recomm-parent">
         <div className={`recomm-box-design ${props.darkmode?"changeModeMain":""}`}>
         {/* <div className="recomm-upper1">
@@ -133,5 +137,6 @@ export default function recomm(props) {
 
 
     </div>
+    </>
   )
 }

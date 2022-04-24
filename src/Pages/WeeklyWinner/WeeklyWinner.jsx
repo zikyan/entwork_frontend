@@ -15,6 +15,10 @@ import { Link } from 'react-router-dom';
 
 export default function wWeklyWinner(props) {
   return (
+      <>
+    <div className="admin-panel-heading">
+        <p>Weekly Winner Posts</p>
+    </div>
     <div className="weekly-parent">
         <div className={`weekly-box-design ${props.darkmode?"changeModeMain":""}`}>
         {/* <div className="weekly-upper1">
@@ -445,5 +449,6 @@ export default function wWeklyWinner(props) {
 
 
     </div>
+    </>
   )
       }

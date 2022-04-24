@@ -10,3 +10,14 @@
     padding: 20px 20px 20px 20px;
     min-width: 80%;
 }
+.twitter-post-dp{
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+}
+.twitter-box-design-lower{
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+}
