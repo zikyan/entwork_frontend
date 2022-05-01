@@ -90,6 +90,7 @@
     cursor: pointer;
     text-decoration: none;
     color: #000;
+    text-align: justify;
 }
 /* .mainbar-post-caption{
     transition: all .2s ease-in-out;
@@ -128,19 +129,26 @@
     transform: scale(0.97);
 }
 .mainbar-mainpost{
-    background-color: #f1f4fa;
-    border-radius: 5px;
+    /* background-color: #f1f4fa; */
+    /* border-radius: 5px; */
     /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
+    /* background-color: crimson; */
+}
+.eachpost-eachpost-center{
+    /* background-color: crimson; */
+    display: flex;
+    justify-content: center;
 }
 .mainbar-mainpost-image{
+    border-radius: 5px;
     object-fit: cover;
     cursor: pointer;
     margin-top: 20px;
-    max-width: 500px;
+    max-width: 600px;
     height: auto;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
     overflow-x: hidden;
     overflow-y: auto;
     text-align:justify;

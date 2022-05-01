@@ -1,7 +1,5 @@
 import {useState, useEffect } from 'react';
 import './profile.css';
-import cover from '../../images/cover.jpg';
-import zikyan from '../../images/zikyan_dp.jpg';
 import EditIcon from '@mui/icons-material/Edit';
 import { useParams } from 'react-router-dom';
 import { getUserByUsername, getPostById, followUser, unfollowUser, getCommentByUsername, getJobByUser } from '../../service/api';
@@ -33,6 +31,7 @@ export default function Profile({darkMode}) {
     setToggleState(index);
   };
   const defaultImage="https://res.cloudinary.com/zikyancloudinary/image/upload/v1648317487/nimffj7bonumvaapmbp6.jpg"
+  const defaultCover="https://res.cloudinary.com/zikcover/image/upload/v1651253301/woguznjd3fvl35ssktz1.jpg"
   useEffect(()=>{
     const fetchData = async ()=>{
 
@@ -73,7 +72,7 @@ export default function Profile({darkMode}) {
     <div>
     <div className="profile-parent">
         <div className="profile-cover-container">
-            <img className='profile-cover-img' src={cover} alt="" />
+            <img className='profile-cover-img' src={username?.coverPicture || defaultCover} alt="" />
             <img className='profile-display-img' src={username?.profilePicture || defaultImage} alt="" />
             <div className='profile-follow-text'>
               <p className='profile-name-text'>{username?.first?.charAt(0).toUpperCase() + username?.first?.slice(1)} {username?.last?.charAt(0).toUpperCase() + username?.last?.slice(1)} </p>
@@ -154,6 +153,7 @@ export default function Profile({darkMode}) {
                                     </p>
                                 <div className="mainbar-post-belowname">
                                     <p className='mainbar-post-time-tag'>#{post?.tag},&nbsp;</p>
+                                    <p className='mainbar-post-time-tag'>{post?.category},&nbsp;</p>
                                     <p className='mainbar-post-time-tag'>{format(post?.createdAt)}</p>
                                 </div>
                             </div>
@@ -163,11 +163,21 @@ export default function Profile({darkMode}) {
                             <button className='mainbar-button-save mainbar-button-download'>Download</button>
                         </div>
                 </div>
-                <Link to={`/post/${post?._id}`} className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post.text}</p></Link>
+                {/* <Link to={`/post/${post?._id}`} className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post.text}</p></Link> */}
 
-                    <div className={`mainbar-mainpost ${darkMode?"changeModelite":""}`}>
+                    {/* <div className={`mainbar-mainpost ${darkMode?"changeModelite":""}`}>
                         <img className='mainbar-mainpost-image' src={post?.img} alt="" />
+                    </div> */}
+
+                    <div className="eachpost-eachpost-center">
+                        
+                        <div className={`mainbar-mainpost ${darkMode?"changeModelite":""}`}>
+                            <Link to={`/post/${post?._id}`} className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post?.text}</p></Link>
+                            <Link to={`/post/${post?._id}`}><img className='mainbar-mainpost-image' src={post?.img} alt="" /></Link>
+                        </div>
+                        
                     </div>
+                    
                     <div className="mainbar-mainpost-below">
                             <div className="mainbar-mainpost-below-left">
                                 <div className="mainbar-mainpost-button-flex-parent">
@@ -208,7 +218,7 @@ export default function Profile({darkMode}) {
     {
       toggleState===4?
       postedJob.map((job)=>(
-        <PostedJob key={job._id} job={job} user={user} darkMode={darkMode}/>
+        <PostedJob key={job._id} job={job} darkMode={darkMode}/>
       ))
       :''
     }
@@ -231,7 +241,7 @@ export default function Profile({darkMode}) {
     {
       user?
       toggleState===7?
-      <p>About Section</p>
+      <p>{username?.about}</p>
       :''
       :''
     }

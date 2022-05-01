@@ -38,6 +38,7 @@ export default function Post(props) {
                         <Link style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`,fontWeight:'600'}} to={`/profile/${postUser?.username}`}>{postUser?.first?.charAt(0).toUpperCase() + postUser?.first?.slice(1)} {postUser?.last?.charAt(0).toUpperCase() + postUser?.last?.slice(1)}</Link>
                             <div className="post-post-belowname">
                                 <p className='post-post-time-tag'>#{post?.tag},&nbsp;</p>
+                                <p className='post-post-time-tag'>{post?.category},&nbsp;</p>
                                 <p className='post-post-time-tag'>{format(post?.createdAt)}</p>
                             </div>
                         </div>
@@ -47,11 +48,21 @@ export default function Post(props) {
                         <button className='post-button-save post-button-download'>Download</button>
                     </div>
             </div>
-            <p className={`post-post-caption ${props.darkmode?"changeModeP":""}`} style={{marginTop:'10px', cursor:'auto'}}>{post?.text}</p>
+            {/* <p className={`post-post-caption ${props.darkmode?"changeModeP":""}`} style={{marginTop:'10px', cursor:'auto'}}>{post?.text}</p>
 
                 <div className={`post-mainpost ${props.darkmode?"changeModelite":""}`}>
                     <img className='post-mainpost-image' src={post?.img} alt="" />
-                </div>
+                </div> */}
+
+                <div className="eachpost-eachpost-center">
+                        
+                        <div className={`mainbar-mainpost ${props.darkmode?"changeModelite":""}`}>
+                            <p className={`post-post-caption ${props.darkmode?"changeModeMain":""}`} style={{marginTop:'10px'}}>{post?.text}</p>
+                            <img className='post-mainpost-image' src={post?.img} alt="" />
+                        </div>
+                        
+                    </div>
+
                 <div className="post-mainpost-below">
                         <div className="post-mainpost-below-left">
                             <div className="post-mainpost-button-flex-parent">

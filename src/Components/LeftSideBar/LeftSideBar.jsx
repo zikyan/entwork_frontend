@@ -21,12 +21,12 @@ export default function LeftSideBar(props) {
       <div className={`${props.darkmode?"darkleftsidebar-upper2":"leftsidebar-upper2"}`}>
       <p className={`${props.darkmode?"darkleftsidebar-text":"leftsidebar-text"}`}>EntWork</p>
           <ul className='leftsidebar-filter'>
-            <li className={`${props.darkmode?"darkleftsidebar-filter-selected":"leftsidebar-filter-selected"}`}><AllInclusiveIcon className='leftsidebar-material-icon'/>All</li>
-            <li><LocalFireDepartmentIcon className='leftsidebar-material-icon'/>Hot</li>
-            <li><TrendingUpIcon className='leftsidebar-material-icon'/>Trending</li>
-            <li><AutoAwesomeIcon className='leftsidebar-material-icon'/>Fresh</li>
-            <li><ClearAllIcon className='leftsidebar-material-icon'/>Top</li>
-            <li><ShuffleIcon className='leftsidebar-material-icon'/>Random</li>
+           <Link className='leftsidebar-ul-link' to='/'><li className={`${props.darkmode?"darkleftsidebar-filter-selected":"leftsidebar-filter-selected"}`}><AllInclusiveIcon className='leftsidebar-material-icon'/>All</li></Link>
+            <Link to='/?category=Hot' className='leftsidebar-ul-link'><li><LocalFireDepartmentIcon className='leftsidebar-material-icon'/>Hot</li></Link>
+            <Link to='/?category=Trending' className='leftsidebar-ul-link'><li><TrendingUpIcon className='leftsidebar-material-icon'/>Trending</li></Link>
+            <Link to='/?category=Fresh' className='leftsidebar-ul-link'><li><AutoAwesomeIcon className='leftsidebar-material-icon'/>Fresh</li></Link>
+            <Link to='/?category=Top' className='leftsidebar-ul-link'><li><ClearAllIcon className='leftsidebar-material-icon'/>Top</li></Link>
+            <Link to='/?category=Random' className='leftsidebar-ul-link'><li><ShuffleIcon className='leftsidebar-material-icon'/>Random</li></Link>
           </ul>
       
       
@@ -34,8 +34,8 @@ export default function LeftSideBar(props) {
       <p className={`${props.darkmode?"darkleftsidebar-lower-text":"leftsidebar-lower-text"}`}>Top Tags</p>
         <div className="leftsidebar-filter">
           <ul>
-            <li>#sarcasm</li>
-            <li>#depressed</li>
+          <Link className='leftsidebar-ul-link' to='/?tag=sarcastic'><li>#sarcasm</li></Link>
+          <Link className='leftsidebar-ul-link' to='/?tag=depressed'><li>#depressed</li></Link>
             <li>#one punch man</li>
             <li>#tiktok</li>
             <li>#dragon ball</li>

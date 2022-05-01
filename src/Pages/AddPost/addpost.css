@@ -48,6 +48,8 @@
 .addpost-img-video{
     margin-top: 10px;
 }
-.addpost-custom-file-input{
-    
+.addpost-category-filter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

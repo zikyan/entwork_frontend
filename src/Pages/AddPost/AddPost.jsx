@@ -8,8 +8,8 @@ import { createPost } from '../../service/api';
 export default function AddPost() {
   const text=useRef()
   const tag=useRef()
-  const [image, setImage] = useState("")
   const [selectImage, setSelectImage] = useState('')
+  const [categoryVar, setCategoryVar] = useState('Hot')
 
   const { user }=useSelector((state)=>state.auth)
   const navigate=useNavigate()
@@ -36,7 +36,8 @@ export default function AddPost() {
       user: user,
       text: text.current.value,
       tag: tag.current.value,
-      img: res.url
+      img: res.url,
+      category:categoryVar
     };
     await createPost(postData);
     return navigate('/');
@@ -56,6 +57,20 @@ export default function AddPost() {
                 <div className="form__div">
                   <input type="text" className='form__input' name='tag' ref={tag} placeholder=" " />
                   <label className="form__label">Tag</label>
+                </div>
+
+                <div style={{marginBottom:'10px'}} className="addpost-category-filter work-filter form__div">
+                  <p>Select Category:</p>
+                    <select onChange={(e)=>{
+                      const selectCategory=e.target.value;
+                      setCategoryVar(selectCategory)
+                    }}>
+                        <option value="Hot">Hot</option>
+                        <option value="Trending">Trending</option>
+                        <option value="Fresh">Fresh</option>
+                        <option value="Top">Top</option>
+                        <option value="Random">Random</option>
+                    </select>
                 </div>
 
                 <div className="form__div">

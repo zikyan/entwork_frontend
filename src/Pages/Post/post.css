@@ -28,20 +28,6 @@
     font-size: 12px;
     font-weight: 500;
 }
-.post-post-caption{
-    font-size: 20px;
-    line-height: 1.5rem;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    color: #000;
-}
-/* .post-post-caption{
-    transition: all .2s ease-in-out;
-} */
-/* .post-post-caption:hover{
-    color: #0299FD;
-} */
 .post-post1{
     display: flex;
     justify-content: space-between;
@@ -58,6 +44,14 @@
     padding: 5px 20px;
     font-size: 15px;
     border-radius: 2px;
+}
+.post-post-caption{
+    font-size: 20px;
+    line-height: 1.5rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #000;
+    text-align: justify;
 }
 .post-button-download{
     margin-left: 20px;
@@ -80,7 +74,7 @@
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
-.post-mainpost-image{
+/* .post-mainpost-image{
     cursor: pointer;
     margin-top: 20px;
     object-fit: cover;
@@ -93,7 +87,7 @@
     overflow-x: hidden;
     overflow-y: auto;
     text-align:justify;
-}
+} */
 .post-mainpost-below{
     display: flex;
     justify-content: space-between;
@@ -325,6 +319,19 @@
     color: white;
     background-color: rgb(26, 24, 24);
 }
+.post-mainpost-image{
+    border-radius: 5px;
+    object-fit: cover;
+    margin-top: 20px;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    /* margin-left: auto;
+    margin-right: auto; */
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}
 @media only screen and (max-width:900px){
     .post-mainpost-image{
         margin-top: 20px;
@@ -361,8 +368,7 @@
         height: auto;
         max-width: 550px;
         max-height: 550px;
-        border-radius: 5px;
-        
+        border-radius: 5px;   
     }
 }
 

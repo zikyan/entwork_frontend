@@ -73,8 +73,8 @@
     transform: scale(0.97);
 }
 .leftsidebar-filter-selected{
-    background-color: #f1f4fa;
-    margin: 5px 0px;
+    /* background-color: #f1f4fa; */
+    /* margin: 5px 0px; */
 }
 .leftsidebar-text{
     padding-top: 15px;
@@ -146,3 +146,7 @@
     background-color: #f1f4fa83;
     margin: 5px 0px;
 } */
+.leftsidebar-ul-link{
+    color: black;
+    text-decoration: none;
+}

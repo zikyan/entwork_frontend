@@ -1,14 +1,14 @@
 import './addjob.css';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 import { createJob } from '../../service/api';
 
 export default function AddJob() {
   const caption=useRef()
   const des=useRef()
   const tag=useRef()
+  const [categoryVar, setCategoryVar] = useState('Web Development')
 
   const { user }=useSelector((state)=>state.auth)
   const navigate=useNavigate()
@@ -25,7 +25,8 @@ export default function AddJob() {
         user:user,
         caption:caption.current.value,
         des:des.current.value,
-        tag:tag.current.value
+        tag:tag.current.value,
+        category:categoryVar
       }
       createJob(jobData)
       navigate('/work')
@@ -53,6 +54,19 @@ export default function AddJob() {
                   <label for="" className="form__label">Tag</label>
                 </div>
 
+                <div style={{marginBottom:'10px'}} className="addpost-category-filter work-filter form__div">
+                  <p>Select Category:</p>
+                    <select onChange={(e)=>{
+                      const selectCategory=e.target.value;
+                      setCategoryVar(selectCategory)
+                    }}>
+                        <option value='Web Development'>Web Development</option>
+                        <option value='App Development'>App Development</option>
+                        <option value='UX/UI'>UX/UI</option>
+                        <option value='Logo Designing'>Logo Designing</option>
+                        <option value='Content Writing'>Content Writing</option>
+                    </select>
+                </div>
                 
                 <input type="submit" className='form__button' value="Post"/>
             </form>

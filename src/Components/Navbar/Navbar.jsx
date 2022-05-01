@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import './navbar.css';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
@@ -12,12 +12,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser, reset } from '../../features/auth/authSlice';
 import zikyan from '../../images/zikyan_dp.jpg';
+import { getUserById } from '../../service/api';
 
 export default function Navbar(props) {
 
     const navigate=useNavigate()
     const dispatch=useDispatch()
     const {user}=useSelector((state)=>state.auth)
+    const [freshUser, setFreshUser] = useState()
     const defaultImage="https://res.cloudinary.com/zikyancloudinary/image/upload/v1648317487/nimffj7bonumvaapmbp6.jpg"
 
     const handleLogout=()=>{
@@ -25,6 +27,13 @@ export default function Navbar(props) {
         dispatch(reset())
         navigate('/')
     }
+    useEffect(()=>{
+        const fetchData = async ()=>{
+            const fresh = await getUserById(user?._id)
+            setFreshUser(fresh)
+        }
+        fetchData()
+    },[])
 
     return (
         <div className='ziktest'>
@@ -50,7 +59,7 @@ export default function Navbar(props) {
                     {
                     user ? 
                     (   <>
-                            <Link to={`/profile/${user?.username}`}><img className='navbar-post-dp' src={user?.profilePicture || defaultImage} alt="" /></Link>
+                            <Link to={`/profile/${user?.username}`}><img className='navbar-post-dp' src={freshUser?.profilePicture || defaultImage} alt="" /></Link>
                             <Link to={`/profile/${user?.username}`} style={{textDecoration:'none', color:'#000'}}><li><p className='navbarDynamicUserName'>{user.first?.charAt(0).toUpperCase() + user.first?.slice(1)}</p></li></Link>
                             <li><button onClick={handleLogout}  className='navbar-signup-button'>Logout</button></li>
                         </>

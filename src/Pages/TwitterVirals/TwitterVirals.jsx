@@ -3,6 +3,7 @@ import './twittervirals.css'
 import axios from "axios"
 import twitterImg from '../../images/twitter1.png'
 import { format } from 'timeago.js'
+import { Link } from "react-router-dom"
 
 export default function TwitterVirals({darkMode}) {
     const [tweetData, setTweetData] = useState([]);
@@ -46,11 +47,21 @@ export default function TwitterVirals({darkMode}) {
                         </div> */}
                 </div>
 
-                <p className="mainbar-post-caption" style={{marginTop:'10px'}}>{post?.text.slice(0,-23)}</p>
+                {/* <p className="mainbar-post-caption" style={{marginTop:'10px'}}>{post?.text.slice(0,-23)}</p>
 
                     <div className={`mainbar-mainpost ${darkMode?"changeModelite":""}`}>
                         <img className='mainbar-mainpost-image' src={post?.extended_entities?.media[0]?.media_url_https} alt="" />
+                    </div> */}
+
+                    <div className="eachpost-eachpost-center">
+                        
+                        <div className={`mainbar-mainpost ${darkMode?"changeModelite":""}`}>
+                            <Link to={`/post/${post?._id}`} className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post?.text.slice(0,-23)}</p></Link>
+                            <Link to={`/post/${post?._id}`}><img className='mainbar-mainpost-image' src={post?.extended_entities?.media[0]?.media_url_https} alt="" /></Link>
+                        </div>
+                        
                     </div>
+                    
                     </div>
         ))
       }

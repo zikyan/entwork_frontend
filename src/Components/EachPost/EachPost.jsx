@@ -31,6 +31,7 @@ export default function EachPost({darkMode, post}) {
                                     </Link>
                                 <div className="mainbar-post-belowname">
                                     <p className='mainbar-post-time-tag'>#{post?.tag},&nbsp;</p>
+                                    <p className='mainbar-post-time-tag'>{post?.category},&nbsp;</p>
                                     <p className='mainbar-post-time-tag'>{format(post?.createdAt)}</p>
                                 </div>
                             </div>
@@ -40,11 +41,16 @@ export default function EachPost({darkMode, post}) {
                             <button className='mainbar-button-save mainbar-button-download'>Download</button>
                         </div>
                 </div>
-                <Link to={`/post/${post._id}`} className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post.text}</p></Link>
-
-                    <div className={`mainbar-mainpost ${darkMode?"changeModelite":""}`}>
-                        <img className='mainbar-mainpost-image' src={post?.img} alt="" />
+                    <div className="eachpost-eachpost-center">
+                        
+                        <div className={`mainbar-mainpost ${darkMode?"changeModelite":""}`}>
+                            <Link to={`/post/${post?._id}`} className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post?.text}</p></Link>
+                            <Link to={`/post/${post?._id}`}><img className='mainbar-mainpost-image' src={post?.img} alt="" /></Link>
+                        </div>
+                        
                     </div>
+                    
+
                     <div className="mainbar-mainpost-below">
                             <div className="mainbar-mainpost-below-left">
                                 <div className="mainbar-mainpost-button-flex-parent">

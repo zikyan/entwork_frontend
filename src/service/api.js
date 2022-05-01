@@ -40,8 +40,8 @@ export const getPostByIdOne = async (id)=>{
     return response.data
 }
 
-export const getAllJob = async ()=>{
-    const response=await axios.get(`/api/job/getalljob/`)
+export const getAllJob = async (params)=>{
+    const response=await axios.get(`/api/job/getalljob/${params}`)
     return response.data
 }
 

@@ -13,7 +13,6 @@ export default function EachJob({darkMode, job}) {
         }
         fetchData()
     },[])
-    console.log(user)
   return (
     <div className={`work-box-design-lower ${darkMode?"changeModeRec":""}`}>
         <div className="work-upper3">
@@ -24,6 +23,7 @@ export default function EachJob({darkMode, job}) {
                             <Link to={ `/profile/${user?.username}`} style={{textDecoration:'none', color:`${darkMode?"#fff":'#000'}`,fontWeight:'600'}}>{user?.first?.charAt(0).toUpperCase() + user?.first?.slice(1)} {user?.last?.charAt(0).toUpperCase() + user?.last?.slice(1)}</Link>
                             <div className="work-post-belowname">
                                 <p className='work-post-time-tag'>#{job?.tag},&nbsp;</p>
+                                <p className='work-post-time-tag'>{job?.category},&nbsp;</p>
                                 <p className='work-post-time-tag'>{format(job.createdAt)}</p>
                             </div>
                         </div>
@@ -32,7 +32,7 @@ export default function EachJob({darkMode, job}) {
                         <button className='work-button-save'>Save</button>
                     </div>
             </div>
-            <Link to='/post' className={`work-post-caption ${darkMode?"changeModeRec":""}`}><p style={{marginTop:'10px'}}>{job?.caption}</p></Link>
+            <p className={`work-post-caption ${darkMode?"changeModeRec":""}`} style={{marginTop:'10px'}}>{job?.caption}</p>
 
                 <div className={`${darkMode?"darkwork-workpost":"work-workpost"}`}>
                     {/* <img className='work-workpost-image' src={cat} alt="" /> */}
