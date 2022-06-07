@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logoutUser, reset } from '../../features/auth/authSlice';
 import zikyan from '../../images/zikyan_dp.jpg';
 import { getUserById } from '../../service/api';
+import ShareIcon from '@mui/icons-material/Share';
 
 export default function Navbar(props) {
 
@@ -45,6 +46,7 @@ export default function Navbar(props) {
             <div className="navbar-middle">
                 <ul className='navbar-ul'>
                     <Link to='/'><li><HomeRoundedIcon className='navbar-navicons-selected'/></li></Link>
+                    <Link to='/shared'><li><ShareIcon className='navbar-navicons'/></li></Link>
                     <Link to='/work'><li><BusinessCenterIcon className='navbar-navicons'/></li></Link>
                     <Link to='/twittervirals'><li><TwitterIcon className='navbar-navicons'/></li></Link>
                     <Link to='/weeklywinner'><li><EmojiEventsRoundedIcon className='navbar-navicons'/></li></Link>

@@ -2,7 +2,7 @@ import {useState, useEffect } from 'react';
 import './profile.css';
 import EditIcon from '@mui/icons-material/Edit';
 import { useParams } from 'react-router-dom';
-import { getUserByUsername, getPostById, followUser, unfollowUser, getCommentByUsername, getJobByUser } from '../../service/api';
+import { getUserByUsername, getPostById, followUser, unfollowUser, getCommentByUsername, getJobByUser, deletePost } from '../../service/api';
 import ShareIcon from '@mui/icons-material/Share';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
@@ -24,6 +24,7 @@ export default function Profile({darkMode}) {
   const [followed, setFollowed] = useState()
   const [allComments, setAllComments] = useState()
   const [postedJob, setPostedJob] = useState()
+  const [temp, setTemp] = useState('')
   
 
   const [toggleState, setToggleState] = useState(1);
@@ -57,7 +58,7 @@ export default function Profile({darkMode}) {
         }
     }
     fetchData()
-  },[])
+  },[temp])
 
   const handleFollowButton = async ()=>{
       if(followed){
@@ -67,6 +68,10 @@ export default function Profile({darkMode}) {
         await followUser(username?._id, {user:user?._id})
       }
       setFollowed(!followed)
+  }
+  const handleDeletePost = async (postId)=>{
+    deletePost(postId)
+    setTemp('Deleted Successfully')
   }
   return (
     <div>
@@ -158,10 +163,16 @@ export default function Profile({darkMode}) {
                                 </div>
                             </div>
                     </div>
-                        <div className="mainbar-post-right">
-                            <button className='mainbar-button-save'>Save</button>
-                            <button className='mainbar-button-save mainbar-button-download'>Download</button>
+                    {
+                      user?.username === username?.username ?
+                      <>
+                      <div className="mainbar-post-right">
+                            <Link to={`/editpost/${post?._id}`}><button className='mainbar-button-save'>Edit</button></Link>
+                            <button onClick={()=>handleDeletePost(post?._id)} className='mainbar-button-save mainbar-button-download'>Delete</button>
                         </div>
+                      </>
+                      :''
+                    }
                 </div>
                 {/* <Link to={`/post/${post?._id}`} className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post.text}</p></Link> */}
 

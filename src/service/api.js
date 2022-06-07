@@ -114,3 +114,21 @@ export const getAllComment = async ()=>{
     const response=await axios.get('/api/post/getallcomment')
     return response.data
 }
+
+export const deletePost = async (postId)=>{
+    const response=await axios.delete(`/api/post/deletepost/${postId}`)
+    return response.data
+}
+
+export const editPost = async (id, data)=>{
+    const response=await axios.put(`/api/post/editpost/${id}`, data)
+    return response.data
+}
+export const sharePost = async (postData)=>{
+    const response = await axios.post('/api/post/sharepost/',postData)
+    return response.data
+}
+export const getSharePost = async (id)=>{
+    const response = await axios.get(`/api/post/getsharepost/${id}`)
+    return response.data
+}

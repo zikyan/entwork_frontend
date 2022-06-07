@@ -6,28 +6,46 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { Link } from 'react-router-dom';
-import { getUserById } from '../../service/api';
+import { getUserById, sharePost, getSharePost } from '../../service/api';
 import { format } from 'timeago.js';
+import { useSelector } from 'react-redux';
 
 export default function EachPost({darkMode, post}) {
-    const [user, setUser] = useState([])
+    const { user }=useSelector((state)=>state.auth)
+    const [userById, setUserById] = useState([])
+    const [share, setShare] = useState()
     const defaultImage="https://res.cloudinary.com/zikyancloudinary/image/upload/v1648317487/nimffj7bonumvaapmbp6.jpg"
 
     useEffect(()=>{
         const fetchData = async ()=>{
-            const username=await getUserById(post.user)
-            setUser(username)
+            const username= await getUserById(post?.user)
+            setUserById(username)
+            const sharedPosts = await getSharePost(user?._id)
+            setShare(sharedPosts)
         }
         fetchData()
     },[])
+
+    const handleShare = async (e)=>{
+        const postData = {
+            user: e?.user,
+            share: user,
+            post:e?._id,
+            text: e?.text,
+            tag: e?.tag,
+            img: e?.img,
+            category:e?.category
+          }
+        await sharePost(postData)
+    }
   return (
     <div className="mainbar-upper3">
                 <div className="mainbar-post1">
                     <div className="mainbar-post-left">
-                            <Link to={`/profile/${user?.username}`}><img className='mainbar-post-dp' src={user?.profilePicture || defaultImage} alt="" /></Link>
+                            <Link to={`/profile/${userById?.username}`}><img className='mainbar-post-dp' src={userById?.profilePicture || defaultImage} alt="" /></Link>
                             <div className="mainbar-post-username">
-                                <Link style={{textDecoration:'none', color:`${darkMode?"#fff":'#000'}`,fontWeight:'600'}} to={`/profile/${user?.username}`}>
-                                    {user?.first?.charAt(0).toUpperCase() + user?.first?.slice(1)} {user?.last?.charAt(0).toUpperCase() + user?.last?.slice(1)}
+                                <Link style={{textDecoration:'none', color:`${darkMode?"#fff":'#000'}`,fontWeight:'600'}} to={`/profile/${userById?.username}`}>
+                                    {userById?.first?.charAt(0).toUpperCase() + userById?.first?.slice(1)} {userById?.last?.charAt(0).toUpperCase() + userById?.last?.slice(1)}
                                     </Link>
                                 <div className="mainbar-post-belowname">
                                     <p className='mainbar-post-time-tag'>#{post?.tag},&nbsp;</p>
@@ -62,7 +80,7 @@ export default function EachPost({darkMode, post}) {
                             <div className="mainbar-mainpost-below-right">
                                 <button className='mainbar-mainpost-facebook-button'><FacebookIcon style={{fontSize:'20px',marginRight:'5px'}}/>Facebook</button>
                                 <button className='mainbar-mainpost-twitter-button'><TwitterIcon style={{fontSize:'20px',marginRight:'5px'}} />Twitter</button>
-                                <button className='mainbar-mainpost-share-button'><ShareIcon style={{fontSize:'20px'}} /></button>
+                                <button className='mainbar-mainpost-share-button' onClick={()=>handleShare(post)}><ShareIcon style={{fontSize:'20px'}} /></button>
                             </div>
                     </div>
                 </div>
