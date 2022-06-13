@@ -71,7 +71,7 @@ export default function Share({darkMode}) {
                                     <div style={{marginLeft:'35px', marginTop:'-15px'}} className="mainbar-post-belowname">
                                         <p className='mainbar-post-time-tag'>#{sharePost?.tag},&nbsp;</p>
                                         <p className='mainbar-post-time-tag'>{sharePost?.category},&nbsp;</p>
-                                        <p style={{fontWeight:'600'}} className='mainbar-post-time-tag'>Shared Post</p>
+                                        <p className='mainbar-post-time-tag'>Shared Post</p>
                                     </div>
                                 </div>
                         </div>

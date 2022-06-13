@@ -27,6 +27,7 @@ import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddJob from './Pages/AddJob/AddJob';
 import Chat from './Pages/Chat/Chat';
+import EditJob from './Pages/EditJob/EditJob';
 
 function App() {
   const [darkMode,setdarkMode]=useState(false)
@@ -86,6 +87,7 @@ function App() {
                 <Route exact path='/admin' element={<Admin darkmode={darkMode}/>} />
                 <Route exact path='/editpost/:id' element={<EditPost/>} />
                 <Route exact path='/shared' element={<Share darkmode={darkMode}/>} />
+                <Route exact path='/editjob/:id' element={<EditJob/>} />
               </Routes>
             </div>
             <div className='right-flex'>

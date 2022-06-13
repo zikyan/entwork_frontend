@@ -13,13 +13,15 @@ export default function Friends({friend}) {
         }
         fetchData()
     },[])
+  
+
   return (
     <div className="admin-vertical-dots">
         <div className="admin-alluser">
-            <Link to={`/profile/${user?.username}`}><img className='mainbar-post-dp' src={user?.profilePicture || defaultImage} alt="" /></Link>
-            <Link style={{textDecoration:'none', color:"black",fontWeight:'600'}} to={`/profile/${user?.username}`}>
-            {user?.first?.charAt(0).toUpperCase() + user?.first?.slice(1)} {user?.last?.charAt(0).toUpperCase() + user?.last?.slice(1)}
-            </Link>
+             <a href={`/profile/${user?.username}`}> <img className='mainbar-post-dp' src={user?.profilePicture || defaultImage} alt="" /> </a>
+             <a style={{textDecoration:'none', color:"black",fontWeight:'600'}} href={`/profile/${user?.username}`}>
+                {user?.first?.charAt(0).toUpperCase() + user?.first?.slice(1)} {user?.last?.charAt(0).toUpperCase() + user?.last?.slice(1)}
+            </a>
         </div>
     </div>
   )

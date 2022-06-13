@@ -6,7 +6,7 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { Link } from 'react-router-dom';
-import { getUserById, sharePost, getSharePost } from '../../service/api';
+import { getUserById, sharePost, getSharePost, savePost } from '../../service/api';
 import { format } from 'timeago.js';
 import { useSelector } from 'react-redux';
 
@@ -38,6 +38,46 @@ export default function EachPost({darkMode, post}) {
           }
         await sharePost(postData)
     }
+
+    const downloadClick = (e)=>{
+        const fetchUrl = e
+    
+          fetch(fetchUrl, {
+            method: 'GET',
+            headers: {}
+          })
+            .then((response) => {
+              response.arrayBuffer().then(function (buffer) {
+                const url = window.URL.createObjectURL(new Blob([buffer]));
+                const link = document.createElement('a');
+    
+                link.href = url;
+                link.setAttribute(
+                  'download',
+                  post?.text+'.'+e.substr(e.lastIndexOf('.') + 1));
+                document.body.appendChild(link);
+                link.click();
+              });
+            })
+            .catch((error) => {
+              console.log(error);
+              return error;
+            });
+    }
+
+    const saveClick = async (e)=>{
+        const postData = {
+            user: e?.user,
+            saved: user,
+            post:e?._id,
+            text: e?.text,
+            tag: e?.tag,
+            img: e?.img,
+            category:e?.category
+          }
+        await savePost(postData)
+    }
+    
   return (
     <div className="mainbar-upper3">
                 <div className="mainbar-post1">
@@ -55,8 +95,9 @@ export default function EachPost({darkMode, post}) {
                             </div>
                     </div>
                         <div className="mainbar-post-right">
-                            <button className='mainbar-button-save'>Save</button>
-                            <button className='mainbar-button-save mainbar-button-download'>Download</button>
+                            <button className='mainbar-button-save' onClick={()=>saveClick(post)}>Save</button>
+                            <button className='mainbar-button-save mainbar-button-download' onClick={()=>downloadClick(post?.img)}>Download</button>
+                            
                         </div>
                 </div>
                     <div className="eachpost-eachpost-center">
@@ -80,7 +121,9 @@ export default function EachPost({darkMode, post}) {
                             <div className="mainbar-mainpost-below-right">
                                 <button className='mainbar-mainpost-facebook-button'><FacebookIcon style={{fontSize:'20px',marginRight:'5px'}}/>Facebook</button>
                                 <button className='mainbar-mainpost-twitter-button'><TwitterIcon style={{fontSize:'20px',marginRight:'5px'}} />Twitter</button>
-                                <button className='mainbar-mainpost-share-button' onClick={()=>handleShare(post)}><ShareIcon style={{fontSize:'20px'}} /></button>
+                                {
+                                    user?._id === post?.user ? '' : <button className='mainbar-mainpost-share-button' onClick={()=>handleShare(post)}><ShareIcon style={{fontSize:'20px'}} /></button>
+                                }
                             </div>
                     </div>
                 </div>

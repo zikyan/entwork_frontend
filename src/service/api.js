@@ -132,3 +132,35 @@ export const getSharePost = async (id)=>{
     const response = await axios.get(`/api/post/getsharepost/${id}`)
     return response.data
 }
+export const savePost = async (postData)=>{
+    const response = await axios.post('/api/post/savepost/',postData)
+    return response.data
+}
+export const getSavePost = async (id)=>{
+    const response = await axios.get(`/api/post/getsavepost/${id}`)
+    return response.data
+}
+export const deleteSavedPost = async (postId)=>{
+    const response=await axios.delete(`/api/post/deletesavedpost/${postId}`)
+    return response.data
+}
+export const saveJob = async (jobData)=>{
+    const response = await axios.post('/api/job/savejob/',jobData)
+    return response.data
+}
+export const getSaveJob = async (id)=>{
+    const response = await axios.get(`/api/job/getsavejob/${id}`)
+    return response.data
+}
+export const deleteSavedJob = async (jobId)=>{
+    const response=await axios.delete(`/api/job/deletesavedjob/${jobId}`)
+    return response.data
+}
+export const deleteJob = async (jobId)=>{
+    const response=await axios.delete(`/api/job/deletejob/${jobId}`)
+    return response.data
+}
+export const getJobById = async (id)=>{
+    const response=await axios.get(`/api/job/getjobbyid/${id}`)
+    return response.data
+}

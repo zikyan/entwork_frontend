@@ -18,6 +18,7 @@ export default function Post(props) {
     const [postUser, setPostUser] = useState()
     const { id } = useParams()
     const { user }=useSelector((state)=>state.auth)
+    const defaultImage="https://res.cloudinary.com/zikyancloudinary/image/upload/v1648317487/nimffj7bonumvaapmbp6.jpg"
 
     useEffect(()=>{
         const fetchData = async ()=>{
@@ -33,7 +34,7 @@ export default function Post(props) {
         <div className="post-upper3">
             <div className="post-post1">
                 <div className="post-post-left">
-                        <Link to={`/profile/${postUser?.username}`}><img className='post-post-dp' src={postUser?.profilePicture} alt="" /></Link>
+                        <Link to={`/profile/${postUser?.username}`}><img className='post-post-dp' src={postUser?.profilePicture || defaultImage} alt="" /></Link>
                         <div className="post-post-username">
                         <Link style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`,fontWeight:'600'}} to={`/profile/${postUser?.username}`}>{postUser?.first?.charAt(0).toUpperCase() + postUser?.first?.slice(1)} {postUser?.last?.charAt(0).toUpperCase() + postUser?.last?.slice(1)}</Link>
                             <div className="post-post-belowname">

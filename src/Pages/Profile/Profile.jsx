@@ -2,7 +2,7 @@ import {useState, useEffect } from 'react';
 import './profile.css';
 import EditIcon from '@mui/icons-material/Edit';
 import { useParams } from 'react-router-dom';
-import { getUserByUsername, getPostById, followUser, unfollowUser, getCommentByUsername, getJobByUser, deletePost } from '../../service/api';
+import { getUserByUsername, getPostById, followUser, unfollowUser, getCommentByUsername, getJobByUser, deletePost, getSavePost, getSaveJob } from '../../service/api';
 import ShareIcon from '@mui/icons-material/Share';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
@@ -15,6 +15,8 @@ import { useSelector } from 'react-redux';
 import UserComments from './UserComments';
 import PostedJob from './PostedJob';
 import Friends from './Friends';
+import SavedExtra from './SavedExtra';
+import SavedJob from './SavedJob';
 
 export default function Profile({darkMode}) {
   const {name}=useParams()
@@ -25,6 +27,8 @@ export default function Profile({darkMode}) {
   const [allComments, setAllComments] = useState()
   const [postedJob, setPostedJob] = useState()
   const [temp, setTemp] = useState('')
+  const [save, setSave] = useState()
+  const [savedJob, setSavedJob] = useState()
   
 
   const [toggleState, setToggleState] = useState(1);
@@ -45,34 +49,54 @@ export default function Profile({darkMode}) {
         const jobs = await getJobByUser(user?._id)
         setPostedJob(jobs)
 
+        // get all saved posts
+    
+        const savedPosts = await getSavePost(user?._id)
+        setSave(savedPosts)
 
-      // follow/unfollow logic
-      const userByName = await getUserByUsername(name)
-      const post = await getPostById(userByName?._id)
-      setUsername(userByName)
-      setPosts(post)
-        if(await (user?.followings.includes(userByName?._id)) === true){
-            setFollowed(true)
-        }else{
-            setFollowed(false)
-        }
+        // get all saved jobs
+
+        const savedJobs = await getSaveJob(user?._id)
+        setSavedJob(savedJobs)
     }
     fetchData()
+  },[])
+
+  useEffect(()=>{
+    const fetchFollowed = async ()=>{
+      
+    // follow/unfollow logic
+    const userByName = await getUserByUsername(name)
+    const post = await getPostById(userByName?._id)
+    setUsername(userByName)
+    setPosts(post)
+      if(await (user?.followings.includes(userByName?._id)) === true){
+          setFollowed(true)
+      }else{
+          setFollowed(false)
+      } 
+    }
+    fetchFollowed()
+        
   },[temp])
+  // console.log(user?.followings.includes(username?._id))
 
   const handleFollowButton = async ()=>{
+    
       if(followed){
         await unfollowUser(username?._id, {user:user?._id})
-        
+        setFollowed(!followed)
       }else{
         await followUser(username?._id, {user:user?._id})
+        setFollowed(!followed)
       }
-      setFollowed(!followed)
+      
   }
   const handleDeletePost = async (postId)=>{
-    deletePost(postId)
+    await deletePost(postId)
     setTemp('Deleted Successfully')
   }
+  
   return (
     <div>
     <div className="profile-parent">
@@ -86,9 +110,9 @@ export default function Profile({darkMode}) {
             {
                 user? // so that no guest can see follow/unfollow button
                 user?.username !== username?.username ? // same cannot follow/unfollow himself
-                followed===true?
-                <button onClick={handleFollowButton} className='profile-follow-button'><p>&nbsp;Unfollow</p></button>
-                :<button onClick={handleFollowButton} className='profile-follow-button'><p>&nbsp;Follow</p></button>
+                // followed===true?
+                <button onClick={handleFollowButton} className='profile-follow-button'><p>&nbsp;{followed===true? 'Unfollow' : 'Follow'}</p></button>
+                // :<button onClick={handleFollowButton} className='profile-follow-button'><p>&nbsp;Follow</p></button>
                 : '':''
             }
             {
@@ -136,7 +160,7 @@ export default function Profile({darkMode}) {
 
                     <li className={toggleState === 7 ? "profile-li-active" : "profile-li-nonactive"}
                     onClick={() => toggleTab(7)}>
-                    About
+                    Skills
                     </li>
 
                 </ul>
@@ -151,7 +175,7 @@ export default function Profile({darkMode}) {
         <div key={post._id} className="mainbar-upper3">
                 <div className="mainbar-post1">
                     <div className="mainbar-post-left">
-                            <img className='mainbar-post-dp' src={username?.profilePicture} alt="" />
+                            <img className='mainbar-post-dp' src={username?.profilePicture || defaultImage} alt="" />
                             <div className="mainbar-post-username">
                                 <p style={{textDecoration:'none', color:`${darkMode?"#fff":'#000'}`,fontWeight:'600'}}>
                                     {username?.first?.charAt(0).toUpperCase() + username?.first?.slice(1)} {username?.last?.charAt(0).toUpperCase() + username?.last?.slice(1)}
@@ -222,13 +246,14 @@ export default function Profile({darkMode}) {
 
     {
       toggleState===3?
-      <p>Saved Posts Section</p>
-      :''
+      save?.map((post)=>(
+        <SavedExtra post={post} darkMode={darkMode} />
+      )):''
     }
 
     {
       toggleState===4?
-      postedJob.map((job)=>(
+      postedJob?.map((job)=>(
         <PostedJob key={job._id} job={job} darkMode={darkMode}/>
       ))
       :''
@@ -236,7 +261,9 @@ export default function Profile({darkMode}) {
 
     {
       toggleState===5?
-      <p>Saved Jobs Section</p>
+      savedJob?.map((job)=>(
+        <SavedJob key={job._id} job={job} darkMode={darkMode}/>
+      ))
       :''
     }
 

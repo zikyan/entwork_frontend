@@ -67,8 +67,8 @@ export default function Mainbar({darkMode}) {
         </div>
         <div className={`mainbar-box-design-lower ${darkMode?"changeModeMain":""}`}>
             {
-                posts.map((post,index)=>(
-                    <EachPost key={index} darkMode={darkMode} post={post} />
+                posts.map((post)=>(
+                    <EachPost key={post._id} darkMode={darkMode} post={post} />
                 ))
             }
         </div>
