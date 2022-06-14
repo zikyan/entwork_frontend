@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { format } from 'timeago.js';
-import { getUserById, saveJob } from '../../service/api';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import { getUserById, saveJob, reportJob, addJobLike } from '../../service/api';
 import { useSelector } from 'react-redux';
 
 export default function EachJob({darkMode, job}) {
     const { user }= useSelector((state)=>state.auth)
+    const [like,setLike] = useState(job?.count)
+    const [isLiked,setIsLiked] = useState(false)
     const defaultImage="https://res.cloudinary.com/zikyancloudinary/image/upload/v1648317487/nimffj7bonumvaapmbp6.jpg"
     const [userById, setUserById] = useState()
     useEffect(()=>{
@@ -28,6 +32,19 @@ export default function EachJob({darkMode, job}) {
           }
         await saveJob(jobData)
     }
+    useEffect(() => {
+        setIsLiked(job?.vote.includes(user?._id));
+      }, [user?._id, job?.vote]);
+  
+      const likeHandler = async (id)=>{
+        await addJobLike(id,{userId:user?._id})
+        setLike(isLiked ? like-1 : like+1)
+        setIsLiked(!isLiked)
+      }
+    const handleReportJob = async (e) =>{
+        await reportJob(e,{currentUser:user?._id})
+        window.location.reload(false)
+    }
   return (
     <div className={`work-box-design-lower ${darkMode?"changeModeRec":""}`}>
         <div className="work-upper3">
@@ -43,8 +60,12 @@ export default function EachJob({darkMode, job}) {
                             </div>
                         </div>
                 </div>
-                    <div className="work-post-right">
-                        <button className='work-button-save' onClick={()=>saveClick(job)}>Save</button>
+                    <div style={{display:'flex', flexDirection:'column'}} className="work-post-right">
+                        <button style={{width:'90px'}} className='work-button-save' onClick={()=>saveClick(job)}>Save</button>
+                        {
+                            job?.reportuser.includes(user?._id)? '':
+                            <button style={{marginTop:'10px'}} className='work-button-save' onClick={()=>handleReportJob(job?._id)}>Report</button>
+                        }
                     </div>
             </div>
             <p className={`work-post-caption ${darkMode?"changeModeRec":""}`} style={{marginTop:'10px'}}>{job?.caption}</p>
@@ -52,6 +73,16 @@ export default function EachJob({darkMode, job}) {
                 <div className={`${darkMode?"darkwork-workpost":"work-workpost"}`}>
                     {/* <img className='work-workpost-image' src={cat} alt="" /> */}
                     <p>{job?.des}</p>
+                </div>
+                <div  className="mainbar-mainpost-below">
+                    <div style={{display:'flex', alignItems:'flex-start'}} className="mainbar-mainpost-below-left">
+                        <div className="mainbar-mainpost-button-flex-parent">
+                        <p style={{marginTop:'2px'}} className='like-count'>{ like }</p>
+                                    <button style={{width:'80px', marginLeft:'10px'}} onClick={()=>likeHandler(job?._id)}>
+                                      { isLiked? <ArrowDownwardIcon /> : <ArrowUpwardIcon />}
+                                    </button>
+                        </div>
+                    </div>
                 </div>
                 <div className="work-workpost-below">
                     <button className='work-start-chat-button'>Start Chat</button>

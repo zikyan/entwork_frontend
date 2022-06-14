@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getJobById } from '../../service/api';
+import { editJob, getJobById } from '../../service/api';
 
 
 export default function EditJob() {
@@ -28,19 +28,17 @@ export default function EditJob() {
     fetchData()
   },[])
 
-  const handleOnSubmit=(e)=>{
+  const handleOnSubmit = async (e)=>{
       e.preventDefault()
       const jobData={
-        user:user,
         caption:caption.current.value,
         des:des.current.value,
         tag:tag.current.value,
         category:categoryVar
       }
-    //   createJob(jobData)
-      navigate('/work')
+      await editJob(id,jobData)
+      navigate(`/profile/${user?.username}`)
   }
-  console.log(job?.des)
 
   return (
 
@@ -50,18 +48,15 @@ export default function EditJob() {
                 <h1 className="form__title">Post Job</h1>
 
                 <div className="form__div">
-                  <input type="text" className='form__input' name="text" ref={caption} placeholder=" " />
-                  <label for="" className="form__label">Job Heading</label>
+                  <input type="text" className='form__input' name="text" ref={caption} placeholder={job?.caption} />
                 </div>
 
                 <div className="form__div">
-                  <input type="text" className='form__input' name='tag' ref={des} placeholder=" " />
-                  <label for="" className="form__label">Job Description</label>
+                  <input type="text" className='form__input' name='tag' ref={des} placeholder={job?.des} />
                 </div>
 
                 <div className="form__div">
-                  <input type="text" className='form__input' name='tag' ref={tag} placeholder=" " />
-                  <label for="" className="form__label">Tag</label>
+                  <input type="text" className='form__input' name='tag' ref={tag} placeholder={job?.tag} />
                 </div>
 
                 <div style={{marginBottom:'10px'}} className="addpost-category-filter work-filter form__div">

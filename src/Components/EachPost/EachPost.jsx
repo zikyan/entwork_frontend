@@ -6,7 +6,7 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { Link } from 'react-router-dom';
-import { getUserById, sharePost, getSharePost, savePost } from '../../service/api';
+import { getUserById, sharePost, getSharePost, savePost, getCommentByPostId, addPostLike } from '../../service/api';
 import { format } from 'timeago.js';
 import { useSelector } from 'react-redux';
 
@@ -14,6 +14,16 @@ export default function EachPost({darkMode, post}) {
     const { user }=useSelector((state)=>state.auth)
     const [userById, setUserById] = useState([])
     const [share, setShare] = useState()
+    const [commentByPost, setCommentByPost] = useState()
+
+    const [like,setLike] = useState(post?.count)
+    const [isLiked,setIsLiked] = useState(false)
+
+   
+
+    // const [dislike,setDisLike] = useState(1)
+    // const [isDisLiked,setIsDisLiked] = useState(false)
+
     const defaultImage="https://res.cloudinary.com/zikyancloudinary/image/upload/v1648317487/nimffj7bonumvaapmbp6.jpg"
 
     useEffect(()=>{
@@ -22,6 +32,8 @@ export default function EachPost({darkMode, post}) {
             setUserById(username)
             const sharedPosts = await getSharePost(user?._id)
             setShare(sharedPosts)
+            const comments = await getCommentByPostId(post?._id)
+            setCommentByPost(comments)
         }
         fetchData()
     },[])
@@ -77,6 +89,32 @@ export default function EachPost({darkMode, post}) {
           }
         await savePost(postData)
     }
+
+    useEffect(() => {
+      setIsLiked(post?.vote.includes(user?._id));
+    }, [user?._id, post?.vote]);
+
+    const likeHandler = async (id)=>{
+      await addPostLike(id,{userId:user?._id})
+      setLike(isLiked ? like-1 : like+1)
+      setIsLiked(!isLiked)
+    }
+
+    // const dislikeHandler =()=>{
+    //   setDisLike(isDisLiked ? dislike-1 : dislike+1)
+    //   setIsDisLiked(!isDisLiked)
+    // }
+
+    // const dislikeHandler = async(id)=>{
+    //   await addPostLike(id,{userId:user?._id})
+    //   if(post?.vote.includes(user?._id)){
+    //     setLike()
+    //   }else{
+
+    //   }
+    //   setLike(isLiked ? like+1 : like-1)
+    //   setIsLiked(!isLiked)
+    // }
     
   return (
     <div className="mainbar-upper3">
@@ -113,9 +151,12 @@ export default function EachPost({darkMode, post}) {
                     <div className="mainbar-mainpost-below">
                             <div className="mainbar-mainpost-below-left">
                                 <div className="mainbar-mainpost-button-flex-parent">
-                                    <button> <ArrowUpwardIcon /> 1.5k</button>
-                                    <button><ArrowDownwardIcon />40</button>
-                                    <button><ChatBubbleOutlineIcon style={{fontSize:'20px',marginRight:'5px'}}/>100</button>
+                                    <p style={{marginTop:'2px'}} className='like-count'>{ like }</p>
+                                    <button style={{width:'80px'}} onClick={()=>likeHandler(post?._id)}>
+                                      { isLiked? <ArrowDownwardIcon /> : <ArrowUpwardIcon />}
+                                    </button>
+                                    {/* <button style={{width:'80px'}} onClick={()=>dislikeHandler(post?._id)}><ArrowDownwardIcon /></button> */}
+                                    <Link style={{textDecoration:'none'}} to={`/post/${post?._id}`}><button style={{width:'80px'}}><ChatBubbleOutlineIcon style={{fontSize:'20px', marginRight:'5px'}}/> <p className='like-count'>{post?.comment}</p> </button></Link>
                                 </div>
                             </div>
                             <div className="mainbar-mainpost-below-right">

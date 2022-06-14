@@ -2,15 +2,13 @@ import { useState, useEffect } from "react"
 import './admin.css'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getUserById, getAllUser, getAllPostAdmin, getAllComment, getAllJob } from "../../service/api";
+import { getUserById, getAllUser, getAllPostAdmin, getAllComment, getAllJobAdmin, deleteUser, deletePost, deleteComment, userWarning } from "../../service/api";
 import { Link } from "react-router-dom";
 import { format } from 'timeago.js';
 import AdminPostUsername from "./AdminPostUsername";
 import AdminPostDp from "./AdminPostDp";
 import CommentUserName from "../../Components/EachComment/CommentUserName";
-import CommentUserImage from "../../Components/EachComment/CommentUserImage";
 import AdminEachJob from '../Admin/AdminEachJob'
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export default function Admin({darkMode}) {
   const { user }=useSelector((state)=>state.auth)
@@ -53,12 +51,32 @@ export default function Admin({darkMode}) {
 
         // Get All Jobs
 
-        const getJobs = await getAllJob()
+        const getJobs = await getAllJobAdmin()
         setAllJob(getJobs)
       }
       fetchData()
   },[user,navigate])
 
+
+  const handleDeleteUser = async (id)=>{
+    await deleteUser(id)
+    window.location.reload(false)
+  }
+
+  const handleDeletePost = async (id)=>{
+    await deletePost(id)
+    window.location.reload(false)
+  }
+
+  const handleDeleteComment = async (id)=>{
+    await deleteComment(id)
+    window.location.reload(false)
+  }
+
+  const handleWarning = async (id)=>{
+    await userWarning(id)
+    window.location.reload(false)
+  }
   return (
     <>
     <div className="admin-panel-heading">
@@ -103,8 +121,16 @@ export default function Admin({darkMode}) {
               <Link style={{textDecoration:'none', color:"black",fontWeight:'600'}} to={`/profile/${user?.username}`}>
                 {user?.first?.charAt(0).toUpperCase() + user?.first?.slice(1)} {user?.last?.charAt(0).toUpperCase() + user?.last?.slice(1)}
               </Link>
+              
             </div>
-              <MoreVertIcon className="admin-vertical-dots-icon" />
+              <div className="mainbar-post-right">
+              <div style={{display:'flex', fontSize:'12px', marginRight:'15px'}}>
+                <p>Reports: {user?.report}&nbsp;</p>
+                <p>| Warnings: {user?.warning}</p>
+              </div>
+                    <button className='mainbar-button-save' onClick={()=>handleWarning(user?._id)}>Send Warning</button>
+                    <button onClick={()=>handleDeleteUser(user?._id)} className='mainbar-button-save mainbar-button-download'>Clean</button>
+              </div>
             </div>
             :''
           }
@@ -124,18 +150,21 @@ export default function Admin({darkMode}) {
                                 <div className="mainbar-post-belowname">
                                     <p className='mainbar-post-time-tag'>#{post?.tag},&nbsp;</p>
                                     <p className='mainbar-post-time-tag'>{format(post?.createdAt)}</p>
+                                    
                                 </div>
                             </div>
                     </div>
-                        <div className="mainbar-post-right">
-                          <MoreVertIcon className="admin-vertical-dots-icon" />
-                        </div>
-                </div>
-                <Link to={`/post/${post?._id}`} className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post?.text}</p></Link>
-
-                    <div className={`mainbar-mainpost ${darkMode?"changeModelite":""}`}>
-                        <img className='mainbar-mainpost-image' src={post?.img} alt="" />
+                    <div className="mainbar-post-right">
+                    <p style={{textDecoration:'none', color:"black", fontSize:'15px', marginRight:'20px'}}>Post Reports: {post?.report}</p>
+                      <button onClick={()=>handleDeletePost(post?._id)} className='mainbar-button-save mainbar-button-download'>Delete</button>
                     </div>
+                </div>
+                <div className="eachpost-eachpost-center">
+                    <div className={`mainbar-mainpost ${darkMode?"changeModelite":""}`}>
+                      <Link to={`/post/${post?._id}`} className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post?.text}</p></Link>
+                      <img className='mainbar-mainpost-image' src={post?.img} alt="" />
+                    </div>
+                </div>
         </div>
       ))
       :''
@@ -146,16 +175,19 @@ export default function Admin({darkMode}) {
       allComment?.map((comment, index)=>(
         <div key={comment?.commentText} style={{marginTop:'20px'}} className='admin-comment-box-design admin-comment-post'>
           <div className="admin-comment-people admin-allcomment ">
-                    <CommentUserImage comment={comment?.user} />
                         <div className="comment-post-username">
                             <div className="comment-name-time-flex">
                                 <CommentUserName comment={comment?.user} />
                                 <p className='comment-post-time'>&nbsp;{format(comment?.createdAt)}</p>
+                                
                             </div>
                                 <p className='comment-people-text'>{comment?.commentText}</p>
                         </div>
                         </div>
-                        <MoreVertIcon className="admin-comment-vertical-dots-icon" />
+                        <div style={{marginRight:'20px'}} className="mainbar-post-right">
+                        <p style={{textDecoration:'none', color:"black", fontSize:'15px', marginRight:'20px'}}>Comment Reports: {comment?.report}</p>
+                          <button onClick={()=>handleDeleteComment(comment?._id)} className='mainbar-button-save mainbar-button-download'>Delete</button>
+                        </div>
                     </div>
       ))
       :''

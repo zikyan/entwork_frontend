@@ -25,7 +25,7 @@ export default function SavedExtra({post, darkMode}) {
     },[temp])
     const handleDeleteSavedPost = async (postId)=>{
         await deleteSavedPost(postId)
-        window.location.reload(false);
+        window.location.reload(false)
       }
   return (
     

@@ -13,7 +13,7 @@ export default function AdminPostUsername({post}) {
         fetchData()
     },[])
   return (
-    <div>
+    <div style={{display:'flex'}}>
         <Link style={{textDecoration:'none', color:"black",fontWeight:'600'}} to={`/profile/${username?.username}`}>
             {username?.first?.charAt(0).toUpperCase() + username?.first?.slice(1)} {username?.last?.charAt(0).toUpperCase() + username?.last?.slice(1)}
         </Link>

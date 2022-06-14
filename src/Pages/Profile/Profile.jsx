@@ -17,6 +17,7 @@ import PostedJob from './PostedJob';
 import Friends from './Friends';
 import SavedExtra from './SavedExtra';
 import SavedJob from './SavedJob';
+import WarningText from './WarningText';
 
 export default function Profile({darkMode}) {
   const {name}=useParams()
@@ -29,6 +30,7 @@ export default function Profile({darkMode}) {
   const [temp, setTemp] = useState('')
   const [save, setSave] = useState()
   const [savedJob, setSavedJob] = useState()
+  const [showComponent, setShowComponent] = useState(true)
   
 
   const [toggleState, setToggleState] = useState(1);
@@ -96,9 +98,19 @@ export default function Profile({darkMode}) {
     await deletePost(postId)
     setTemp('Deleted Successfully')
   }
-  
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setShowComponent(false)
+    },5000)
+  },[])
+  console.log(username)
   return (
     <div>
+     { user?._id === username?._id && username?.warning>0?
+      showComponent?<WarningText user={user} />:''
+      :''
+     }
     <div className="profile-parent">
         <div className="profile-cover-container">
             <img className='profile-cover-img' src={username?.coverPicture || defaultCover} alt="" />
@@ -193,7 +205,7 @@ export default function Profile({darkMode}) {
                       <div className="mainbar-post-right">
                             <Link to={`/editpost/${post?._id}`}><button className='mainbar-button-save'>Edit</button></Link>
                             <button onClick={()=>handleDeletePost(post?._id)} className='mainbar-button-save mainbar-button-download'>Delete</button>
-                        </div>
+                      </div>
                       </>
                       :''
                     }

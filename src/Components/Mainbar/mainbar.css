@@ -161,16 +161,29 @@
 /* .mainbar-mainpost-below-left button{
     transition: all .2s ease-in-out;
 } */
+.mainbar-mainpost-below-left{
+    width: 100%;
+    margin-right: 20px;
+}
 .mainbar-mainpost-below-left button{
     cursor: pointer;
     background-color: #f0f0f000;
     border: 1px solid #d4d4d4;
     color: #999999;
-    padding: 5px 20px;
+    padding: 1px 20px;
     font-size: 15px;
     font-weight: 700;
-    margin-right: 10px;
     border-radius: 2px;
+}
+.mainbar-mainpost-below-left-comment button{
+    cursor: pointer;
+    background-color: #f0f0f000;
+    border: none;
+    color: #999999;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 2px;
+    margin-left: 10px;
 }
 /* .mainbar-mainpost-below-left button:hover{
     background-color: #F0F0F0;
@@ -252,10 +265,12 @@
 }
 .mainbar-mainpost-button-flex-parent{
     display: flex;
+    justify-content: space-evenly;
 }
 .mainbar-mainpost-button-flex-parent button{
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .mainbar-mainpost-button-flex-parent button:active{
     transform: scale(0.97);
@@ -279,6 +294,11 @@
 .changeModelite{
     color: white;
     background-color: rgb(26, 24, 24);
+}
+.like-count{
+    font-size: 20px;
+    font-weight: 600;
+    color: #6f6d6d;
 }
 
 @media only screen and (max-width:900px){

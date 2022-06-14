@@ -102,3 +102,10 @@
     align-items: center;
     margin-left: 10px;
 }
+.warning-text-parent{
+    background-color: #fff;
+    padding: 10px;
+    text-align: justify;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}

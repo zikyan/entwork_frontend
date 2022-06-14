@@ -91,7 +91,7 @@ export default function Share({darkMode}) {
                         
           
                         <div className="mainbar-mainpost-below">
-                                <div className="mainbar-mainpost-below-left">
+                                {/* <div className="mainbar-mainpost-below-left">
                                     <div className="mainbar-mainpost-button-flex-parent">
                                         <button> <ArrowUpwardIcon /> 1.5k</button>
                                         <button><ArrowDownwardIcon />40</button>
@@ -101,7 +101,7 @@ export default function Share({darkMode}) {
                                 <div className="mainbar-mainpost-below-right">
                                     <button className='mainbar-mainpost-facebook-button'><FacebookIcon style={{fontSize:'20px',marginRight:'5px'}}/>Facebook</button>
                                     <button className='mainbar-mainpost-twitter-button'><TwitterIcon style={{fontSize:'20px',marginRight:'5px'}} />Twitter</button>
-                                </div>
+                                </div> */}
                         </div>
                     </div>
                     ))

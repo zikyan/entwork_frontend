@@ -11,7 +11,6 @@ export default function UserComments({comment}) {
   console.log(comment?._id)
   return (
     <div style={{padding:'20px'}} className="topcomment-comment-people topcomment-subparent">
-              <CommentUserImage comment={comment?.user} />
                         <div className="comment-topcomment-username">
                             <div className="comment-name-time-flex">
                               <CommentUserName comment={comment?.user} />

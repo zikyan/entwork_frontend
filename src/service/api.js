@@ -164,3 +164,63 @@ export const getJobById = async (id)=>{
     const response=await axios.get(`/api/job/getjobbyid/${id}`)
     return response.data
 }
+export const editJob = async (id, data)=>{
+    const response=await axios.put(`/api/job/editjob/${id}`, data)
+    return response.data
+}
+export const deleteUser = async (id)=>{
+    const response=await axios.delete(`/api/admin/deleteuser/${id}`)
+    return response.data
+}
+export const deleteComment = async (id)=>{
+    const response=await axios.delete(`/api/post/deletecomment/${id}`)
+    return response.data
+}
+export const getAllJobAdmin = async (id)=>{
+    const response=await axios.get(`/api/job/getalljobadmin`)
+    return response.data
+}
+export const reportPost = async (id, data)=>{
+    const response = await axios.put(`/api/post/reportpost/${id}`, data)
+    return response.data
+}
+export const getReportPost = async (id)=>{
+    const response = await axios.get(`/api/post/getreportpost/${id}`)
+    return response.data
+}
+export const userWarning = async (id)=>{
+    const response = await axios.put(`/api/user/userwarning/${id}`)
+    return response.data
+}
+export const reportComment = async (id, data)=>{
+    const response = await axios.put(`/api/post/reportcomment/${id}`, data)
+    return response.data
+}
+export const reportJob = async (id, data)=>{
+    const response = await axios.put(`/api/job/reportjob/${id}`, data)
+    return response.data
+}
+export const getCommentByPostId = async (id)=>{
+    const response=await axios.get(`/api/post/getcommentbypostid/${id}`)
+    return response.data
+}
+export const addPostLike = async (id, userId)=>{
+    const response = await axios.put(`/api/post/addpostlike/${id}`, userId)
+    return response.data
+}
+export const getPostByCount = async (count)=>{
+    const response=await axios.get(`/api/post/getpostbycount/${count}`)
+    return response.data
+}
+export const getTopPost = async ()=>{
+    const response=await axios.get('/api/post/gettoppost')
+    return response.data
+}
+export const addJobLike = async (id, userId)=>{
+    const response = await axios.put(`/api/job/addjoblike/${id}`, userId)
+    return response.data
+}
+export const addCommentLike = async (id, userId)=>{
+    const response = await axios.put(`/api/post/addcommentlike/${id}`, userId)
+    return response.data
+}
