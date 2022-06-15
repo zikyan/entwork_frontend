@@ -20,42 +20,6 @@ export default function recomm(props) {
         <p>Recommended Posts</p>
     </div>
     <div className="recomm-parent">
-        <div className={`recomm-box-design ${props.darkmode?"changeModeMain":""}`}>
-        {/* <div className="recomm-upper1">
-            <ul className='recomm-ul'>
-                <li className='recomm-li-selected'>Fun</li>
-                <li>Work</li>
-                <li>Twitter Virals</li>
-                <li>weekly winner</li>
-                <li>Recommended</li>
-            </ul>
-        </div> */}
-        <div className="recomm-upper2">
-            <ul className={`${props.darkmode?"darkrecomm-ul2":"recomm-ul2"}`}>
-                <li>#Cat</li>
-                <li>#Amirliaqat</li>
-                <li>#Pti</li>
-                <li>#MLN</li>
-                <li>#ImranKhan</li>
-                <li>#PetrolPrices</li>
-                <li>#work</li>
-                <li>#css</li>
-                <li>#android</li>
-                <li>#Weekly Highlights</li>
-                <li>#Twitter</li>
-                <li>#Biden</li>
-                <li>#Node</li>
-                <li>#TLp</li>
-                <li>#Afghanistan</li>
-                <li>#KarachiKings</li>
-                <li>#Cricket</li>
-                <li>#Football</li>
-                <li>#LahoreQalandars</li>
-                <li>#SuperBowl</li>
-                <li>#Cat</li>
-            </ul>
-        </div>
-        </div>
         <div className={`recomm-box-design-lower ${props.darkmode?"changeModeMain":""}`}>
         <div className="recomm-upper3">
             <div className="recomm-post1">

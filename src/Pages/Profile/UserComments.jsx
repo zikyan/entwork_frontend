@@ -1,10 +1,7 @@
 import React from 'react'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
-import faizan from '../../images/faizan.jpg';
 import CommentUserName from '../../Components/EachComment/CommentUserName';
 import { format } from 'timeago.js';
-import CommentUserImage from '../../Components/EachComment/CommentUserImage';
 import { Link } from 'react-router-dom';
 
 export default function UserComments({comment}) {
@@ -22,12 +19,8 @@ export default function UserComments({comment}) {
 
                                 <div className="comment-topcomment-votes">
                                     <div className="profile-comment-votes-flex1">
+                                        <p className='comment-votes-style'>{comment?.count}</p>
                                         <ArrowUpwardIcon style={{color:'#999999',fontSize:'20px'}} />
-                                        <p className='comment-votes-style'>180</p>
-                                    </div>
-                                    <div className="profile-comment-votes-flex2">
-                                        <ArrowDownwardIcon style={{color:'#999999',fontSize:'20px'}} />
-                                        <p className='comment-votes-style' >12</p>
                                     </div>
                                 </div>
                         </div>     

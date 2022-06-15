@@ -224,3 +224,7 @@ export const addCommentLike = async (id, userId)=>{
     const response = await axios.put(`/api/post/addcommentlike/${id}`, userId)
     return response.data
 }
+export const getTopComment = async ()=>{
+    const response=await axios.get('/api/post/gettopcomment')
+    return response.data
+}

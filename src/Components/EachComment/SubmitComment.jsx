@@ -2,19 +2,10 @@ import { useState, useEffect } from 'react'
 import EachComment from './EachComment'
 import { getComment, postComment } from '../../service/api'
 
-export default function SubmitComment({user, id}) {
+export default function SubmitComment({user, id, comment}) {
     const defaultImage="https://res.cloudinary.com/zikyancloudinary/image/upload/v1648317487/nimffj7bonumvaapmbp6.jpg"
     const [commentText, setCommentText] = useState()
-    const [comments, setComments] = useState()
     const [res, setRes] = useState([])
-
-    useEffect(()=>{
-        const fetchData = async ()=>{
-            const newComment = await getComment(id)
-            setComments(newComment)
-        }
-        fetchData()
-    },[res])
 
     const handleCommentSubmit = async (e)=>{
         e.preventDefault()
@@ -40,7 +31,7 @@ export default function SubmitComment({user, id}) {
                 </div>
             </form>:''
             }
-            <EachComment comments={comments}/>
+            <EachComment user={user} id={id} comment={comment}/>
         </div>
   )
 }

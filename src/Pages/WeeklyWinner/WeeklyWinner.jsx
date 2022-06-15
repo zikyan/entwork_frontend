@@ -20,42 +20,6 @@ export default function wWeklyWinner(props) {
         <p>Weekly Winner Posts</p>
     </div>
     <div className="weekly-parent">
-        <div className={`weekly-box-design ${props.darkmode?"changeModeMain":""}`}>
-        {/* <div className="weekly-upper1">
-            <ul className='weekly-ul'>
-                <li className='weekly-li-selected'>Fun</li>
-                <li>Work</li>
-                <li>Twitter Virals</li>
-                <li>weekly winner</li>
-                <li>Recommended</li>
-            </ul>
-        </div> */}
-        <div className="weekly-upper2">
-            <ul className={`${props.darkmode?"darkweekly-ul2":"weekly-ul2"}`}>
-                <li>#Cat</li>
-                <li>#Amirliaqat</li>
-                <li>#Pti</li>
-                <li>#MLN</li>
-                <li>#ImranKhan</li>
-                <li>#PetrolPrices</li>
-                <li>#work</li>
-                <li>#css</li>
-                <li>#android</li>
-                <li>#Weekly Highlights</li>
-                <li>#Twitter</li>
-                <li>#Biden</li>
-                <li>#Node</li>
-                <li>#TLp</li>
-                <li>#Afghanistan</li>
-                <li>#KarachiKings</li>
-                <li>#Cricket</li>
-                <li>#Football</li>
-                <li>#LahoreQalandars</li>
-                <li>#SuperBowl</li>
-                <li>#Cat</li>
-            </ul>
-        </div>
-        </div>
         <div className={`weekly-box-design-lower ${props.darkmode?"changeModeMain":""}`}>
         <div className="weekly-upper3">
             <div className="weekly-post1">
