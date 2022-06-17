@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import { getUserById, sharePost, getSharePost, savePost, getCommentByPostId, addPostLike } from '../../service/api';
 import { format } from 'timeago.js';
 import { useSelector } from 'react-redux';
+import { FacebookShareButton, TwitterShareButton } from "react-share";
+import { useNavigate } from "react-router-dom";
 
 export default function EachPost({darkMode, post}) {
     const { user }=useSelector((state)=>state.auth)
@@ -18,14 +20,16 @@ export default function EachPost({darkMode, post}) {
 
     const [like,setLike] = useState(post?.count)
     const [isLiked,setIsLiked] = useState(false)
+    
 
+    
    
 
     // const [dislike,setDisLike] = useState(1)
     // const [isDisLiked,setIsDisLiked] = useState(false)
 
     const defaultImage="https://res.cloudinary.com/zikyancloudinary/image/upload/v1648317487/nimffj7bonumvaapmbp6.jpg"
-
+    const navigate=useNavigate()
     useEffect(()=>{
         const fetchData = async ()=>{
             const username= await getUserById(post?.user)
@@ -34,6 +38,7 @@ export default function EachPost({darkMode, post}) {
             setShare(sharedPosts)
             const comments = await getCommentByPostId(post?._id)
             setCommentByPost(comments)
+                
         }
         fetchData()
     },[])
@@ -100,6 +105,10 @@ export default function EachPost({darkMode, post}) {
       setIsLiked(!isLiked)
     }
 
+    const noUserHandle = ()=>{
+      navigate('/login')
+    }
+
     // const dislikeHandler =()=>{
     //   setDisLike(isDisLiked ? dislike-1 : dislike+1)
     //   setIsDisLiked(!isDisLiked)
@@ -133,8 +142,22 @@ export default function EachPost({darkMode, post}) {
                             </div>
                     </div>
                         <div className="mainbar-post-right">
-                            <button className='mainbar-button-save' onClick={()=>saveClick(post)}>Save</button>
-                            <button className='mainbar-button-save mainbar-button-download' onClick={()=>downloadClick(post?.img)}>Download</button>
+                          {
+                            user?
+                            <>
+                              <button className='mainbar-button-save' onClick={()=>saveClick(post)}>Save</button>
+                              <button className='mainbar-button-save mainbar-button-download' onClick={()=>downloadClick(post?.img)}>Download</button>
+                            </>
+                            
+                            :
+                            <>
+                              <button className='mainbar-button-save' onClick={noUserHandle}>Save</button>
+                              <button className='mainbar-button-save mainbar-button-download' onClick={noUserHandle}>Download</button>
+                            </>
+                            
+                          }
+                            
+                            
                             
                         </div>
                 </div>
@@ -142,7 +165,15 @@ export default function EachPost({darkMode, post}) {
                         
                         <div className={`mainbar-mainpost ${darkMode?"changeModelite":""}`}>
                             <Link to={`/post/${post?._id}`} className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post?.text}</p></Link>
-                            <Link to={`/post/${post?._id}`}><img className='mainbar-mainpost-image' src={post?.img} alt="" /></Link>
+                            {
+                              post?.img?.substr(post?.img.length - 4) === '.mp4'?
+                              <video width="580px" height="550px" style={{borderRadius:'5px', marginTop:'20px'}} controls>
+                                <source src={post?.img} type="video/mp4"/>
+                              </video>
+                              :
+                              <Link to={`/post/${post?._id}`}><img className='mainbar-mainpost-image' src={post?.img} alt="" /></Link>
+                            }
+                            
                         </div>
                         
                     </div>
@@ -152,18 +183,62 @@ export default function EachPost({darkMode, post}) {
                             <div className="mainbar-mainpost-below-left">
                                 <div className="mainbar-mainpost-button-flex-parent">
                                     <p style={{marginTop:'2px'}} className='like-count'>{ like }</p>
-                                    <button style={{width:'80px'}} onClick={()=>likeHandler(post?._id)}>
+                                    {
+                                      user?
+                                      <button style={{width:'80px'}} onClick={()=>likeHandler(post?._id)}>
                                       { isLiked? <ArrowDownwardIcon /> : <ArrowUpwardIcon />}
                                     </button>
-                                    {/* <button style={{width:'80px'}} onClick={()=>dislikeHandler(post?._id)}><ArrowDownwardIcon /></button> */}
-                                    <Link style={{textDecoration:'none'}} to={`/post/${post?._id}`}><button style={{width:'80px'}}><ChatBubbleOutlineIcon style={{fontSize:'20px', marginRight:'5px'}}/> <p className='like-count'>{post?.comment}</p> </button></Link>
+                                    :
+                                    <button style={{width:'80px'}} onClick={noUserHandle}>
+                                      { isLiked? <ArrowDownwardIcon /> : <ArrowUpwardIcon />}
+                                    </button>
+                                    }
+                                    
+                                    {
+                                      user?
+                                      <Link style={{textDecoration:'none'}} to={`/post/${post?._id}`}><button style={{width:'80px'}}><ChatBubbleOutlineIcon style={{fontSize:'20px', marginRight:'5px'}}/> <p className='like-count'>{post?.comment}</p> </button></Link>
+                                      :
+                                      <button onClick={noUserHandle} style={{width:'80px'}}><ChatBubbleOutlineIcon style={{fontSize:'20px', marginRight:'5px'}}/> <p className='like-count'>{post?.comment}</p></button>
+                                    }
+                                    
                                 </div>
                             </div>
+                            
                             <div className="mainbar-mainpost-below-right">
-                                <button className='mainbar-mainpost-facebook-button'><FacebookIcon style={{fontSize:'20px',marginRight:'5px'}}/>Facebook</button>
-                                <button className='mainbar-mainpost-twitter-button'><TwitterIcon style={{fontSize:'20px',marginRight:'5px'}} />Twitter</button>
+                      {
+                        user ?
+                        <>
+                                <FacebookShareButton
+                                  url={post?.img}
+                                  quote={post?.text}
+                                  hashtag={post?.tag}
+                                  description={post?.text}
+                                  className="Demo__some-network__share-button"
+                                >
+                                  <button className='mainbar-mainpost-facebook-button'><FacebookIcon style={{fontSize:'20px',marginRight:'5px'}}/>Facebook</button>
+                                </FacebookShareButton>
+                                
+
+                                <TwitterShareButton
+                                  title={post?.text}
+                                  imageUrl={post?.img}
+                                  hashtags={post?.tag}
+                                >
+                                  <button className='mainbar-mainpost-twitter-button'><TwitterIcon style={{fontSize:'20px',marginRight:'5px'}} />Twitter</button>
+                                </TwitterShareButton>
+                        </>:
+                        <>
+                          <button onClick={noUserHandle} className='mainbar-mainpost-facebook-button'><FacebookIcon style={{fontSize:'20px',marginRight:'5px'}}/>Facebook</button>
+                          <button onClick={noUserHandle} className='mainbar-mainpost-twitter-button'><TwitterIcon style={{fontSize:'20px',marginRight:'5px'}} />Twitter</button>        
+                        </>
+                      }
+                                
+
                                 {
+                                  user?
                                     user?._id === post?.user ? '' : <button className='mainbar-mainpost-share-button' onClick={()=>handleShare(post)}><ShareIcon style={{fontSize:'20px'}} /></button>
+                                    :
+                                    <button className='mainbar-mainpost-share-button' onClick={noUserHandle}><ShareIcon style={{fontSize:'20px'}} /></button>
                                 }
                             </div>
                     </div>

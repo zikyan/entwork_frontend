@@ -9,6 +9,7 @@ import Spinner from "../../Components/Spinner";
 
 export default function LoginFirst() {
 
+
   const [formData, setFormData]=useState({
     email:'',
     password:'',
@@ -23,7 +24,7 @@ export default function LoginFirst() {
 
   useEffect(()=>{
     if(isError){
-      toast.error(message)
+      toast.error('Invalid Credentials')
     }
     if(isSuccess){
       navigate('/')
@@ -58,6 +59,8 @@ export default function LoginFirst() {
         <div className="l-form">
             <form className="form" onSubmit={handleOnSubmit}>
                 <h1 className="form__title">Login In</h1>
+          
+   
 
                 <div className="form__div">
                   <input type="text" className='form__input' name="email" value={email} onChange={handleOnChange} placeholder=" " />
@@ -68,9 +71,34 @@ export default function LoginFirst() {
                   <input type="password" className='form__input' name="password" value={password} onChange={handleOnChange} placeholder=" " />
                   <label className="form__label">Password</label>
                 </div>
-                <input type="submit" className='form__button' value="Login"/>
+                <div className="login-google-button">
+                {/* <GoogleLogin
+                  clientId="192582602626-7oddr2thelg52utj3k7l3rijsg07s412.apps.googleusercontent.com"
+                  buttonText="Login"
+                  onSuccess={handleGoogleSuccess}
+                  onFailure={handleGoogleFailure}
+                  cookiePolicy={'single_host_origin'}
+                /> */}
+
+                
+
+
+                    {/* <GoogleLogin
+                    clientId='192582602626-7oddr2thelg52utj3k7l3rijsg07s412.apps.googleusercontent.com'
+                    render={(renderProps)=>(
+                        <button style={{marginTop:'20px', color:'black',marginLeft:'20px' ,backgroundColor:'white', border:'none'}} onClick={renderProps.onClick} disabled={renderProps.disabled} variant='contained' className="btn btn-primary">Signup with Google</button>
+                    )}
+                    onSuccess={handleGoogleSuccess}
+                    onFailure={handleGoogleFailure}
+                    cookiePolicy='single_host_origin'
+                    /> */}
+
+                  <input style={{height:'40px'}} type="submit" className='submit-login-button' value="Login"/>
+                </div>
+                
             </form>
         </div>
+        
         </div>
   )
 }

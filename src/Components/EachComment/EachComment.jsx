@@ -5,6 +5,7 @@ import { format } from 'timeago.js';
 import { reportComment, addCommentLike, getUserById } from '../../service/api';
 import CommentUserName from './CommentUserName';
 import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 export default function EachComment({comment}) {
     const defaultImage="https://res.cloudinary.com/zikyancloudinary/image/upload/v1648317487/nimffj7bonumvaapmbp6.jpg"
@@ -12,6 +13,7 @@ export default function EachComment({comment}) {
     const [like,setLike] = useState(comment?.count)
     const [isLiked,setIsLiked] = useState(false)
     const [username, setUsername] = useState()
+    const navigate=useNavigate()
     useEffect(()=>{
         const fetchData = async ()=>{
             const newUser = await getUserById(comment?.user)
@@ -32,6 +34,9 @@ export default function EachComment({comment}) {
         await reportComment(e,{currentUser:user?._id})
         window.location.reload(false)
     }
+    const noUserHandle = ()=>{
+        navigate('/login')
+      }
   return (
       <>
       <div style={{padding:'10px'}} className="topcomment-comment-people topcomment-subparent">
@@ -75,9 +80,17 @@ export default function EachComment({comment}) {
                                 <div className="comment-topcomment-votes">
                                     <div className="comment-votes-flex1">
                                         <p style={{marginRight:'10px', fontSize:"15px"}} className='comment-votes-style'>{like}</p>
-                                        <p style={{marginTop:'5px'}} onClick={()=>likeHandler(comment?._id)}>
-                                            { isLiked? <ArrowDownwardIcon style={{color:'#999999',fontSize:'20px'}} /> : <ArrowUpwardIcon style={{color:'#999999',fontSize:'20px', fontWeight:'700'}} />}
-                                        </p>
+                                        {
+                                            user?
+                                            <p style={{marginTop:'5px'}} onClick={()=>likeHandler(comment?._id)}>
+                                                { isLiked? <ArrowDownwardIcon style={{color:'#999999',fontSize:'20px'}} /> : <ArrowUpwardIcon style={{color:'#999999',fontSize:'20px', fontWeight:'700'}} />}
+                                            </p>
+                                            :
+                                            <p style={{marginTop:'5px'}} onClick={noUserHandle}>
+                                                <ArrowUpwardIcon style={{color:'#999999',fontSize:'20px', fontWeight:'700'}} />
+                                            </p>
+                                        }
+                                        
                                     </div>
                                 </div>
                             </div>   
@@ -85,12 +98,15 @@ export default function EachComment({comment}) {
                         </div>  
                         <div>
                                 {
-                                    user?._id !== comment?.user?
-                                    comment?.reportuser.includes(user?._id)? '':
-                                    <div className="post-post-right">
-                                        <button className='post-button-save' onClick={()=>handleReportComment(comment?._id)}>Report</button>
-                                    </div>
+                                    user?
+                                        user?._id !== comment?.user?
+                                        comment?.reportuser.includes(user?._id)? '':
+                                        <div className="post-post-right">
+                                            <button className='post-button-save' onClick={()=>handleReportComment(comment?._id)}>Report</button>
+                                        </div>
+                                        :''
                                     :''
+                                       
                                 }
                         </div> 
                     </div>

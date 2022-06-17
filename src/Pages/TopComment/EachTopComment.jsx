@@ -46,16 +46,16 @@ export default function EachTopComment({props, comment}) {
                             <img style={{marginLeft:'10px'}} className='post-mainpost-image' src={post?.img} alt="" />
                         </div>
                 <div className="topcomment-maintopcomment-below">
-                        <div style={{marginLeft:'10px'}} className="topcomment-maintopcomment-below-left">
+                        {/* <div style={{marginLeft:'10px'}} className="topcomment-maintopcomment-below-left">
                             <div className="mainbar-mainpost-button-flex-parent">
                                         <p style={{marginTop:'6px', marginRight:'10px'}} className='like-count'>{ post?.count }</p>
                                         <button style={{width:'80px'}}>
                                             <ArrowUpwardIcon />
                                         </button>
-                                        {/* <button style={{width:'80px'}} onClick={()=>dislikeHandler(post?._id)}><ArrowDownwardIcon /></button> */}
+                                        
                                         <Link style={{textDecoration:'none'}} to={`/post/${post?._id}`}><button style={{width:'80px'}}><ChatBubbleOutlineIcon style={{fontSize:'20px', marginRight:'5px'}}/> <p className='like-count'>{post?.comment}</p> </button></Link>
                             </div>
-                        </div>
+                        </div> */}
                 </div>
                 <div className="topcomment-comment-text">
                     <p>{post?.comment} Comments</p>

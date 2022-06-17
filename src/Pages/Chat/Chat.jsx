@@ -4,7 +4,7 @@ import EachChatPerson from './EachChatPerson';
 import Messages from './Messages';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import { useSelector } from 'react-redux';
-import { getConversation, getMessage, postMessage, postConversation } from '../../service/api';
+import { getConversation, getMessage, postMessage, postConversation, getAllConversation } from '../../service/api';
 import EachConversation from './EachConversation';
 import ChatNameDp from './ChatNameDp';
 import {io} from 'socket.io-client';
@@ -20,6 +20,9 @@ export default function Chat() {
     const socket=useRef()
     const scrollRef = useRef()
     const navigate=useNavigate()
+    const [check, setCheck] = useState(false)
+
+    const [allConversation, setAllConversation] = useState()
 
     useEffect(()=>{
         socket.current = io('ws://localhost:8900')
@@ -52,6 +55,9 @@ export default function Chat() {
 
             const res1 = await getMessage(currentChat?._id)
             setMessages(res1)
+
+            const allCon = await getAllConversation()
+            setAllConversation(allCon)
         }
         fetchData()
     },[currentChat])
@@ -84,10 +90,23 @@ export default function Chat() {
             senderId: user?._id,
             receiverId: friend
         }
-        const res = await postConversation(data)
-        setCurrentChat(res)
-    }
+    //     allConversation?.map((con)=>{
+    //         if(!con?.members.includes(friend)){
+    //             setCheck(true)
+    //         }
+    //     })
+        
+    //     if(check===true){
+    //         const res = await postConversation(data)
+    //         setCurrentChat(res)
+    //     }
+    // }
 
+                const res = await postConversation(data)
+                setCurrentChat(res)
+    }
+    
+    
   return (
     <div className='chat-container'>
         <div className="chat-upper-parent">
@@ -104,7 +123,7 @@ export default function Chat() {
             </div>
             <p style={{fontWeight:'500', padding:'0', margin:'0'}}>Recent Conversations</p>
             <div className="chat-flex">
-            {
+            { 
                 conversation?.map((con, index)=>(
                     <div key={index} onClick={()=>setCurrentChat(con)}>
                         <EachConversation con={con} user={user}/>

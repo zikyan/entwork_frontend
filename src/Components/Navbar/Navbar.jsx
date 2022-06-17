@@ -5,15 +5,14 @@ import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import EmojiEventsRoundedIcon from '@mui/icons-material/EmojiEventsRounded';
 import RecommendIcon from '@mui/icons-material/Recommend';
-import SearchIcon from '@mui/icons-material/Search';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser, reset } from '../../features/auth/authSlice';
-import zikyan from '../../images/zikyan_dp.jpg';
 import { getUserById } from '../../service/api';
 import ShareIcon from '@mui/icons-material/Share';
+import SearchBar from './SearchBar';
 
 export default function Navbar(props) {
 
@@ -46,12 +45,29 @@ export default function Navbar(props) {
             <div className="navbar-middle">
                 <ul className='navbar-ul'>
                     <Link to='/'><li><HomeRoundedIcon className='navbar-navicons-selected'/></li></Link>
-                    <Link to='/shared'><li><ShareIcon className='navbar-navicons'/></li></Link>
+                    {
+                        user?
+                        <Link to='/shared'><li><ShareIcon className='navbar-navicons'/></li></Link>
+                        :
+                        <Link to='/login'><li><ShareIcon className='navbar-navicons'/></li></Link>
+                    }
                     <Link to='/work'><li><BusinessCenterIcon className='navbar-navicons'/></li></Link>
-                    <Link to='/twittervirals'><li><TwitterIcon className='navbar-navicons'/></li></Link>
-                    <Link to='/weeklywinner'><li><EmojiEventsRoundedIcon className='navbar-navicons'/></li></Link>
-                    <Link to='/recommended'><li><RecommendIcon className='navbar-navicons'/></li></Link>
-                    <li><input className='searchbar' placeholder='Search with name, #tags, @users' type="text"/><SearchIcon className='searchicon'/></li>
+                    {
+                        user?
+                        <>
+                            <Link to='/twittervirals'><li><TwitterIcon className='navbar-navicons'/></li></Link>
+                            <Link to='/weeklywinner'><li><EmojiEventsRoundedIcon className='navbar-navicons'/></li></Link>
+                            <Link to='/recommended'><li><RecommendIcon className='navbar-navicons'/></li></Link>
+                        </>
+                        :
+                        <>
+                            <Link to='/login'><li><TwitterIcon className='navbar-navicons'/></li></Link>
+                            <Link to='/login'><li><EmojiEventsRoundedIcon className='navbar-navicons'/></li></Link>
+                            <Link to='/login'><li><RecommendIcon className='navbar-navicons'/></li></Link>
+                        </>
+                    }
+                    
+                    <li><SearchBar /></li>
                 </ul>
             </div>
             <div className="navbar-right">

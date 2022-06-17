@@ -24,13 +24,13 @@ export default function Profile({darkMode}) {
   const [username, setUsername] = useState()
   const [posts, setPosts] = useState([])
   const { user }= useSelector((state)=>state.auth)
-  const [followed, setFollowed] = useState()
   const [allComments, setAllComments] = useState()
   const [postedJob, setPostedJob] = useState()
   const [temp, setTemp] = useState('')
   const [save, setSave] = useState()
   const [savedJob, setSavedJob] = useState()
   const [showComponent, setShowComponent] = useState(true)
+  const [followed, setFollowed] = useState(user?.followings.includes(username?._id))
   
 
   const [toggleState, setToggleState] = useState(1);
@@ -72,7 +72,7 @@ export default function Profile({darkMode}) {
     const post = await getPostById(userByName?._id)
     setUsername(userByName)
     setPosts(post)
-      if(await (user?.followings.includes(userByName?._id)) === true){
+      if(followed === false){
           setFollowed(true)
       }else{
           setFollowed(false)
@@ -104,7 +104,7 @@ export default function Profile({darkMode}) {
       setShowComponent(false)
     },5000)
   },[])
-  console.log(username)
+  console.log(user)
   return (
     <div>
      { user?._id === username?._id && username?.warning>0?
@@ -123,7 +123,7 @@ export default function Profile({darkMode}) {
                 user? // so that no guest can see follow/unfollow button
                 user?.username !== username?.username ? // same cannot follow/unfollow himself
                 // followed===true?
-                <button onClick={handleFollowButton} className='profile-follow-button'><p>&nbsp;{followed===true? 'Unfollow' : 'Follow'}</p></button>
+                <button onClick={handleFollowButton} className='profile-follow-button'><p>&nbsp;{followed===true ? 'Unfollow' : 'Follow'}</p></button>
                 // :<button onClick={handleFollowButton} className='profile-follow-button'><p>&nbsp;Follow</p></button>
                 : '':''
             }
@@ -220,7 +220,15 @@ export default function Profile({darkMode}) {
                         
                         <div className={`mainbar-mainpost ${darkMode?"changeModelite":""}`}>
                             <Link to={`/post/${post?._id}`} className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post?.text}</p></Link>
-                            <Link to={`/post/${post?._id}`}><img className='mainbar-mainpost-image' src={post?.img} alt="" /></Link>
+                            {/* <Link to={`/post/${post?._id}`}><img className='mainbar-mainpost-image' src={post?.img} alt="" /></Link> */}
+                            {
+                              post?.img?.substr(post?.img.length - 4) === '.mp4'?
+                              <video width="580px" height="550px" style={{borderRadius:'5px', marginTop:'20px'}} controls>
+                                <source src={post?.img} type="video/mp4"/>
+                              </video>
+                              :
+                              <Link to={`/post/${post?._id}`}><img className='mainbar-mainpost-image' src={post?.img} alt="" /></Link>
+                            }
                         </div>
                         
                     </div>

@@ -162,7 +162,15 @@ export default function Admin({darkMode}) {
                 <div className="eachpost-eachpost-center">
                     <div className={`mainbar-mainpost ${darkMode?"changeModelite":""}`}>
                       <Link to={`/post/${post?._id}`} className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post?.text}</p></Link>
-                      <img className='mainbar-mainpost-image' src={post?.img} alt="" />
+                      {/* <img className='mainbar-mainpost-image' src={post?.img} alt="" /> */}
+                      {
+                              post?.img?.substr(post?.img.length - 4) === '.mp4'?
+                              <video width="580px" height="550px" style={{borderRadius:'5px', marginTop:'20px'}} controls>
+                                <source src={post?.img} type="video/mp4"/>
+                              </video>
+                              :
+                              <Link to={`/post/${post?._id}`}><img className='mainbar-mainpost-image' src={post?.img} alt="" /></Link>
+                            }
                     </div>
                 </div>
         </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import './recommended.css';
 import saireen from '../../images/hania.PNG';
 import faizan from '../../images/faizan.jpg';
@@ -12,8 +12,20 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { Link } from 'react-router-dom';
+import { getRecommendedPost } from '../../service/api';
+import { useSelector } from 'react-redux';
 
-export default function recomm(props) {
+export default function Recommended(props) {
+    const { user }= useSelector((state)=>state.auth)
+    const [posts, setPosts] = useState()
+    useEffect(()=>{
+        const fetchData = async ()=>{
+            const posts = await getRecommendedPost(user?._id)
+            setPosts(posts)
+        }
+        fetchData()
+    },[])
+    console.log(posts)
   return (
       <>
     <div className="admin-panel-heading">

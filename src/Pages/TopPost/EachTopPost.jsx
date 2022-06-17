@@ -50,11 +50,6 @@ export default function EachTopPost({props, post}) {
                                 <button style={{width:'80px', cursor:'default', transform:'none'}}><ChatBubbleOutlineIcon style={{fontSize:'20px', marginRight:'5px'}}/> <p className='like-count'>{post?.comment}</p> </button>
                             </div>
                             </div>
-                        <div className="post-mainpost-below-right">
-                            <button className='post-mainpost-facebook-button'><FacebookIcon style={{fontSize:'20px',marginRight:'5px'}}/>Facebook</button>
-                            <button className='post-mainpost-twitter-button'><TwitterIcon style={{fontSize:'20px',marginRight:'5px'}} />Twitter</button>
-                            <button className='mainbar-mainpost-share-button'><ShareIcon style={{fontSize:'20px'}} /></button>
-                        </div>
                 </div>
               
         </div>

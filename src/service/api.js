@@ -228,3 +228,15 @@ export const getTopComment = async ()=>{
     const response=await axios.get('/api/post/gettopcomment')
     return response.data
 }
+export const getWeeklyWinner = async ()=>{
+    const response=await axios.get('/api/post/getweeklywinner')
+    return response.data
+}
+export const getRecommendedPost = async (id)=>{
+    const response=await axios.get(`/api/post/getrecommendedpost${id}`)
+    return response.data
+}
+export const getAllConversation = async ()=>{
+    const response=await axios.get(`/api/chat/getallconversation`)
+    return response.data
+}

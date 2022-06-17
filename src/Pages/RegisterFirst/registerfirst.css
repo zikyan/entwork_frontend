@@ -108,3 +108,7 @@
   .form__input:focus{
     border: 1.5px solid var(--first-color);
   }
+  .login-google-button{
+    display: flex;
+    align-items: center;
+  }

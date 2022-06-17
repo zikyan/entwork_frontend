@@ -1,0 +1,18 @@
+.login-google-button{
+    display: flex;
+    justify-content: end;
+}
+.submit-login-button{
+    cursor: pointer;
+    font-size: 15px;
+    padding: 5px 10px;
+    background-color: #192252;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    border-radius: 3px;
+    margin-Left: 20px;
+}
+.submit-login-button:active{
+    transform: scale(0.97);
+}

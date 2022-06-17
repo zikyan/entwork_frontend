@@ -11,6 +11,7 @@ export default function AddPost() {
   const [selectImage, setSelectImage] = useState('')
   const [categoryVar, setCategoryVar] = useState('Hot')
 
+
   const { user }=useSelector((state)=>state.auth)
   const navigate=useNavigate()
   useEffect((e)=>{
@@ -23,25 +24,51 @@ export default function AddPost() {
 
   const handleOnSubmit = async (e)=>{
       e.preventDefault()
-
+      
+      if(selectImage.type === 'video/mp4'){
         const formData =await  new FormData();
           formData.append('file', selectImage);
-          formData.append('upload_preset', 'entwork');
+          formData.append('upload_preset', 'mycover');
           const options = {
             method: 'POST',
             body: formData,
           };
-          const res = await fetch('https://api.Cloudinary.com/v1_1/zikyancloudinary/image/upload', options).then(res=>res.json());
-    const postData = {
-      user: user,
-      text: text.current.value,
-      tag: tag.current.value,
-      img: res.url,
-      category:categoryVar
-    };
-    await createPost(postData);
-    return navigate('/');
+          const res = await fetch('https://api.Cloudinary.com/v1_1/zikcover/video/upload', options).then(res=>res.json());
+
+          const postData = {
+            user: user,
+            text: text.current.value,
+            tag: tag.current.value,
+            img: res.url,
+            category:categoryVar
+          };
+          await createPost(postData);
+          return navigate('/');
+      }else{
+        const formData =await  new FormData();
+        formData.append('file', selectImage);
+        formData.append('upload_preset', 'entwork');
+        const options = {
+          method: 'POST',
+          body: formData,
+        };
+        const res = await fetch('https://api.Cloudinary.com/v1_1/zikyancloudinary/image/upload', options).then(res=>res.json());
+
+        const postData = {
+          user: user,
+          text: text.current.value,
+          tag: tag.current.value,
+          img: res.url,
+          category:categoryVar
+        };
+        await createPost(postData);
+        return navigate('/');
+      }
+
+        
+    
   }
+  
   return (
 
 <div className="login-form">
