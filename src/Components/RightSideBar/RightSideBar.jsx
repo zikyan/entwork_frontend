@@ -1,91 +1,60 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import './rightsidebar.css';
 import WorkIcon from '@mui/icons-material/Work';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
-import faizan from '../../images/faizan.jpg';
-import abdullah from '../../images/abdullah.jpg';
-import raees from '../../images/raees.jpg';
-import { Link } from 'react-router-dom';
 
-export default function RightSideBar(props) {
+import { Link } from 'react-router-dom';
+import { getThreeJob } from '../../service/api';
+import RightRecentJobs from './RightRecentJobs';
+
+
+export default function RightSideBar({darkMode}) {
+  const [jobs, setJobs] = useState()
+  useEffect(()=>{
+    const fetchData = async ()=>{
+      const allJobs = await getThreeJob()
+      setJobs(allJobs)
+    }
+    fetchData()
+  },[])
   return (
     <div className='rightsidebar-parent'>
-      <div className={` rightsidebar-upper ${props.darkmode?"changeModeside2":""}`}>
-        <p className={`rightsidebar-text ${props.darkmode?"changeModeside2":""}`}>EntWork Workplace</p>
+      <div className={` rightsidebar-upper ${darkMode?"changeModeside2":""}`}>
+        <p className={`rightsidebar-text ${darkMode?"changeModeside2":""}`}>EntWork Workplace</p>
         <p className='rightsidebar-upper-text'>Click the below button to find work</p>
         <div className="rightsidebar-find-post-button">
           <Link style={{textDecoration:'none'}} to='/work'><button className='rightsidebar-work-button'><WorkIcon style={{fontSize:'18px'}} className='rightsidebar-work-button-icon' />Find Job</button></Link>
           <Link style={{textDecoration:'none'}} to='/addjob'><button style={{marginLeft:'10px'}} className='rightsidebar-work-button'><WorkOutlineIcon style={{fontSize:'18px'}} className='rightsidebar-work-button-icon' />Post Job</button></Link>
         </div>
       </div>
-      <div className={`rightsidebar-upper2 ${props.darkmode?"changeModeside2":""}`}>
-      <p className={`rightsidebar-work-text ${props.darkmode?"changeModeside2":""}`}>Trending Work Tags</p>
-          <ul className='rightsidebar-ul2 '>
-                  <li>#Cat</li>
-                  <li>#Facebook</li>
-                  <li>#Stars War</li>
-                  <li>#Boba Fett</li>
-                  <li>#Biden</li>
-                  <li>#Swift</li>
-                  <li>#Omicron</li>
-                  <li>#work</li>
-                  <li>#css</li>
-                  <li>#android</li>
-                  <li>#ror</li>
-                  <li>#mern</li>
-                  {/* <li>#django</li>
-                  <li>#python</li> */}
+      <div className={`rightsidebar-upper2 ${darkMode?"changeModeside2":""}`}>
+      <p className={`rightsidebar-work-text ${darkMode?"changeModeside2":""}`}>Trending Work Tags</p>
+          <ul className={`${darkMode?"rightsidebar-ul2-dark":"rightsidebar-ul2"}`}>
+          <Link to='/work/?tag=mern' className='leftsidebar-ul-link'><li>#mern</li></Link>
+          <Link to='/work/?tag=ror' className='leftsidebar-ul-link'><li>#ror</li></Link>
+          <Link to='/work/?tag=python' className='leftsidebar-ul-link'><li>#python</li></Link>
+          <Link to='/work/?tag=amazon' className='leftsidebar-ul-link'><li>#amazon</li></Link>
+          <Link to='/work/?tag=flask' className='leftsidebar-ul-link'><li>#flask</li></Link>
+          <Link to='/work/?tag=swift' className='leftsidebar-ul-link'><li>#swift</li></Link>
+          <Link to='/work/?tag=janascript' className='leftsidebar-ul-link'><li>#javascript</li></Link>
+          <Link to='/work/?tag=blockchain' className='leftsidebar-ul-link'><li>#blockchain</li></Link>
+          <Link to='/work/?tag=next' className='leftsidebar-ul-link'><li>#next</li></Link>
+          <Link to='/work/?tag=android' className='leftsidebar-ul-link'><li>#android</li></Link>
+          <Link to='/work/?tag=java' className='leftsidebar-ul-link'><li>#java</li></Link>
+          <Link to='/work/?tag=nest' className='leftsidebar-ul-link'><li>#nest</li></Link>
+          <Link to='/work/?tag=unity' className='leftsidebar-ul-link'><li>#unity</li></Link>
+          <Link to='/work/?tag=express' className='leftsidebar-ul-link'><li>#express</li></Link>
               </ul>
       </div>
-      <div className={`rightsidebar-upper3 ${props.darkmode?"changeModeside2":""}`}>
-        <p className='rightsidebar-recent-jobs-text'>Recent Jobs</p>
-        <div className="rightsidebar-recent-jobs-card">
-        <div className="rightsidebar-post-left">
-              <img className='rightsidebar-post-dp' src={abdullah} alt="" />
-              <div className="rightsidebar-post-username">
-                      <p>Abdullah Bin Zafar</p>
-                  <div className="rightsidebar-post-belowname">
-                      <p className='rightsidebar-post-tag'>#android,#SQLite,&nbsp;</p>
-                      <p className='rightsidebar-post-time'>1h</p>
-                  </div>
-              </div>
-          </div>
-          <p className='rightsidebar-recent-jobs-description'>i want a simple crud based android application with content provider...</p>
-          <button className='rightsidebar-start-chat-button'>Start Chat</button>
-        </div>
-
-
-        <div className="rightsidebar-recent-jobs-card">
-        <div className="rightsidebar-post-left">
-              <img className='rightsidebar-post-dp' src={faizan} alt="" />
-              <div className="rightsidebar-post-username">
-                      <p>Faizan Muhammad</p>
-                  <div className="rightsidebar-post-belowname">
-                      <p className='rightsidebar-post-tag'>#mern,#fullstack,&nbsp;</p>
-                      <p className='rightsidebar-post-time'>2h</p>
-                  </div>
-              </div>
-          </div>
-          <p className='rightsidebar-recent-jobs-description'>need full stack site with functionality of chat and calling feature and...</p>
-          <button className='rightsidebar-start-chat-button'>Start Chat</button>
-        </div>
-
-
-        <div className="rightsidebar-recent-jobs-card">
-        <div className="rightsidebar-post-left">
-              <img className='rightsidebar-post-dp' src={raees} alt="" />
-              <div className="rightsidebar-post-username">
-                      <p>Raees Ibrahim</p>
-                  <div className="rightsidebar-post-belowname">
-                      <p className='rightsidebar-post-tag'>#flutter,#reactnative,&nbsp;</p>
-                      <p className='rightsidebar-post-time'>5h</p>
-                  </div>
-              </div>
-          </div>
-          <p className='rightsidebar-recent-jobs-description'>make me a flutter or reactnative based cross platform app for job...</p>
-          <button className='rightsidebar-start-chat-button'>Start Chat</button>
-        </div>
-      </div>
+      <p className={`rightsidebar-work-text ${darkMode?"changeModeside2":""}`}>Recent Jobs</p>
+        {
+          jobs?.map((job)=>(
+            <RightRecentJobs darkMode={darkMode} job={job} />
+          ))
+          
+        }
+        
+      
     </div>
   )
 }

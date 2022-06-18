@@ -15,6 +15,9 @@ export default function WeeklyWinner(props) {
   return (
 
     <div>
+        <div style={{marginBottom:'20px'}} className={`${props.darkMode?"admin-panel-heading-dark":"admin-panel-heading"}`}>
+                <p>Top Popular Posts</p>
+            </div>
         {
             allPosts?.map((posts)=>(
                 posts?.map((post)=>(

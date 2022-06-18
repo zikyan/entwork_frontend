@@ -24,12 +24,12 @@ export default function TwitterVirals({darkMode}) {
     // })
   return (
     <>
-    <div className="admin-panel-heading">
+    <div className={`${darkMode?"admin-panel-heading-dark":"admin-panel-heading"}`}>
       <p>Twitter Virals</p>
     </div>
       {
         tweetData?.map((post, index)=>(
-          <div key={index} className="twitter-box-design-lower">
+          <div key={index} className={`${darkMode?"twitter-box-design-lower-dark":"twitter-box-design-lower"}`}>
           <div className="mainbar-post1">
                     <div className="mainbar-post-left">
                             <img className='twitter-post-dp' src={twitterImg} alt="" />

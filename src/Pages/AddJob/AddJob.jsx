@@ -3,12 +3,14 @@ import { useRef, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createJob } from '../../service/api';
+import { toast } from 'react-toastify';
 
 export default function AddJob() {
   const caption=useRef()
   const des=useRef()
   const tag=useRef()
   const [categoryVar, setCategoryVar] = useState('Web Development')
+  const [check, setCheck] = useState()
 
   const { user }=useSelector((state)=>state.auth)
   const navigate=useNavigate()
@@ -19,7 +21,7 @@ export default function AddJob() {
   },[user,navigate])
 
 
-  const handleOnSubmit=(e)=>{
+  const handleOnSubmit= async (e)=>{
       e.preventDefault()
       const jobData={
         user:user,
@@ -28,7 +30,11 @@ export default function AddJob() {
         tag:tag.current.value,
         category:categoryVar
       }
-      createJob(jobData)
+      if(!check){
+        toast.error('Input Field Requied')
+      }
+      await createJob(jobData)
+      toast.success('Job Posted Successfully')
       navigate('/work')
   }
 
@@ -40,7 +46,7 @@ export default function AddJob() {
                 <h1 className="form__title">Post Job</h1>
 
                 <div className="form__div">
-                  <input type="text" className='form__input' name="text" ref={caption} placeholder=" " />
+                  <input type="text" className='form__input' name="text" onChange={(e)=>setCheck(e.target.value)} ref={caption} placeholder=" " />
                   <label for="" className="form__label">Job Heading</label>
                 </div>
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { format } from 'timeago.js';
 import { getUserById, deleteJob } from '../../service/api';
 
@@ -16,6 +17,7 @@ export default function AdminEachJob({darkMode, job}) {
     },[])
     const handleDeleteJob = async (id)=>{
         await deleteJob(id)
+        toast.success("Job Deleted Successfully")
         window.location.reload(false)
       }
   return (

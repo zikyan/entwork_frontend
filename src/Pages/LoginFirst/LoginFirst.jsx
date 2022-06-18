@@ -48,6 +48,7 @@ export default function LoginFirst() {
       password,
     }
     dispatch(loginUser(userData))
+    toast.success("Logged in Successfully")
   }
 
   if(isLoading){

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 export default function Table({data}) {
   const defaultImage="https://res.cloudinary.com/zikyancloudinary/image/upload/v1648317487/nimffj7bonumvaapmbp6.jpg"
@@ -13,13 +12,35 @@ export default function Table({data}) {
           <th>Email</th>
         </tr> */}
         {data?.map((user) => (
+          
+          user?.first?
+          <>
           <tr key={user?.id}>
-            <td><img style={{marginRight:"10px"}} className='navbar-post-dp' src={user?.profilePicture || defaultImage} alt="" /></td>
-            <td><a style={{textDecoration:'none', color:'#000',fontWeight:'600'}} href={`/profile/${user?.username}`}>
-                                    {user?.first?.charAt(0).toUpperCase() + user?.first?.slice(1)} {user?.last?.charAt(0).toUpperCase() + user?.last?.slice(1)}
-                                    </a></td>
-                                    <td>{user?.text}</td>
+          
+          <td><img style={{marginRight:"10px"}} className='navbar-post-dp' src={user?.profilePicture || defaultImage} alt="" /></td>
+            <td>
+              <a className='search-post'  href={`/profile/${user?.username}`}>
+                {user?.first?.charAt(0).toUpperCase() + user?.first?.slice(1)} {user?.last?.charAt(0).toUpperCase() + user?.last?.slice(1)}
+              </a>
+            </td>
           </tr>
+          </>: user?.text?
+          <tr>
+              <a className='search-post' href={`/post/${user?._id}`}>
+                <td>{user?.text}</td>
+              </a>
+          </tr>
+        :
+          <tr>
+              <a className='search-post' href={`/job/${user?._id}`}>
+                <td>{user?.caption}</td>
+              </a>
+          </tr>
+          
+            
+            
+                                    
+          
         ))}
       </tbody>
     </table>

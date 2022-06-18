@@ -9,6 +9,7 @@ import AdminPostUsername from "./AdminPostUsername";
 import AdminPostDp from "./AdminPostDp";
 import CommentUserName from "../../Components/EachComment/CommentUserName";
 import AdminEachJob from '../Admin/AdminEachJob'
+import { toast } from "react-toastify";
 
 export default function Admin({darkMode}) {
   const { user }=useSelector((state)=>state.auth)
@@ -60,21 +61,25 @@ export default function Admin({darkMode}) {
 
   const handleDeleteUser = async (id)=>{
     await deleteUser(id)
+    toast.success("User Cleaned Succssfully")
     window.location.reload(false)
   }
 
   const handleDeletePost = async (id)=>{
     await deletePost(id)
+    toast.success("Post Deleted Succssfully")
     window.location.reload(false)
   }
 
   const handleDeleteComment = async (id)=>{
     await deleteComment(id)
+    toast.success("Comment Deleted Succssfully")
     window.location.reload(false)
   }
 
   const handleWarning = async (id)=>{
     await userWarning(id)
+    toast.success("Warning Sent Succssfully")
     window.location.reload(false)
   }
   return (

@@ -164,6 +164,10 @@ export const getJobById = async (id)=>{
     const response=await axios.get(`/api/job/getjobbyid/${id}`)
     return response.data
 }
+export const getJobByIdSaved = async (id)=>{
+    const response=await axios.get(`/api/job/getjobbyidsaved/${id}`)
+    return response.data
+}
 export const editJob = async (id, data)=>{
     const response=await axios.put(`/api/job/editjob/${id}`, data)
     return response.data
@@ -236,7 +240,15 @@ export const getRecommendedPost = async (id)=>{
     const response=await axios.get(`/api/post/getrecommendedpost${id}`)
     return response.data
 }
+export const getRecommendedPostOne = async ()=>{
+    const response=await axios.get(`/api/post/getrecommendedpostone`)
+    return response.data
+}
 export const getAllConversation = async ()=>{
     const response=await axios.get(`/api/chat/getallconversation`)
+    return response.data
+}
+export const getThreeJob = async ()=>{
+    const response=await axios.get(`/api/job/getthreejob`)
     return response.data
 }

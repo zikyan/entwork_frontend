@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import EachComment from './EachComment'
-import { getComment, postComment } from '../../service/api'
+import { postComment } from '../../service/api'
+import { toast } from 'react-toastify';
 
 export default function SubmitComment({user, id, comment}) {
     const defaultImage="https://res.cloudinary.com/zikyancloudinary/image/upload/v1648317487/nimffj7bonumvaapmbp6.jpg"
@@ -14,8 +15,11 @@ export default function SubmitComment({user, id, comment}) {
             post:id,
             commentText:commentText
         }
+        
         const response = await postComment(commentData)
+        toast.success("Comment Posted");
         setRes(response)
+
     }
   return (
         <div>

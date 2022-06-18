@@ -4,12 +4,14 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { createPost } from '../../service/api';
+import { toast } from 'react-toastify';
 
 export default function AddPost() {
   const text=useRef()
   const tag=useRef()
   const [selectImage, setSelectImage] = useState('')
   const [categoryVar, setCategoryVar] = useState('Hot')
+  const [check, setCheck] = useState()
 
 
   const { user }=useSelector((state)=>state.auth)
@@ -61,7 +63,13 @@ export default function AddPost() {
           img: res.url,
           category:categoryVar
         };
+        
+        if(!check){
+          toast.error("Input Field Required");
+        }
+        
         await createPost(postData);
+        toast.success("Posted Successfully");
         return navigate('/');
       }
 
@@ -77,7 +85,7 @@ export default function AddPost() {
                 <h1 className="form__title">What's on your mind?</h1>
 
                 <div className="form__div">
-                  <input type="text" className='form__input' name="text" ref={text} placeholder=" " />
+                  <input type="text" className='form__input' name="text" onChange={(e)=>setCheck(e.target.value)} ref={text} placeholder=" " />
                   <label className="form__label">Your Text Here</label>
                 </div>
 

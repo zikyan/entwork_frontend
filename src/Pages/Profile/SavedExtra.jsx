@@ -9,6 +9,7 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 
 export default function SavedExtra({post, darkMode}) {
@@ -25,6 +26,7 @@ export default function SavedExtra({post, darkMode}) {
     },[temp])
     const handleDeleteSavedPost = async (postId)=>{
         await deleteSavedPost(postId)
+        toast.success("Post Unsaved Successfully")
         window.location.reload(false)
       }
   return (
@@ -58,13 +60,13 @@ export default function SavedExtra({post, darkMode}) {
     <div className="eachpost-eachpost-center">
         
         <div className={`mainbar-mainpost ${darkMode?"changeModelite":""}`}>
-            <Link to={`/post/${post?._id}`} className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`}><p style={{marginTop:'10px'}}>{post?.text}</p></Link>
-            <Link to={`/post/${post?._id}`}><img className='mainbar-mainpost-image' src={post?.img} alt="" /></Link>
+            <p className={`mainbar-post-caption ${darkMode?"changeModeMain":""}`} style={{marginTop:'10px', cursor:'default'}}>{post?.text}</p>
+            <img style={{cursor:'default'}} className='mainbar-mainpost-image' src={post?.img} alt="" />
         </div>
         
     </div>
     
-    <div className="mainbar-mainpost-below">
+    {/* <div className="mainbar-mainpost-below">
             <div className="mainbar-mainpost-below-left">
                 <div className="mainbar-mainpost-button-flex-parent">
                     <button> <ArrowUpwardIcon /> 1.5k</button>
@@ -76,7 +78,7 @@ export default function SavedExtra({post, darkMode}) {
                 <button className='mainbar-mainpost-facebook-button'><FacebookIcon style={{fontSize:'20px',marginRight:'5px'}}/>Facebook</button>
                 <button className='mainbar-mainpost-twitter-button'><TwitterIcon style={{fontSize:'20px',marginRight:'5px'}} />Twitter</button>
             </div>
-    </div>
+    </div> */}
 </div>
 
   )

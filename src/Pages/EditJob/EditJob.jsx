@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { editJob, getJobById } from '../../service/api';
 
 
@@ -37,6 +38,7 @@ export default function EditJob() {
         category:categoryVar
       }
       await editJob(id,jobData)
+      toast.success("Job Edited Successfully")
       navigate(`/profile/${user?.username}`)
   }
 

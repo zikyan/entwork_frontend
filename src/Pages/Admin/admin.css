@@ -21,6 +21,17 @@
     padding: 20px;
     font-weight: 600;
     font-size: 18px;
+    color: #000;
+}
+.admin-panel-heading-dark{
+    display: flex;
+    justify-content: center;
+    background-color: #000;
+    border-radius: 10px;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
 }
 .admin-comment-vertical-dots-icon{
     cursor: pointer;

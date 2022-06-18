@@ -119,6 +119,9 @@
     font-size: 15px;
     border-radius: 2px;
 }
+.leftsidebar-lower-final-dark li{
+    color: #fff;
+}
 /* .leftsidebar-toppost-button{
     transition: all .2s ease-in-out;
 } */

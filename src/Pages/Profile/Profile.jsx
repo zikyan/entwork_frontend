@@ -18,6 +18,7 @@ import Friends from './Friends';
 import SavedExtra from './SavedExtra';
 import SavedJob from './SavedJob';
 import WarningText from './WarningText';
+import { toast } from 'react-toastify';
 
 export default function Profile({darkMode}) {
   const {name}=useParams()
@@ -96,6 +97,7 @@ export default function Profile({darkMode}) {
   }
   const handleDeletePost = async (postId)=>{
     await deletePost(postId)
+    toast.success("Post Deleted Successfully")
     setTemp('Deleted Successfully')
   }
 
@@ -104,7 +106,6 @@ export default function Profile({darkMode}) {
       setShowComponent(false)
     },5000)
   },[])
-  console.log(user)
   return (
     <div>
      { user?._id === username?._id && username?.warning>0?
@@ -233,7 +234,7 @@ export default function Profile({darkMode}) {
                         
                     </div>
                     
-                    <div className="mainbar-mainpost-below">
+                    {/* <div className="mainbar-mainpost-below">
                             <div className="mainbar-mainpost-below-left">
                                 <div className="mainbar-mainpost-button-flex-parent">
                                     <button> <ArrowUpwardIcon /> 1.5k</button>
@@ -246,7 +247,7 @@ export default function Profile({darkMode}) {
                                 <button className='mainbar-mainpost-twitter-button'><TwitterIcon style={{fontSize:'20px',marginRight:'5px'}} />Twitter</button>
                                 <button className='mainbar-mainpost-share-button'><ShareIcon style={{fontSize:'20px'}} /></button>
                             </div>
-                    </div>
+                    </div> */}
         </div>
       )):''
     :<p style={{paddingTop:'10px'}}>Please Login First <Link to='/login'>Login</Link></p>

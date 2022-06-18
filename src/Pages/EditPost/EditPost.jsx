@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRef } from 'react';
 import { getPostByIdOne, editPost } from '../../service/api';
+import { toast } from 'react-toastify';
 
 export default function EditPost() {
     const { user }=useSelector((state)=>state.auth)
@@ -41,6 +42,7 @@ export default function EditPost() {
         category:categoryVar
       };
       await editPost(id,postData);
+      toast.success("Post Edited Successfully")
       return navigate(`/profile/${user?.username}`);
     }
 

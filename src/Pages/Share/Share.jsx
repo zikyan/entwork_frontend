@@ -27,36 +27,8 @@ export default function Share({darkMode}) {
 
   return (
     <div className="mainbar-parent">
-        <div className="admin-panel-heading">
-        <p>Shared Posts</p>
-    </div>
-        <div style={{marginTop:'20px'}} className={`mainbar-box-design ${darkMode?"changeModeMain":""}`}>
-        <div className="mainbar-upper2">
-            <ul className={`${darkMode?"darkmainbar-ul2":"mainbar-ul2"}`}>
-            <Link to='/'><li>#All</li></Link>
-                <Link to='/?tag=sarcastic'><li>#sarcastic</li></Link>
-                <Link to='/?tag=dank'><li>#dank</li></Link>
-                <Link to='/?tag=depressed'><li>#depressed</li></Link>
-                <Link to='/?tag=mern'><li>#mern</li></Link>
-                <Link to='/?tag=ror'><li>#ror</li></Link>
-                <Link to='/?tag=django'><li>#django</li></Link>
-                <Link to='/?tag=laravel'><li>#laravel</li></Link>
-                <li>#css</li>
-                <li>#android</li>
-                <li>#Weekly Highlights</li>
-                <li>#Boba Fett</li>
-                <li>#Biden</li>
-                <li>#Omicron</li>
-                <li>#work</li>
-                <li>#css</li>
-                <li>#android</li>
-                <li>#Biden</li>
-                <li>#Omicron</li>
-                <li>#work</li>
-                <li>#css</li>
-                <li>#Cat</li>
-            </ul>
-        </div>
+        <div className={`${darkMode?"admin-panel-heading-dark":"admin-panel-heading"}`}>
+            <p>Shared Posts</p>
         </div>
         <div className={`mainbar-box-design-lower ${darkMode?"changeModeMain":""}`}>
             {
@@ -75,10 +47,10 @@ export default function Share({darkMode}) {
                                     </div>
                                 </div>
                         </div>
-                            <div className="mainbar-post-right">
+                            {/* <div className="mainbar-post-right">
                                 <button className='mainbar-button-save'>Save</button>
                                 <button className='mainbar-button-save mainbar-button-download'>Download</button>
-                            </div>
+                            </div> */}
                     </div>
                         <div className="eachpost-eachpost-center">
                             

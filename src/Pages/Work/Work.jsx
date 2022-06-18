@@ -46,26 +46,26 @@ export default function Work({darkMode}) {
             <Link to='/work' className='leftsidebar-ul-link'><li>#All</li></Link>
             <Link to='/work/?tag=mern' className='leftsidebar-ul-link'><li>#mern</li></Link>
             <Link to='/work/?tag=amazon' className='leftsidebar-ul-link'><li>#amazon</li></Link>
-                <li>#django</li>
-                <li>#laravel</li>
-                <li>#python</li>
-                <li>#angular</li>
-                <li>#php</li>
-                <li>#flask</li>
-                <li>#react native</li>
-                <li>#android</li>
-                <li>#unity3d</li>
-                <li>#javascript</li>
-                <li>#SEO</li>
-                <Link to='/work/?tag=ror' className='leftsidebar-ul-link'><li>#ror</li></Link>
-                <li>#marketing</li>
-                <li>#flutter</li>
-                <li>#wordpress</li>
-                <li>#swift</li>
-                <li>#c++</li>
-                <li>#nest.js</li>
-                {/* <li>#machine learning</li> */}
-                <li>#C</li>
+            <Link to='/work/?tag=django' className='leftsidebar-ul-link'><li>#django</li></Link>
+            <Link to='/work/?tag=laravel' className='leftsidebar-ul-link'><li>#laravel</li></Link>
+            <Link to='/work/?tag=python' className='leftsidebar-ul-link'><li>#python</li></Link>
+            <Link to='/work/?tag=angular' className='leftsidebar-ul-link'><li>#angular</li></Link>
+            <Link to='/work/?tag=php' className='leftsidebar-ul-link'><li>#php</li></Link>
+            <Link to='/work/?tag=flask' className='leftsidebar-ul-link'><li>#flask</li></Link>
+            <Link to='/work/?tag=react' className='leftsidebar-ul-link'><li>#react</li></Link>
+            <Link to='/work/?tag=android' className='leftsidebar-ul-link'><li>#android</li></Link>
+            <Link to='/work/?tag=unity3d' className='leftsidebar-ul-link'><li>#unity3d</li></Link>
+            <Link to='/work/?tag=javascript' className='leftsidebar-ul-link'><li>#javascript</li></Link>
+            <Link to='/work/?tag=seo' className='leftsidebar-ul-link'><li>#seo</li></Link>
+            <Link to='/work/?tag=ror' className='leftsidebar-ul-link'><li>#ror</li></Link>
+            <Link to='/work/?tag=java' className='leftsidebar-ul-link'><li>#java</li></Link>
+            <Link to='/work/?tag=marketing' className='leftsidebar-ul-link'><li>#marketing</li></Link>
+            <Link to='/work/?tag=flutter' className='leftsidebar-ul-link'><li>#flutter</li></Link>
+            <Link to='/work/?tag=wordpress' className='leftsidebar-ul-link'><li>#wordpress</li></Link>
+            <Link to='/work/?tag=swift' className='leftsidebar-ul-link'><li>#swift</li></Link>
+            <Link to='/work/?tag=c++' className='leftsidebar-ul-link'><li>#c++</li></Link>
+            <Link to='/work/?tag=nestjs' className='leftsidebar-ul-link'><li>#nest</li></Link>
+            <Link to='/work/?tag=crypto' className='leftsidebar-ul-link'><li>#crypto</li></Link>
             </ul>
         </div>
         </div>

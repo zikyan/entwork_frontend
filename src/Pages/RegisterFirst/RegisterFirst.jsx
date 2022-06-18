@@ -86,6 +86,7 @@ export default function RegisterFirst() {
             password,
           }
           dispatch(registerUser(userData))
+          toast.success('Registered Successfully')
         }
       }
       const handleGoogleButton = ()=>{

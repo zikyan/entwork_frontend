@@ -44,24 +44,27 @@ export default function Mainbar({darkMode}) {
                 <Link to='/?tag=sarcastic'><li>#sarcastic</li></Link>
                 <Link to='/?tag=dank'><li>#dank</li></Link>
                 <Link to='/?tag=depressed'><li>#depressed</li></Link>
-                <Link to='/?tag=mern'><li>#mern</li></Link>
-                <Link to='/?tag=ror'><li>#ror</li></Link>
-                <Link to='/?tag=django'><li>#django</li></Link>
-                <Link to='/?tag=laravel'><li>#laravel</li></Link>
-                <li>#css</li>
-                <li>#android</li>
-                <li>#Weekly Highlights</li>
-                <li>#Boba Fett</li>
-                <li>#Biden</li>
-                <li>#Omicron</li>
-                <li>#work</li>
-                <li>#css</li>
-                <li>#android</li>
-                <li>#Biden</li>
-                <li>#Omicron</li>
-                <li>#work</li>
-                <li>#css</li>
-                <li>#Cat</li>
+                <Link to='/?tag=imf'><li>#imf</li></Link>
+                <Link to='/?tag=pakistan'><li>#pakistan</li></Link>
+                <Link to='/?tag=iphone'><li>#iphone</li></Link>
+                <Link to='/?tag=nfs'><li>#nfs</li></Link>
+                <Link to='/?tag=bobby'><li>#bobby</li></Link>
+                <Link to='/?tag=djkhaled'><li>#djkhaled</li></Link>
+                <Link to='/?tag=comedy'><li>#comedy</li></Link>
+                <Link to='/?tag=meme'><li>#meme</li></Link>
+                <Link to='/?tag=topgun'><li>#topgun</li></Link>
+                <Link to='/?tag=biden'><li>#biden</li></Link>
+                <Link to='/?tag=fun'><li>#fun</li></Link>
+                <Link to='/?tag=us'><li>#us</li></Link>
+                <Link to='/?tag=dark'><li>#dark</li></Link>
+                <Link to='/?tag=sad'><li>#sad</li></Link>
+                <Link to='/?tag=pdm'><li>#pdm</li></Link>
+                <Link to='/?tag=nation'><li>#nation</li></Link>
+                <Link to='/?tag=marvel'><li>#marvel</li></Link>
+                <Link to='/?tag=omicron'><li>#omicron</li></Link>
+                <Link to='/?tag=pti'><li>#pti</li></Link>
+                <Link to='/?tag=bitcoin'><li>#bitcoin</li></Link>
+                
             </ul>
         </div>
         </div>

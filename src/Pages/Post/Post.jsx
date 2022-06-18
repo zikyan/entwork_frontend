@@ -117,7 +117,7 @@ export default function Post(props) {
                 <div className="eachpost-eachpost-center">
                         
                         <div className={`mainbar-mainpost ${props.darkmode?"changeModelite":""}`}>
-                            <p className={`post-post-caption ${props.darkmode?"changeModeMain":""}`} style={{marginTop:'10px'}}>{post?.text}</p>
+                            <p className={`post-post-caption ${props.darkmode?"changeModeMain-1":""}`} style={{marginTop:'10px'}}>{post?.text}</p>
                             {/* <img className='post-mainpost-image' src={post?.img} alt="" /> */}
                             {
                               post?.img?.substr(post?.img.length - 4) === '.mp4'?
@@ -170,7 +170,7 @@ export default function Post(props) {
 
                                 <TwitterShareButton
                                   title={post?.text}
-                                  imageUrl={post?.img}
+                                  url={post?.img}
                                   hashtags={post?.tag}
                                 >
                                   <button className='mainbar-mainpost-twitter-button'><TwitterIcon style={{fontSize:'20px',marginRight:'5px'}} />Twitter</button>

@@ -1,29 +1,48 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { format } from 'timeago.js';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import { getUserById, saveJob, reportJob, addJobLike, postConversation } from '../../service/api';
+import { getUserById, saveJob, reportJob, addJobLike, postConversation, getJobById } from '../../service/api';
 import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 
-export default function EachJob({darkMode, job}) {
+export default function Job({darkMode}) {
     const { user }= useSelector((state)=>state.auth)
-    const [like,setLike] = useState(job?.count)
+    
     const [currentChat, setCurrentChat] = useState()
+    const {id} = useParams()
     const [isLiked,setIsLiked] = useState(false)
     const navigate=useNavigate()
+    const [job, setJob] = useState()
+    const [like,setLike] = useState()
     const defaultImage="https://res.cloudinary.com/zikyancloudinary/image/upload/v1648317487/nimffj7bonumvaapmbp6.jpg"
     const [userById, setUserById] = useState()
     useEffect(()=>{
         const fetchData = async ()=>{
-            const res = await getUserById(job?.user)
+
+            var jobs = await getJobById(id)
+            setJob(jobs)
+
+            const res = await getUserById(jobs?.user)
             setUserById(res)
+
+            setLike(jobs?.count)
         }
         fetchData()
     },[])
-    const saveClick = async (e)=>{
+
+    useEffect(() => {
+        setIsLiked(job?.vote.includes(user?._id));
+      }, [user?._id, job?.vote]);
+  
+      const likeHandler = async (id)=>{
+        await addJobLike(id,{userId:user?._id})
+        setLike(isLiked ? like-1 : like+1)
+        setIsLiked(!isLiked)
+      }
+      const saveClick = async (e)=>{
         const jobData = {
             user: e?.user,
             saved: user,
@@ -35,19 +54,10 @@ export default function EachJob({darkMode, job}) {
             category:e?.category
           }
         await saveJob(jobData)
-        toast.success("Job Saved Successfully")
     }
-    useEffect(() => {
-        setIsLiked(job?.vote.includes(user?._id));
-      }, [user?._id, job?.vote]);
-  
-      const likeHandler = async (id)=>{
-        await addJobLike(id,{userId:user?._id})
-        setLike(isLiked ? like-1 : like+1)
-        setIsLiked(!isLiked)
-      }
     const handleReportJob = async (e) =>{
         await reportJob(e,{currentUser:user?._id})
+        toast.success('Reported Successfuly')
         window.location.reload(false)
     }
     const noUserHandle = ()=>{
@@ -74,38 +84,34 @@ export default function EachJob({darkMode, job}) {
                             <div className="work-post-belowname">
                                 <p className='work-post-time-tag'>#{job?.tag},&nbsp;</p>
                                 <p className='work-post-time-tag'>{job?.category},&nbsp;</p>
-                                <p className='work-post-time-tag'>{format(job.createdAt)}</p>
+                                <p className='work-post-time-tag'>{format(job?.createdAt)}</p>
                             </div>
                         </div>
                 </div>
                     <div style={{display:'flex', flexDirection:'column'}} className="work-post-right">
-                        {
+                        {/* {
                             user?
                                 <button style={{width:'90px'}} className='work-button-save' onClick={()=>saveClick(job)}>Save</button>
                             :
                                 <button style={{width:'90px'}} className='work-button-save' onClick={noUserHandle}>Save</button>
-                        }
+                        } */}
                         
-                        {/* {
+                        {
                             user?
                                 user?._id !== job?.user?
                                     job?.reportuser.includes(user?._id)? '':
                                         <button style={{marginTop:'10px'}} className='work-button-save' onClick={()=>handleReportJob(job?._id)}>Report</button>
                                 :''
                             : ''
-                        } */}
+                        }
                     </div>
             </div>
-            <Link style={{textDecoration:'none', color:'#000'}} to={`/job/${job?._id}`}>
-            <div>
             <p className={`work-post-caption ${darkMode?"changeModeRec":""}`} style={{marginTop:'10px'}}>{job?.caption}</p>
 
                 <div className={`${darkMode?"darkwork-workpost":"work-workpost"}`}>
                     {/* <img className='work-workpost-image' src={cat} alt="" /> */}
                     <p>{job?.des}</p>
                 </div>
-                </div>
-                </Link>
                 <div  className="mainbar-mainpost-below">
                     <div style={{display:'flex', alignItems:'flex-start'}} className="mainbar-mainpost-below-left">
                         <div className="mainbar-mainpost-button-flex-parent">
@@ -124,7 +130,6 @@ export default function EachJob({darkMode, job}) {
                         </div>
                     </div>
                 </div>
-                
                 <div className="work-workpost-below">
                     {
                         user?

@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import ShareIcon from '@mui/icons-material/Share';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
@@ -6,44 +7,30 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { Link } from 'react-router-dom';
-import { getUserById, sharePost, getSharePost, savePost, getCommentByPostId, addPostLike } from '../../service/api';
-import { format } from 'timeago.js';
+import { getUserById, sharePost, savePost, addPostLike } from '../../service/api';
 import { useSelector } from 'react-redux';
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 
-export default function EachPost({darkMode, post}) {
-    const { user }=useSelector((state)=>state.auth)
-    const [userById, setUserById] = useState([])
-    const [share, setShare] = useState()
-    const [commentByPost, setCommentByPost] = useState()
-
-    const [like,setLike] = useState(post?.count)
-    const [isLiked,setIsLiked] = useState(false)
-    
-
-    
-   
-
-    // const [dislike,setDisLike] = useState(1)
-    // const [isDisLiked,setIsDisLiked] = useState(false)
-
+export default function RecommendedExtra({darkMode, post}) {
+    const { user }= useSelector((state)=>state.auth)
     const defaultImage="https://res.cloudinary.com/zikyancloudinary/image/upload/v1648317487/nimffj7bonumvaapmbp6.jpg"
     const navigate=useNavigate()
+    const [userById, setUserById] = useState([])
+    const [like,setLike] = useState(post?.count)
+    const [isLiked,setIsLiked] = useState(false)
+
     useEffect(()=>{
         const fetchData = async ()=>{
             const username= await getUserById(post?.user)
             setUserById(username)
-            const sharedPosts = await getSharePost(user?._id)
-            setShare(sharedPosts)
-            const comments = await getCommentByPostId(post?._id)
-            setCommentByPost(comments)
                 
         }
         fetchData()
     },[])
-
+    
+    console.log(post)
     const handleShare = async (e)=>{
         const postData = {
             user: e?.user,
@@ -78,7 +65,7 @@ export default function EachPost({darkMode, post}) {
               });
             })
             .catch((error) => {
-              toast.error('Error Occured')
+              console.log(error);
               return error;
             });
             if(!post?.img){
@@ -86,7 +73,6 @@ export default function EachPost({darkMode, post}) {
             }else{
               toast.success('Downloaded Successfully')
             }
-            
     }
 
     const saveClick = async (e)=>{
@@ -116,23 +102,6 @@ export default function EachPost({darkMode, post}) {
     const noUserHandle = ()=>{
       navigate('/login')
     }
-
-    // const dislikeHandler =()=>{
-    //   setDisLike(isDisLiked ? dislike-1 : dislike+1)
-    //   setIsDisLiked(!isDisLiked)
-    // }
-
-    // const dislikeHandler = async(id)=>{
-    //   await addPostLike(id,{userId:user?._id})
-    //   if(post?.vote.includes(user?._id)){
-    //     setLike()
-    //   }else{
-
-    //   }
-    //   setLike(isLiked ? like+1 : like-1)
-    //   setIsLiked(!isLiked)
-    // }
-    
   return (
     <div className="mainbar-upper3">
                 <div className="mainbar-post1">
@@ -145,7 +114,7 @@ export default function EachPost({darkMode, post}) {
                                 <div className="mainbar-post-belowname">
                                     <p className='mainbar-post-time-tag'>#{post?.tag},&nbsp;</p>
                                     <p className='mainbar-post-time-tag'>{post?.category},&nbsp;</p>
-                                    <p className='mainbar-post-time-tag'>{format(post?.createdAt)}</p>
+                                    <p className='mainbar-post-time-tag'>Recommended Post</p>
                                 </div>
                             </div>
                     </div>

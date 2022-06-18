@@ -20,7 +20,7 @@ export default function LeftSideBar(props) {
       </div>
       <div className={`${props.darkmode?"darkleftsidebar-upper2":"leftsidebar-upper2"}`}>
       <p className={`${props.darkmode?"darkleftsidebar-text":"leftsidebar-text"}`}>EntWork</p>
-          <ul className='leftsidebar-filter'>
+          <ul className={` leftsidebar-filter ${props.darkmode?"leftsidebar-lower-final-dark":""}`}>
            <Link className='leftsidebar-ul-link' to='/'><li className={`${props.darkmode?"darkleftsidebar-filter-selected":"leftsidebar-filter-selected"}`}><AllInclusiveIcon className='leftsidebar-material-icon'/>All</li></Link>
             <Link to='/?category=Hot' className='leftsidebar-ul-link'><li><LocalFireDepartmentIcon className='leftsidebar-material-icon'/>Hot</li></Link>
             <Link to='/?category=Trending' className='leftsidebar-ul-link'><li><TrendingUpIcon className='leftsidebar-material-icon'/>Trending</li></Link>
@@ -33,19 +33,19 @@ export default function LeftSideBar(props) {
       
       <p className={`${props.darkmode?"darkleftsidebar-lower-text":"leftsidebar-lower-text"}`}>Top Tags</p>
         <div className="leftsidebar-filter">
-          <ul>
-          <Link className='leftsidebar-ul-link' to='/?tag=sarcastic'><li>#sarcasm</li></Link>
-          <Link className='leftsidebar-ul-link' to='/?tag=depressed'><li>#depressed</li></Link>
-            <li>#one punch man</li>
-            <li>#tiktok</li>
-            <li>#dragon ball</li>
-            <li>#demon slayer</li>
-            <li>#baki</li>
-            <li>#cringe</li>
-            <li>#anime</li>
-            <li>#bts</li>
-            <li>#attack on titans</li>
-            <li>#stiens gates</li>
+          <ul className={`${props.darkmode?"leftsidebar-lower-final-dark":""}`}>
+          <Link className='leftsidebar-ul-link' to='/?tag=pakistan'><li>#pakistan</li></Link>
+          <Link className='leftsidebar-ul-link' to='/?tag=imrankhan'><li>#imrankhan</li></Link>
+          <Link className='leftsidebar-ul-link' to='/?tag=onepunchman'><li>#onepunchman</li></Link>
+          <Link className='leftsidebar-ul-link' to='/?tag=tiktok'><li>#tiktok</li></Link>
+          <Link className='leftsidebar-ul-link' to='/?tag=dragonball'><li>#dragonball</li></Link>
+          <Link className='leftsidebar-ul-link' to='/?tag=demonslayer'><li>#demonslayer</li></Link>
+          <Link className='leftsidebar-ul-link' to='/?tag=baki'><li>#baki</li></Link>
+          <Link className='leftsidebar-ul-link' to='/?tag=cringe'><li>#cringe</li></Link>
+          <Link className='leftsidebar-ul-link' to='/?tag=anime'><li>#anime</li></Link>
+          <Link className='leftsidebar-ul-link' to='/?tag=bts'><li>#bts</li></Link>
+          <Link className='leftsidebar-ul-link' to='/?tag=attackontitans'><li>#attackontitans</li></Link>
+          <Link className='leftsidebar-ul-link' to='/?tag=stiensgate'><li>#stiensgate</li></Link>
           </ul>
         </div>
         </div>

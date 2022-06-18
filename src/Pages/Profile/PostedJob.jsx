@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { format } from 'timeago.js'
 import { getUserById, deleteJob } from '../../service/api'
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 export default function PostedJob({job, darkMode}) {
     const {user}=useSelector((state)=>state.auth)
@@ -16,6 +17,7 @@ export default function PostedJob({job, darkMode}) {
     },[])
     const handleDeleteJob = async (jobId)=>{
         await deleteJob(jobId)
+        toast.success("Job Deleted Successfully")
         window.location.reload(false);
       }
   return (
@@ -40,12 +42,13 @@ export default function PostedJob({job, darkMode}) {
                             <button onClick={()=>handleDeleteJob(job?._id)} className='mainbar-button-save mainbar-button-download'>Delete</button>
                         </div>
             </div>
-            <Link to='/work' className={`work-post-caption ${darkMode?"changeModeRec":""}`}><p style={{marginTop:'10px'}}>{job?.caption}</p></Link>
-
+            <Link to={`/job/${job?._id}`} className={`work-post-caption ${darkMode?"changeModeRec":""}`}><p style={{marginTop:'10px'}}>{job?.caption}</p></Link>
+            <Link style={{textDecoration:'none', color:'#000'}} to={`/job/${job?._id}`}>
                 <div className={`${darkMode?"darkwork-workpost":"work-workpost"}`}>
                     {/* <img className='work-workpost-image' src={cat} alt="" /> */}
                     <p>{job?.des}</p>
                 </div>
+                </Link>
         </div>
         </div>
   )

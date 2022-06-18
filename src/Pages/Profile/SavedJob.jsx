@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getUserById, deleteSavedJob } from '../../service/api';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 export default function SavedJob({darkMode, job}) {
     const { user }= useSelector((state)=>state.auth)
@@ -16,6 +17,7 @@ export default function SavedJob({darkMode, job}) {
     },[])
     const handleDeleteSavedJob = async (jobId)=>{
         await deleteSavedJob(jobId)
+        toast.success("Job Unsaved Successfully")
         window.location.reload(false);
       }
   return (
@@ -39,19 +41,20 @@ export default function SavedJob({darkMode, job}) {
                         <button className='work-button-save' onClick={()=>handleDeleteSavedJob(job?._id)}>Unsave</button>
                     </div>
             </div>
-            <Link to='/work' className={`work-post-caption ${darkMode?"changeModeRec":""}`}><p style={{marginTop:'10px'}}>{job?.caption}</p></Link>
+            <p className={`work-post-caption ${darkMode?"changeModeRec":""}`} style={{marginTop:'10px'}}>{job?.caption}</p>
 
                 <div className={`${darkMode?"darkwork-workpost":"work-workpost"}`}>
                     {/* <img className='work-workpost-image' src={cat} alt="" /> */}
                     <p>{job?.des}</p>
                 </div>
+                
 
-                {
+                {/* {
                     user?._id === userById?._id? '' :
                     <div className="work-workpost-below">
                         <button className='work-start-chat-button'>Start Chat</button>
                     </div>
-                }
+                } */}
 
                 
         </div>

@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { getUserByUsername } from '../../service/api';
 import { useRef } from 'react';
 import { editProfile } from '../../service/api';
+import { toast } from 'react-toastify';
 
 export default function EditProfile() {
     const {name}=useParams()
@@ -59,6 +60,7 @@ export default function EditProfile() {
       };
       // console.log(res1)
       await editProfile(name,userData)
+      toast.success("Profile Edited Successfully")
       navigate(`/profile/${user?.username}`)
   }
   return (

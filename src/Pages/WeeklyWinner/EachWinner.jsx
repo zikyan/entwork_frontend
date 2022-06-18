@@ -18,28 +18,25 @@ export default function EachWinner({props, post}) {
         fetchData()
     },[])
   return (
-        <div>
-            <div style={{marginBottom:'20px'}} className="admin-panel-heading">
-                <p>Top Popular Posts</p>
-            </div>
-            <div className={`post-parent ${props.darkmode?"darkpost-parent":""}`}>
+        <div style={{marginBottom:'20px'}}>
+            <div className={`post-parent ${props.darkMode?"darkpost-parent":""}`}>
                 <div className="post-upper3">
                     <div className="post-post1">
                         <div className="post-post-left">
                                 <Link to={`/profile/${postUser?.username}`}><img className='post-post-dp' src={postUser?.profilePicture || defaultImage} alt="" /></Link>
                                 <div className="post-post-username">
-                                <Link style={{textDecoration:'none', color:`${props.darkmode?"#fff":'#000'}`,fontWeight:'600'}} to={`/profile/${postUser?.username}`}>{postUser?.first?.charAt(0).toUpperCase() + postUser?.first?.slice(1)} {postUser?.last?.charAt(0).toUpperCase() + postUser?.last?.slice(1)}</Link>
+                                <Link style={{textDecoration:'none', color:`${props.darkMode?"#fff":'#000'}`,fontWeight:'600'}} to={`/profile/${postUser?.username}`}>{postUser?.first?.charAt(0).toUpperCase() + postUser?.first?.slice(1)} {postUser?.last?.charAt(0).toUpperCase() + postUser?.last?.slice(1)}</Link>
                                     <div className="post-post-belowname">
                                         <p className='post-post-time-tag'>#{post?.tag},&nbsp;</p>
                                         <p className='post-post-time-tag'>{post?.category},&nbsp;</p>
-                                        <p className='post-post-time-tag'>Weekly Winner</p>
+                                        <p className='post-post-time-tag'>Top Popular Post</p>
                                     </div>
                                 </div>
                         </div>
                     </div>
                         <div className="eachpost-eachpost-center">
-                                <div className={`mainbar-mainpost ${props.darkmode?"changeModelite":""}`}>
-                                <Link style={{textDecoration:'none'}} to={`/post/${post?._id}`}><p className={`post-post-caption ${props.darkmode?"changeModeMain":""}`} style={{marginTop:'10px'}}>{post?.text}</p></Link>
+                                <div className={`mainbar-mainpost ${props.darkMode?"changeModelite":""}`}>
+                                <Link style={{textDecoration:'none'}} to={`/post/${post?._id}`}><p className={`post-post-caption ${props.darkMode?"changeModeMain":""}`} style={{marginTop:'10px'}}>{post?.text}</p></Link>
                                 <Link to={`/post/${post?._id}`}><img className='post-mainpost-image' src={post?.img} alt="" /></Link>
                                 </div>
                         </div>
