@@ -240,10 +240,19 @@
 .work-belowtags-parent{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 .work-filter-center{
     width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #fff;
+    padding: 15px 20px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+.work-filter-center1{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -294,6 +303,19 @@
     font-weight: 600;
     border-radius: 3px;
 }
+.work-start-chat-button1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 5px 10px;
+    background-color: #192252;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    border-radius: 3px;
+}
 /* .work-start-chat-button{
     transition: all .2s ease-in-out;
 } */
@@ -307,6 +329,9 @@
     outline:0px;
  }
  .work-start-chat-button:active{
+    transform: scale(0.97);
+ }
+ .work-start-chat-button1:active{
     transform: scale(0.97);
  }
 

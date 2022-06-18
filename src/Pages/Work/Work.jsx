@@ -91,6 +91,12 @@ export default function Work({darkMode}) {
                     <button onClick={handleFilter} className='work-start-chat-button work-filter-button'><FilterListIcon /><p style={{marginLeft:'10px'}}>Filter</p></button>
                 </div>
             </div>
+            <div>
+            <div className="work-filter-center1">
+                    {/* <Link to='/addjob'><button className='work-postjob-button'><WorkOutlineIcon style={{fontSize:'18px', marginRight:'5px'}} />Post a Job</button></Link> */}
+                    <button className='work-start-chat-button1'><Link style={{textDecoration:'none', color:'#fff'}} to='/recommendedjob'>Recommended</Link></button>
+                </div>
+            </div>
         </div>
 
         {

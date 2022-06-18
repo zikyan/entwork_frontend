@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 
-export default function EachJob({darkMode, job}) {
+export default function RecommendedJobsExtra({job, darkMode}) {
     const { user }= useSelector((state)=>state.auth)
     const [like,setLike] = useState(job?.count)
     const [currentChat, setCurrentChat] = useState()
@@ -102,7 +102,7 @@ export default function EachJob({darkMode, job}) {
 
                 <div className={`${darkMode?"darkwork-workpost":"work-workpost"}`}>
                     {/* <img className='work-workpost-image' src={cat} alt="" /> */}
-                    <p className={`work-post-caption ${darkMode?"changeModeRec":""}`}>{job?.des}</p>
+                    <p>{job?.des}</p>
                 </div>
                 </div>
                 </Link>

@@ -29,6 +29,7 @@ import AddJob from './Pages/AddJob/AddJob';
 import Chat from './Pages/Chat/Chat';
 import EditJob from './Pages/EditJob/EditJob';
 import Job from './Pages/Job/Job';
+import RecommendedJobs from './Pages/RecommendedJobs/RecommendedJobs';
 
 function App() {
   const [darkMode,setdarkMode]=useState(false)
@@ -90,6 +91,7 @@ function App() {
                 <Route exact path='/shared' element={<Share darkMode={darkMode}/>} />
                 <Route exact path='/editjob/:id' element={<EditJob/>} />
                 <Route exact path='/job/:id' element={<Job darkMode={darkMode}/>} />
+                <Route exact path='/recommendedjob' element={<RecommendedJobs darkMode={darkMode}/>} />
               </Routes>
             </div>
             <div className='right-flex'>

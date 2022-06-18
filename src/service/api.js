@@ -252,3 +252,27 @@ export const getThreeJob = async ()=>{
     const response=await axios.get(`/api/job/getthreejob`)
     return response.data
 }
+export const followUserOne = async (personId, currentUserId)=>{
+    const response=await axios.put(`/api/users/followone/${personId}`,currentUserId)
+    return response.data
+}
+export const unFollowUserOne = async (personId, currentUserId)=>{
+    const response=await axios.put(`/api/users/unfollowone/${personId}`,currentUserId)
+    return response.data
+}
+export const checkFollow = async (id)=>{
+    const response=await axios.get(`/api/users/checkfollow/${id}`)
+    return response.data
+}
+export const getRecommendedJob = async ()=>{
+    const response=await axios.get(`/api/job/getrecommendedjob`)
+    return response.data
+}
+export const getUserByFollow = async (id)=>{
+    const response=await axios.get(`/api/users/getuserbyfollow/${id}`)
+    return response.data
+}
+export const getUserByFollowFriend = async (id)=>{
+    const response=await axios.get(`/api/users/getuserbyfollowfriend/${id}`)
+    return response.data
+}

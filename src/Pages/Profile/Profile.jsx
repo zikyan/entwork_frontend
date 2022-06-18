@@ -2,13 +2,7 @@ import {useState, useEffect } from 'react';
 import './profile.css';
 import EditIcon from '@mui/icons-material/Edit';
 import { useParams } from 'react-router-dom';
-import { getUserByUsername, getPostById, followUser, unfollowUser, getCommentByUsername, getJobByUser, deletePost, getSavePost, getSaveJob } from '../../service/api';
-import ShareIcon from '@mui/icons-material/Share';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import { getUserByUsername, getPostById, followUser, unfollowUser, getCommentByUsername, getJobByUser, deletePost, getSavePost, getSaveJob, followUserOne, checkFollow, unFollowUserOne, getUserByFollow, getUserByFollowFriend } from '../../service/api';
 import { Link } from 'react-router-dom';
 import { format } from 'timeago.js';
 import { useSelector } from 'react-redux';
@@ -31,7 +25,9 @@ export default function Profile({darkMode}) {
   const [save, setSave] = useState()
   const [savedJob, setSavedJob] = useState()
   const [showComponent, setShowComponent] = useState(true)
-  const [followed, setFollowed] = useState(user?.followings.includes(username?._id))
+  // const [followed, setFollowed] = useState(user?.followings.includes(username?._id))
+  const [followed, setFollowed] = useState()
+  const [friendFollow, setFriendFollow] = useState()
   
 
   const [toggleState, setToggleState] = useState(1);
@@ -42,6 +38,8 @@ export default function Profile({darkMode}) {
   const defaultCover="https://res.cloudinary.com/zikcover/image/upload/v1651253301/woguznjd3fvl35ssktz1.jpg"
   useEffect(()=>{
     const fetchData = async ()=>{
+
+        
 
         // comments logic
         const allComments = await getCommentByUsername(name)
@@ -61,23 +59,34 @@ export default function Profile({darkMode}) {
 
         const savedJobs = await getSaveJob(user?._id)
         setSavedJob(savedJobs)
+
+        const tempFriend = await getUserByFollowFriend(user?._id)
+        setFriendFollow(tempFriend)
+
+        
     }
     fetchData()
   },[])
-
+  // console.log(followed)
   useEffect(()=>{
     const fetchFollowed = async ()=>{
       
     // follow/unfollow logic
     const userByName = await getUserByUsername(name)
     const post = await getPostById(userByName?._id)
+    const userFromFollow = await getUserByFollow(userByName?._id)
     setUsername(userByName)
     setPosts(post)
-      if(followed === false){
-          setFollowed(true)
-      }else{
-          setFollowed(false)
-      } 
+
+        const fol = await checkFollow(user?._id)
+        setFollowed(fol?.followings.includes(userFromFollow?.user))
+
+      //   if(followed === false){
+      //     setFollowed(true)
+      // }else{
+      //     setFollowed(false)
+      // } 
+      console.log(followed)
     }
     fetchFollowed()
         
@@ -87,12 +96,11 @@ export default function Profile({darkMode}) {
   const handleFollowButton = async ()=>{
     
       if(followed){
-        await unfollowUser(username?._id, {user:user?._id})
-        setFollowed(!followed)
+        await unFollowUserOne(username?._id, {user:user?._id})
       }else{
-        await followUser(username?._id, {user:user?._id})
-        setFollowed(!followed)
+        await followUserOne(username?._id, {user:user?._id})
       }
+      setFollowed(!followed)
       
   }
   const handleDeletePost = async (postId)=>{
@@ -106,6 +114,7 @@ export default function Profile({darkMode}) {
       setShowComponent(false)
     },5000)
   },[])
+  // console.log(followed)
   return (
     <div>
      { user?._id === username?._id && username?.warning>0?
@@ -290,7 +299,7 @@ export default function Profile({darkMode}) {
 
     {
       toggleState===6?
-      user?.followings?.map((friend)=>(
+      friendFollow?.followings?.map((friend)=>(
         <Friends key={user?._id}  friend={friend}/>
       ))
       // <p>{user?.fol}</p>

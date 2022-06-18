@@ -55,6 +55,7 @@ export default function EachPost({darkMode, post}) {
             category:e?.category
           }
         await sharePost(postData)
+        toast.success("Shared Successfully")
     }
 
     const downloadClick = (e)=>{

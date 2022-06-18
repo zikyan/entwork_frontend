@@ -25,7 +25,8 @@ export default function RightRecentJobs({darkMode, job}) {
               <div className="rightsidebar-post-username">
               <a href={ `/profile/${user?.username}`} style={{textDecoration:'none', color:`${darkMode?"#fff":'#000'}`,fontWeight:'600'}}>{user?.first?.charAt(0).toUpperCase() + user?.first?.slice(1)} {user?.last?.charAt(0).toUpperCase() + user?.last?.slice(1)}</a>
                   <div className="rightsidebar-post-belowname">
-                      <p className='rightsidebar-post-tag'>#{job?.tag}&nbsp;</p>
+                      {/* <p className='rightsidebar-post-tag'>#{job?.tag}&nbsp;</p> */}
+                      <p className='work-post-time-tag'>{job?.category},&nbsp;</p>
                       <p className='rightsidebar-post-time'>{format(job?.createdAt)}</p>
                   </div>
               </div>
